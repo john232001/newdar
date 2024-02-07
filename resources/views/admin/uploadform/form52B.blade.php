@@ -10,6 +10,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>UPLOAD FORMS</h1>
+        <br>
+        @foreach ($landholdings as $data)
+        <a href="{{ route('landholding_view', $data->id )}}" class="btn btn-primary">
+            Go back
+        </a>
+        @endforeach
     </section>
 
     <!-- Main content -->

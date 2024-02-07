@@ -27,80 +27,85 @@ class LandholdingController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
-            'lhid' => 'required',
-            'firstname' => 'required',
-            'familyname' => 'required',
-            'municipality_id' => 'required',
-            'barangay_id' => 'required',
-            'octNo' => 'required',
-            'surveyArea' => 'required',
-            'surveyNo' => 'required',
-            'lotNo' => 'required',
-            'maro_id' => 'required',
-            'paro_id' => 'required'
-        ], [
-            'municipality_id' => 'The municipality field is required',
-            'barangay_id' => 'The barangay field is required',
-            'maro_id.required' => 'The maro field is required.',
-            'paro_id.required' => 'The paro field is required.'
-        ]);
+        try{
+            $request->validate([
+                'lhid' => 'required',
+                'firstname' => 'required',
+                'familyname' => 'required',
+                'municipality_id' => 'required',
+                'barangay_id' => 'required',
+                'octNo' => 'required',
+                'surveyArea' => 'required',
+                'surveyNo' => 'required',
+                'lotNo' => 'required',
+                'maro_id' => 'required',
+                'paro_id' => 'required'
+            ], [
+                'municipality_id' => 'The municipality field is required',
+                'barangay_id' => 'The barangay field is required',
+                'maro_id.required' => 'The maro field is required.',
+                'paro_id.required' => 'The paro field is required.'
+            ]);
 
-        // Check if title file is present
-        if ($request->hasFile('title')) {
-            $title = $request->file('title');
-            $TitleDoc = $title->getClientOriginalName();
-            $title->move(public_path('uploads/Title'), $TitleDoc);
-        } else {
-            // Handle the case when title file is not provided
-            $TitleDoc = null; // or any other default value
+            // Check if title file is present
+            if ($request->hasFile('title')) {
+                $title = $request->file('title');
+                $TitleDoc = $title->getClientOriginalName();
+                $title->move(public_path('uploads/Title'), $TitleDoc);
+            } else {
+                // Handle the case when title file is not provided
+                $TitleDoc = null; // or any other default value
+            }
+
+            // Check if taxDocuments file is present
+            if ($request->hasFile('taxDocuments')) {
+                $tax = $request->file('taxDocuments');
+                $TaxDoc = $tax->getClientOriginalName();
+                $tax->move(public_path('uploads/TaxDeclaration'), $TaxDoc);
+            } else {
+                // Handle the case when taxDocuments file is not provided
+                $TaxDoc = null; // or any other default value
+            }
+
+            // Insert file path into the database using Query Builder
+            $data = DB::table('landholdings')->insert([
+                'lhid' => $request->lhid,
+                'firstname' => $request->firstname,
+                'familyname' => $request->familyname,
+                'middlename' => $request->middlename,
+                'municipality_id' => $request->municipality_id,
+                'barangay_id' => $request->barangay_id,
+                'octNo' => $request->octNo,
+                'lotNo' => $request->lotNo,
+                'surveyNo' => $request->surveyNo,
+                'surveyArea' => $request->surveyArea,
+                'taxNo' => $request->taxNo,
+                'maro_id' => $request->maro_id,
+                'paro_id' => $request->paro_id,
+                'modeOfAcquisition' => $request->modeOfAcquisition,
+                'coverableArea' => $request->coverableArea,
+                'carpableArea' => $request->carpableArea,
+                'noncarpableArea' => $request->noncarpableArea,
+                'retainedArea' => $request->retainedArea,
+                'distributeArea' => $request->distributeArea,
+                'landsize' => $request->landsize,
+                'majorCrops' => $request->majorCrops,
+                'phase' => $request->phase,
+                'upals' => $request->upals,
+                'yearAdded' => $request->yearAdded,
+                'pipeline' => $request->pipeline,
+                'targetyear' => $request->targetyear,
+                'projectedDelivery' => $request->projectedDelivery,
+                'title' => $TitleDoc,
+                'taxDocuments' => $TaxDoc,
+                "created_at" => date('Y-m-d H:i:s'),
+                "updated_at" => date('Y-m-d H:i:s'),
+            ]);
+            return redirect()->back()->with('success', 'File uploaded successfully.');
         }
-
-        // Check if taxDocuments file is present
-        if ($request->hasFile('taxDocuments')) {
-            $tax = $request->file('taxDocuments');
-            $TaxDoc = $tax->getClientOriginalName();
-            $tax->move(public_path('uploads/TaxDeclaration'), $TaxDoc);
-        } else {
-            // Handle the case when taxDocuments file is not provided
-            $TaxDoc = null; // or any other default value
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Failed to insert data' . $e->getMessage());
         }
-
-       // Insert file path into the database using Query Builder
-       $data = DB::table('landholdings')->insert([
-        'lhid' => $request->lhid,
-        'firstname' => $request->firstname,
-        'familyname' => $request->familyname,
-        'middlename' => $request->middlename,
-        'municipality_id' => $request->municipality_id,
-        'barangay_id' => $request->barangay_id,
-        'octNo' => $request->octNo,
-        'lotNo' => $request->lotNo,
-        'surveyNo' => $request->surveyNo,
-        'surveyArea' => $request->surveyArea,
-        'taxNo' => $request->taxNo,
-        'maro_id' => $request->maro_id,
-        'paro_id' => $request->paro_id,
-        'modeOfAcquisition' => $request->modeOfAcquisition,
-        'coverableArea' => $request->coverableArea,
-        'carpableArea' => $request->carpableArea,
-        'noncarpableArea' => $request->noncarpableArea,
-        'retainedArea' => $request->retainedArea,
-        'distributeArea' => $request->distributeArea,
-        'landsize' => $request->landsize,
-        'majorCrops' => $request->majorCrops,
-        'phase' => $request->phase,
-        'upals' => $request->upals,
-        'yearAdded' => $request->yearAdded,
-        'pipeline' => $request->pipeline,
-        'targetyear' => $request->targetyear,
-        'projectedDelivery' => $request->projectedDelivery,
-        'title' => $TitleDoc,
-        'taxDocuments' => $TaxDoc,
-        "created_at" => date('Y-m-d H:i:s'),
-        "updated_at" => date('Y-m-d H:i:s'),
-       ]);
-       return redirect()->back()->with('success', 'File uploaded successfully.');
 
     }
     public function update(Request $request, $id)
@@ -280,6 +285,7 @@ class LandholdingController extends Controller
         $generateform52B = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_52B')->get();
         $generateform53 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_53')->get();
         $generateform54 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_54')->get();
+        
         //get only the value 'Carpable' in ID
         $lotNumber = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 
