@@ -136,4 +136,14 @@ class Form18Controller extends Controller
         }
         return redirect()->back()->with('success', 'Updated successfully');
     }
+    public function filedownload($id)
+    {
+        $generatedFile = GeneratedFile::findOrFail($id);
+        if ($generatedFile->uploadfile) {
+            $filePath = public_path("uploads/GeneratedFile/{$generatedFile->uploadfile}");
+            return response()->download($filePath);
+        } else {
+            return redirect()->back()->with('error', 'No Document Found!');
+        }
+    }
 }

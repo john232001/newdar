@@ -97,6 +97,11 @@
                                 <i class="fa fa-trash"></i> DELETE
                               </button>
                             </a>
+                            <a href="{{ route('filedownload_form37', $data->id )}}">
+                              <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="fa fa-upload"></i> DOWNLOAD
+                              </button>
+                            </a>
                         </td>
                     </tr>
                     {{-- edit modal --}}

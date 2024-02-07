@@ -25,11 +25,6 @@
             <i class="fa fa-envelope"></i> <span>LandTenure Services</span>
           </a>
         </li>
-        <li>
-            <a href="{{ route('staff_officers') }}">
-                <i class="fa fa-users"></i> <span>DAR Officers</span>
-            </a>
-        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

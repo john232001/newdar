@@ -4,49 +4,51 @@
 
 @include('staff.staff_navbar')
 @include('staff.staff_sidebar')
-
     <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        BASIC INFORMATION
+      </h1>
+    
+    </section>
     <!-- Main content -->
     <section class="content">
           <div class="row">   
             <div class="col-xs-12">
               <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title">BASIC INFORMATION</h3>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="row">
                       @foreach ($landholdings as $data)
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>LANDHOLDING ID:</strong><span class="text-success"> {{ $data->lhid }}</span><br>
-                                          <strong>LANDOWNER:</strong><span class="text-success"> {{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span><br>
-                                          <strong>OCT/TCT NUMBER:</strong><span class="text-success"> {{ $data->octNo }}</span><br>
-                                          <strong>SURVEY NUMBER:</strong><span class="text-success"> {{ $data->surveyNo }}</span><br>
-                                          <strong>LOT NUMBER:</strong><span class="text-success"> {{ $data->lotNo }}</span><br>
-                                          <strong>TITLE/SURVEY AREA:</strong><span class="text-success"> {{ $data->surveyArea }}</span><br>
-                                          <strong>TAX DECLARATION NUMBER: </strong><span class="text-success"> {{ $data->taxNo }}</span><br>
-                                          <strong>MODE OF ACQUISITION:</strong><span class="text-success"> {{ $data->modeOfAcquisition }}</span>
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>COVERABLE AREA:</strong><span class="text-success"> {{ $data->coverableArea }}</span><br>
-                                          <strong>CARPABLE AREA:</strong><span class="text-success"> {{ $data->carpableArea }}</span><br>
-                                          <strong>NON-CARPABLE AREA:</strong><span class="text-success"> {{ $data->noncarpableArea }}</span><br>
-                                          <strong>RETAINED AREA:</strong><span class="text-success"> {{ $data->retainedArea }}</span><br>
-                                          <strong>DISTRIBUTED AREA:</strong><span class="text-success"> {{ $data->distributeArea }}</span><br>
-                                          <strong>LAND SIZE:</strong><span class="text-success"> {{ $data->landsize }}</span><br>
-                                          <strong>PHASE:</strong><span class="text-success"> {{ $data->phase }}</span><br>
-                                          <strong>UPALS:</strong><span class="text-success"> {{ $data->upals }}</span><br>
-                                          <strong>MAJOR CROPS AREA:</strong><span class="text-success"> {{ $data->majorCrops }}</span><br>
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>YEAR ADDED:</strong><span class="text-success"> {{ $data->yearAdded }}</span><br>
-                                          <strong>PIPE LINE:</strong><span class="text-success"> {{ $data->pipeline }}</span><br>
-                                          <strong>TARGET YEAR:</strong><span class="text-success"> {{ $data->targetyear }}</span><br>
-                                          <strong>PROJECTED DELIVERY:</strong><span class="text-success"> {{ $data->projectedDelivery }}</span><br>
-                                      </div>
-                                  @endforeach
+                          <div class="col-lg-4 col-md-4 col-sm-4">
+                            <strong>LANDHOLDING ID:</strong><span class="text-success"> {{ $data->lhid }}</span><br>
+                            <strong>LANDOWNER:</strong><span class="text-success"> {{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span><br>
+                            <strong>OCT/TCT NUMBER:</strong><span class="text-success"> {{ $data->octNo }}</span><br>
+                            <strong>SURVEY NUMBER:</strong><span class="text-success"> {{ $data->surveyNo }}</span><br>
+                            <strong>LOT NUMBER:</strong><span class="text-success"> {{ $data->lotNo }}</span><br>
+                            <strong>TITLE/SURVEY AREA:</strong><span class="text-success"> {{ $data->surveyArea }}</span><br>
+                            <strong>TAX DECLARATION NUMBER: </strong><span class="text-success"> {{ $data->taxNo }}</span><br>
+                            <strong>MODE OF ACQUISITION:</strong><span class="text-success"> {{ $data->modeOfAcquisition }}</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <strong>COVERABLE AREA:</strong><span class="text-success"> {{ $data->coverableArea }}</span><br>
+                            <strong>CARPABLE AREA:</strong><span class="text-success"> {{ $data->carpableArea }}</span><br>
+                            <strong>NON-CARPABLE AREA:</strong><span class="text-success"> {{ $data->noncarpableArea }}</span><br>
+                            <strong>RETAINED AREA:</strong><span class="text-success"> {{ $data->retainedArea }}</span><br>
+                            <strong>DISTRIBUTED AREA:</strong><span class="text-success"> {{ $data->distributeArea }}</span><br>
+                            <strong>LAND SIZE:</strong><span class="text-success"> {{ $data->landsize }}</span><br>
+                            <strong>PHASE:</strong><span class="text-success"> {{ $data->phase }}</span><br>
+                            <strong>UPALS:</strong><span class="text-success"> {{ $data->upals }}</span><br>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <strong>MAJOR CROPS AREA:</strong><span class="text-success"> {{ $data->majorCrops }}</span><br>
+                            <strong>YEAR ADDED:</strong><span class="text-success"> {{ $data->yearAdded }}</span><br>
+                            <strong>PIPE LINE:</strong><span class="text-success"> {{ $data->pipeline }}</span><br>
+                            <strong>TARGET YEAR:</strong><span class="text-success"> {{ $data->targetyear }}</span><br>
+                            <strong>PROJECTED DELIVERY:</strong><span class="text-success"> {{ $data->projectedDelivery }}</span><br>
+                        </div>
+                      @endforeach
                   </div>
                 </div>
                 <!-- /.box-body -->
@@ -54,15 +56,11 @@
               <!-- /.box -->
             </div>
           </div>
+          
           <div class="row">
             <!-- ./col -->
             <div class="col-xs-12">
               <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addarb">
-                    <i class="fa fa-plus"></i> ADD ARB
-                  </button>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
@@ -78,7 +76,6 @@
                           <th>ADDRESS</th>
                           <th>OWNERSHIP PREFERENCE</th>
                           <th>DATE OF OATHTAKING</th>
-                          <th>ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -94,21 +91,7 @@
                               <td>{{ $data->address }}</td>
                               <td>{{ $data->ownership}}</td>
                               <td>{{ $data->dateOfOath }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editarb{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i> EDIT
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletearb{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i> DELETE
-                                      </button>
-                                  </a>
-                              </td>
                           </tr>
-                          @include('staff.arb.edit')
-                          @include('staff.arb.delete')
                       @endforeach
                   </tbody>
                   </table>
@@ -123,11 +106,6 @@
             <!-- ./col -->
             <div class="col-xs-6">
               <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addlot">
-                    <i class="fa fa-plus"></i> ADD LOT
-                  </button>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <table id="lottable" class="table table-bordered table-striped">
@@ -138,7 +116,6 @@
                           <th>LOT TYPE</th>
                           <th>LOT AREA</th>
                           <th>CROP</th>
-                          <th>ACTION</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -149,21 +126,7 @@
                         <td>{{ $data->lotType}}</td>
                         <td>{{ $data->lotArea}}</td>
                         <td>{{ $data->crop}}</td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#editlot{{ $data->id }}">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fa fa-edit"></i> EDIT
-                                </button>
-                            </a>
-                            <a href="" data-toggle="modal" data-target="#deletelot{{ $data->id }}">
-                                <button class="btn btn-danger btn-sm" >
-                                    <i class="fa fa-trash"></i> DELETE
-                                </button>
-                            </a>
-                        </td>
                     </tr>
-                    @include('staff.lot.edit')
-                    @include('staff.lot.delete')
                     @endforeach
                 </tbody>
                   </table>
@@ -176,11 +139,6 @@
           <!-- ./col -->
           <div class="col-xs-6">
             <div class="box box-success">
-              <div class="box-header with-border">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addsurvey">
-                  <i class="fa fa-plus"></i> ADD SURVEY PLAN
-                </button>
-              </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <table id="surveyplan" class="table table-bordered table-striped">
@@ -189,7 +147,6 @@
                         <th>ASP NUMBER</th>
                         <th>ASP DATE APPROVED</th>
                         <th>ASP AREA</th>
-                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -198,21 +155,7 @@
                       <td>{{ $data->aspNo}}</td>
                       <td>{{ $data->aspDate}}</td>
                       <td>{{ $data->aspArea}}</td>
-                      <td>
-                          <a href="" data-toggle="modal" data-target="#editmodalasp{{ $data->id }}">
-                              <button class="btn btn-primary btn-sm">
-                                  <i class="fa fa-edit"></i> EDIT
-                              </button>
-                          </a>
-                          <a href="" data-toggle="modal" data-target="#deletemodalasp{{ $data->id }}">
-                              <button class="btn btn-danger btn-sm" >
-                                  <i class="fa fa-trash"></i> DELETE
-                              </button>
-                          </a>
-                      </td>
                   </tr>
-                  @include('staff.asp.edit')
-                  @include('staff.asp.delete')
                 @endforeach
               </tbody>
                 </table>
@@ -227,11 +170,6 @@
             <!-- ./col -->
             <div class="col-xs-12">
               <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmodalvaluation">
-                    <i class="fa fa-plus"></i> ADD VALUATION
-                  </button>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <table id="valuation" class="table table-bordered table-striped">
@@ -247,7 +185,6 @@
                           <th>DATE OF FI</th>
                           <th>DATE of CF RECEIPT</th>
                           <th>TRANSMITTAL STATUS</th>
-                          <th>ACTION</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -263,21 +200,7 @@
                               <td>{{ $data->dateofFI }}</td>
                               <td>{{ $data->dateofCF }}</td>
                               <td>{{ $data->transmittalStatus }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editmodalvaluation{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i> 
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletemodalvaluation{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i>
-                                      </button>
-                                  </a>
-                              </td>
                           </tr>
-                          @include('staff.valuation.edit')
-                          @include('staff.valuation.delete')
                       @endforeach
                   </tbody>
                   </table>
@@ -292,11 +215,6 @@
             <!-- ./col -->
             <div class="col-xs-12">
               <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmodalawardtitle">
-                    <i class="fa fa-plus"></i>
-                  </button>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                   <table id="awardtitle" class="table table-bordered table-striped">
@@ -328,21 +246,7 @@
                               <td>{{ $data->registerDate }}</td>
                               <td>{{ $data->awardtitleNo }}</td>
                               <td>{{ $data->distributeDate }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editawardtitle{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i>
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletemodalawardtitle{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i>
-                                      </button>
-                                  </a>
-                              </td>
                           </tr>
-                          @include('staff.awardtitle.edit')
-                          @include('staff.awardtitle.delete')
                       @endforeach
                   </tbody>
                   </table>
@@ -611,9 +515,4 @@
         <!-- /.row -->
   </div>
   <!-- /.content-wrapper -->
-  @include('staff.arb.create')
-  @include('staff.lot.create')
-  @include('staff.asp.create')
-  @include('staff.awardtitle.create')
-  @include('staff.valuation.create')
 @endsection

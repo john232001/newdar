@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Landholding;
+use App\Models\GeneratedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -104,7 +105,7 @@ class LandholdingController extends Controller
             return redirect()->back()->with('success', 'File uploaded successfully.');
         }
         catch(\Exception $e){
-            return redirect()->back()->with('error', 'Failed to insert data' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to insert data ' . $e->getMessage());
         }
 
     }
@@ -185,9 +186,22 @@ class LandholdingController extends Controller
     }
     public function delete($id)
     {
-
         $landholding = Landholding::findOrFail($id);
 
+        // Delete related generated file
+        $generatedFile = DB::table('generated_files')->where('landholding_id', $id)->first();
+
+        if ($generatedFile) {
+            $generatedfilePath = public_path('uploads/GeneratedFile/' . $generatedFile->uploadfile);
+
+            if (File::exists($generatedfilePath)) {
+                File::delete($generatedfilePath);
+                Storage::delete(storage_path('app/public/uploads/Title/' . $generatedFile->uploadfile));
+            }
+
+            // Delete the record from the database
+            DB::table('generated_files')->where('landholding_id', $id)->delete();
+        }
         $titlefilePath = public_path('uploads/Title/' . $landholding->title);
         $taxfilePath = public_path('uploads/TaxDeclaration/' . $landholding->taxDocuments);
 
@@ -201,13 +215,14 @@ class LandholdingController extends Controller
             Storage::delete(storage_path('app/public/uploads/Title/' . $landholding->taxDocuments));
         }
 
-        DB::table('generated_files')->where('landholding_id', $id)->delete();
         DB::table('lots')->where('landholding_id', $id)->delete();
         DB::table('asps')->where('landholding_id', $id)->delete();
         DB::table('arbs')->where('landholding_id', $id)->delete();
         DB::table('valuations')->where('landholding_id', $id)->delete();
         DB::table('awardtitles')->where('landholding_id', $id)->delete();
+
         $landholding->delete();
+        
 
         return redirect()->back()->with('error', 'Deleted successfully');
     }
@@ -274,6 +289,8 @@ class LandholdingController extends Controller
         $generateform1 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_1')->get();
         $generateform2 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_2')->get();
         $generateform3 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_3')->get();
+        $generateform10 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_10')->get();
+        $generateform11 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_11')->get();
         $generateform18 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_18')->get();
         $generateform20 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_20')->get();
         $generateform37 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_37')->get();
@@ -296,7 +313,8 @@ class LandholdingController extends Controller
         
         $categories = DB::table('categories')->get();
         return view('admin.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation',
-                                                      'generateform1','generateform2','generateform3','generateform18','generateform20','generateform37','generateform42',
-                                                    'generateform46','generateform47','generateform49','generateform51','generateform52B','generateform53','generateform54'));
+                                                      'generateform1','generateform2','generateform3','generateform10','generateform11','generateform18','generateform20','generateform37',
+                                                      'generateform42','generateform46','generateform47','generateform49','generateform51','generateform52B','generateform53',
+                                                      'generateform54'));
     }
 }
