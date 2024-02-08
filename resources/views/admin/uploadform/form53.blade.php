@@ -9,7 +9,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>UPLOAD FORMS</h1>
+        <h1>UPLOAD APPROVED FORM</h1>
         <br>
         @foreach ($landholdings as $data)
         <a href="{{ route('landholding_view', $data->id )}}" class="btn btn-primary">
@@ -24,7 +24,7 @@
         <div class="col-xs-4">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h2>ADD FILE</h2>
+                <h2>ADD FORM</h2>
               </div>
               <!-- /.box-header -->
               <div class="box-body">

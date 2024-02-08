@@ -389,7 +389,7 @@
                                 </a>
                                 <a href="{{ route('form1_upload', $data->id ) }}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                               </td>
@@ -410,7 +410,7 @@
                                   </a>
                                   <a href="{{ route('form2_upload', $data->id ) }}">
                                     <button type="submit" class="btn btn-warning btn-sm">
-                                      <i class="fa fa-download"></i> UPLOAD FORM
+                                      <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                     </button>
                                   </a>
                               </td>
@@ -431,7 +431,7 @@
                                 </a>
                                 <a href="{{ route('form3_upload', $data->id )}}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                             </td>
@@ -452,7 +452,7 @@
                                 </a>
                                 <a href="{{ route('form10_upload', $data->id )}}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                             </td>
@@ -473,7 +473,7 @@
                                 </a>
                                 <a href="{{ route('form11_upload', $data->id )}}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                             </td>
@@ -494,7 +494,7 @@
                                 </a>
                                 <a href="{{ route('form18_upload', $data->id )}}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                             </td>
@@ -515,7 +515,7 @@
                                 </a>
                                 <a href="{{ route('form20_upload', $data->id )}}">
                                   <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD FORM
+                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                   </button>
                                 </a>
                             </td>
@@ -536,7 +536,7 @@
                               </a>
                               <a href="{{ route('form37_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -557,7 +557,7 @@
                               </a>
                               <a href="{{ route('form42_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -578,7 +578,7 @@
                               </a>
                               <a href="{{ route('form46_upload', $data->id ) }}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -599,7 +599,7 @@
                               </a>
                               <a href="{{ route('form47_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -620,7 +620,7 @@
                               </a>
                               <a href="{{ route('form49_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -641,7 +641,7 @@
                               </a>
                               <a href="{{ route('form51_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -662,7 +662,7 @@
                               </a>
                               <a href="{{ route('form52B_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -683,7 +683,7 @@
                               </a>
                               <a href="{{ route('form53_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>
@@ -704,7 +704,7 @@
                               </a>
                               <a href="{{ route('form54_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD FORM
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>
                               </a>
                           </td>

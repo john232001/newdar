@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\staff;
 
 use App\Models\GenerateLog;
+use App\Models\GeneratedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -65,5 +66,26 @@ class Form46Controller extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.46' . '-' . $fileName . '.docx');
         return response()->download('Form No.46' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function uploadForm46($id)
+    {
+        $landholdings = DB::table('landholdings')->where('landholdings.id', $id)->get();
+        $displayUploadForm = DB::table('generated_files')
+                                ->join('landholdings', 'landholdings.id', '=', 'generated_files.landholding_id')
+                                ->select('generated_files.*')
+                                ->where('generated_files.landholding_id', $id)
+                                ->where('generated_files.formNo', 46)
+                                ->get();
+        return view('staff.uploadform.form46',compact('landholdings','displayUploadForm'));
+    }
+    public function filedownload($id)
+    {
+        $generatedFile = GeneratedFile::findOrFail($id);
+        if ($generatedFile->uploadfile) {
+            $filePath = public_path("uploads/GeneratedFile/{$generatedFile->uploadfile}");
+            return response()->download($filePath);
+        } else {
+            return redirect()->back()->with('error', 'No Document Found!');
+        }
     }
 }

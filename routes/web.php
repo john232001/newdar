@@ -206,30 +206,58 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
     
     //Form No. 1 Routes
     Route::get('staff/form1/generateform/{id}', [App\Http\Controllers\staff\Form1Controller::class, 'generateform'])->name('staff_form1_generate');
+    Route::get('staff/form1/uploadform/{id}', [App\Http\Controllers\staff\Form1Controller::class, 'uploadForm1'])->name('staff_form1_upload');
+    Route::get('staff/download_form1/{id}', [App\Http\Controllers\staff\Form1Controller::class, 'filedownload'])->name('staff_filedownload_form1');
     //Form No. 2 Routes
     Route::get('staff/form2/generateform/{id}', [App\Http\Controllers\staff\Form2Controller::class, 'generateform'])->name('staff_form2_generate');
+    Route::get('staff/form2/uploadform/{id}', [App\Http\Controllers\staff\Form2Controller::class, 'uploadForm2'])->name('staff_form2_upload');
+    Route::get('staff/download_form2/{id}', [App\Http\Controllers\staff\Form2Controller::class, 'filedownload'])->name('staff_filedownload_form2');
     //Form No. 3 Routes
     Route::get('staff/form3/generateform/{id}', [App\Http\Controllers\staff\Form3Controller::class, 'generateform'])->name('staff_form3_generate');
+    Route::get('staff/form3/uploadform/{id}', [App\Http\Controllers\staff\Form3Controller::class, 'uploadForm3'])->name('staff_form3_upload');
+    Route::get('staff/download_form3/{id}', [App\Http\Controllers\staff\Form3Controller::class, 'filedownload'])->name('staff_filedownload_form3');
     //Form No. 18 Routes
     Route::get('staff/form18/generateform/{id}', [App\Http\Controllers\staff\Form18Controller::class, 'generateform'])->name('staff_form18_generate');
+    Route::get('staff/form18/uploadform/{id}', [App\Http\Controllers\staff\Form18Controller::class, 'uploadForm18'])->name('staff_form18_upload');
+    Route::get('staff/download_form18/{id}', [App\Http\Controllers\staff\Form18Controller::class, 'filedownload'])->name('staff_filedownload_form18');
     //Form No. 20 Routes
     Route::get('staff/form20/generateform/{id}', [App\Http\Controllers\staff\Form20Controller::class, 'generateform'])->name('staff_form20_generate');
+    Route::get('staff/form20/uploadform/{id}', [App\Http\Controllers\staff\Form20Controller::class, 'uploadForm20'])->name('staff_form20_upload');
+    Route::get('staff/download_form20/{id}', [App\Http\Controllers\staff\Form20Controller::class, 'filedownload'])->name('staff_filedownload_form20');
     //Form No. 42 Routes
     Route::get('staff/form42/generateform/{id}', [App\Http\Controllers\staff\Form42Controller::class, 'generateform'])->name('staff_form42_generate');
+    Route::get('staff/form42/uploadform/{id}', [App\Http\Controllers\staff\Form42Controller::class, 'uploadForm42'])->name('staff_form42_upload');
+    Route::get('staff/download_form42/{id}', [App\Http\Controllers\staff\Form42Controller::class, 'filedownload'])->name('staff_filedownload_form42');
     //Form No. 46 Routes
     Route::get('staff/form46/generateform/{id}', [App\Http\Controllers\staff\Form46Controller::class, 'generateform'])->name('staff_form46_generate');
+    Route::get('staff/form46/uploadform/{id}', [App\Http\Controllers\staff\Form46Controller::class, 'uploadForm46'])->name('staff_form46_upload');
+    Route::get('staff/download_form46/{id}', [App\Http\Controllers\staff\Form46Controller::class, 'filedownload'])->name('staff_filedownload_form46');
     //Form No. 49 Routes
     Route::get('staff/form49/generateform/{id}', [App\Http\Controllers\staff\Form49Controller::class, 'generateform'])->name('staff_form49_generate');
+    Route::get('staff/form49/uploadform/{id}', [App\Http\Controllers\staff\Form49Controller::class, 'uploadForm49'])->name('staff_form49_upload');
+    Route::get('staff/download_form49/{id}', [App\Http\Controllers\staff\Form49Controller::class, 'filedownload'])->name('staff_filedownload_form49');
     //Form No. 37 Routes
     Route::get('staff/form37/generateform/{id}', [App\Http\Controllers\staff\Form37Controller::class, 'generateform'])->name('staff_form37_generate');
+    Route::get('staff/form37/uploadform/{id}', [App\Http\Controllers\staff\Form37Controller::class, 'uploadForm37'])->name('staff_form37_upload');
+    Route::get('staff/download_form37/{id}', [App\Http\Controllers\staff\Form37Controller::class, 'filedownload'])->name('staff_filedownload_form37');
     //Form No. 47 Routes
     Route::get('staff/form47/generateform/{id}', [App\Http\Controllers\staff\Form47Controller::class, 'generateform'])->name('staff_form47_generate');
+    Route::get('staff/form47/uploadform/{id}', [App\Http\Controllers\staff\Form47Controller::class, 'uploadForm47'])->name('staff_form47_upload');
+    Route::get('staff/download_form47/{id}', [App\Http\Controllers\staff\Form47Controller::class, 'filedownload'])->name('staff_filedownload_form47');
     //Form No. 54 Routes
     Route::get('staff/form54/generateform/{id}', [App\Http\Controllers\staff\Form54Controller::class, 'generateform'])->name('staff_form54_generate');
+    Route::get('staff/form54/uploadform/{id}', [App\Http\Controllers\staff\Form54Controller::class, 'uploadForm54'])->name('staff_form54_upload');
+    Route::get('staff/download_form54/{id}', [App\Http\Controllers\staff\Form54Controller::class, 'filedownload'])->name('staff_filedownload_form54');
     //Form No. 51 Routes
     Route::get('staff/form51/generateform/{id}', [App\Http\Controllers\staff\Form51Controller::class, 'generateform'])->name('staff_form51_generate');
+    Route::get('staff/form51/uploadform/{id}', [App\Http\Controllers\staff\Form51Controller::class, 'uploadForm51'])->name('staff_form51_upload');
+    Route::get('staff/download_form51/{id}', [App\Http\Controllers\staff\Form51Controller::class, 'filedownload'])->name('staff_filedownload_form51');
     //Form No. 52B Routes
     Route::get('staff/form52B/generateform/{id}', [App\Http\Controllers\staff\Form52BController::class, 'generateform'])->name('staff_form52B_generate');
+    Route::get('staff/form52B/uploadform/{id}', [App\Http\Controllers\staff\Form52BController::class, 'uploadForm52B'])->name('staff_form52B_upload');
+    Route::get('staff/download_form52B/{id}', [App\Http\Controllers\staff\Form52BController::class, 'filedownload'])->name('staff_filedownload_form52B');
     //Form No. 53 Routes
     Route::get('staff/form53/generateform/{id}', [App\Http\Controllers\staff\Form53Controller::class, 'generateform'])->name('staff_form53_generate');
+    Route::get('staff/form53/uploadform/{id}', [App\Http\Controllers\staff\Form53Controller::class, 'uploadForm53'])->name('staff_form53_upload');
+    Route::get('staff/download_form53/{id}', [App\Http\Controllers\staff\Form53Controller::class, 'filedownload'])->name('staff_filedownload_form53');
 });

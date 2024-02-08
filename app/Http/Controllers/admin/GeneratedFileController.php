@@ -13,22 +13,32 @@ class GeneratedFileController extends Controller
 {
     public function store(Request $request){
 
-        // Store the file
-        $file = $request->file('uploadfile');
-        $fileName = $file->getClientOriginalName();
-        $file->move(public_path('uploads/GeneratedFile'), $fileName);
+        try{
+            $request->validate([
+                'uploadfile' => 'required',
+                'formNo' => 'required',
+                'date_upload' => 'required',
+            ]);
+            // Store the file
+            $file = $request->file('uploadfile');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('uploads/GeneratedFile'), $fileName);
 
-        // Insert file path into the database using Query Builder
-        DB::table('generated_files')->insert([
-            'landholding_id' => $request->landholding_id,
-            'uploadfile' => $fileName,
-            'formNo' => $request->formNo,
-            'date_upload' => $request->date_upload,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            // Insert file path into the database using Query Builder
+            DB::table('generated_files')->insert([
+                'landholding_id' => $request->landholding_id,
+                'uploadfile' => $fileName,
+                'formNo' => $request->formNo,
+                'date_upload' => $request->date_upload,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-        return redirect()->back()->with('success', 'File uploaded successfully.');
+            return redirect()->back()->with('success', 'File uploaded successfully.');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Failed to insert data ' . $e->getMessage());
+        }
     }
     public function delete($id)
     {

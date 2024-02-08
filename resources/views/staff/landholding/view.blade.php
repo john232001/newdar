@@ -286,10 +286,15 @@
                                 <td><span class="text-danger">No Generate Date</span></td>
                               @endforelse
                               <td>
-                                  <a href="{{ route('staff_form1_generate', $data->id )}}">
+                                <a href="{{ route('staff_form1_generate', $data->id )}}">
                                     <button type="submit" class="btn btn-success btn-sm">
                                       <i class="fa fa-print"></i> GENERATE FORM
                                     </button>
+                                </a>
+                                <a href="{{ route('staff_form1_upload', $data->id )}}">
+                                  <button type="submit" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                  </button>
                                 </a>
                               </td>
                           </tr>
@@ -307,6 +312,11 @@
                                         <i class="fa fa-print"></i> GENERATE FORM
                                       </button>
                                   </a>
+                                  <a href="{{ route('staff_form2_upload', $data->id )}}">
+                                    <button type="submit" class="btn btn-warning btn-sm">
+                                      <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                    </button>
+                                  </a>
                               </td>
                           </tr>
                           <tr>
@@ -322,6 +332,11 @@
                                     <button type="submit" class="btn btn-success btn-sm">
                                       <i class="fa fa-print"></i> GENERATE FORM
                                     </button>
+                                </a>
+                                <a href="staff_form3_upload">
+                                  <button type="submit" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                  </button>
                                 </a>
                             </td>
                           </tr>
@@ -339,6 +354,11 @@
                                       <i class="fa fa-print"></i> GENERATE FORM
                                     </button>
                                 </a>
+                                <a href="{{ route('staff_form18_upload', $data->id )}}">
+                                  <button type="submit" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                  </button>
+                                </a>
                             </td>
                           </tr>
                           <tr>
@@ -354,6 +374,11 @@
                                     <button type="submit" class="btn btn-success btn-sm">
                                       <i class="fa fa-print"></i> GENERATE FORM
                                     </button>
+                                </a>
+                                <a href="{{ route('staff_form18_upload', $data->id )}}">
+                                  <button type="submit" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                  </button>
                                 </a>
                             </td>
                         </tr>
@@ -371,6 +396,11 @@
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
                               </a>
+                              <a href="{{ route('staff_form37_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
+                              </a>
                           </td>
                         </tr>
                         <tr>
@@ -386,6 +416,11 @@
                                   <button type="submit" class="btn btn-success btn-sm">
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
+                              </a>
+                              <a href="{{ route('staff_form42_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
                               </a>
                           </td>
                         </tr>
@@ -403,6 +438,11 @@
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
                               </a>
+                              <a href="{{ route('staff_form46_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
+                              </a>
                           </td>
                         </tr>
                         <tr>
@@ -418,6 +458,11 @@
                                   <button type="submit" class="btn btn-success btn-sm">
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
+                              </a>
+                              <a href="{{ route('staff_form47_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
                               </a>
                           </td>
                         </tr>
@@ -435,6 +480,11 @@
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
                               </a>
+                              <a href="{{ route('staff_form49_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
+                              </a>
                           </td>
                         </tr>
                         <tr>
@@ -450,6 +500,11 @@
                                   <button type="submit" class="btn btn-success btn-sm">
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
+                              </a>
+                              <a href="{{ route('staff_form51_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
                               </a>
                           </td>
                         </tr>
@@ -467,6 +522,11 @@
                                     <i class="fa fa-print"></i> GENERATE FORM
                                   </button>
                               </a>
+                              <a href="{{ route('staff_form52B_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
+                              </a>
                           </td>
                         </tr>
                         <tr>
@@ -483,6 +543,11 @@
                                     <i class="fa fa-print"></i>  GENERATE FORM
                                   </button>
                               </a>
+                              <a href="{{ route('staff_form53_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
+                              </a>
                           </td>
                         </tr>
                         <tr>
@@ -498,6 +563,11 @@
                                   <button type="submit" class="btn btn-success btn-sm">
                                     <i class="fa fa-print"></i>  GENERATE FORM
                                   </button>
+                              </a>
+                              <a href="{{ route('staff_form54_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-upload"></i> DOWNLOAD UPLOADED FORM
+                                </button>
                               </a>
                           </td>
                         </tr>
