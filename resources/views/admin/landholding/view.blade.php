@@ -438,7 +438,7 @@
                           </tr>
                           <tr>
                             <td>10</td>
-                            <td>Directive to MARO to Proceed with Coverage of Agricultural Lands with Notice of Coverage</td>
+                            <td>DIRECTIVE TO MARO TO PROCEED WITH COVERAGE OF AGRICULTURAL LANDS WITH NOTICE OF COVERAGE</td>
                             @forelse ($generateform10 as $items)
                               <td>{{ $items->generation_date}}</td>
                             @empty
@@ -459,7 +459,7 @@
                           </tr>
                           <tr>
                             <td>11</td>
-                            <td>CF Documentation Memo</td>
+                            <td>CF DOCUMENTATION MEMO</td>
                             @forelse ($generateform11 as $items)
                               <td>{{ $items->generation_date}}</td>
                             @empty
@@ -563,6 +563,27 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>45-A</td>
+                          <td>NOTICE TO CONDUCT JOINT FIELD INVESTIGATION</td>
+                          @forelse ($generateform45A as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form45A_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form45A_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>46</td>
                           <td>REVISED 2022 FIELD INVESTIGATION REPORT</td>
                           @forelse ($generateform46 as $items)
@@ -647,6 +668,27 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>52A</td>
+                          <td>NOTICE OF LVA</td>
+                          @forelse ($generateform52A as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form52A_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form52A_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>52B</td>
                           <td>POSTING ON THE ISSUANCE OF NLVA</td>
                           @forelse ($generateform52B as $items)
@@ -703,6 +745,321 @@
                                   </button>
                               </a>
                               <a href="{{ route('form54_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>57</td>
+                          <td>REQUEST ISSUANCE TRANSFER CERTIFICATE (TCT) IN THE NAME OF THE REPUBLIC OF THE PHILIPPINES (RP)</td>
+                          @forelse ($generateform57 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form57_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form57_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>58</td>
+                          <td>TRANSMITTAL TO LBP OF COPY OF RP TITLE</td>
+                          @forelse ($generateform58 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form58_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form58_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>59</td>
+                          <td>ADVICE TO DARAB ADJUDICATOR TO CONDUCT ADMINISTRATIVE PROCEEDINGS</td>
+                          @forelse ($generateform59 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form59_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form59_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>60</td>
+                          <td>PARO DIRECTIVE TO TAKE ACTUAL & PHYSICAL POSSESSION</td>
+                          @forelse ($generateform60 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form60_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form60_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>61</td>
+                          <td>LETTER TO QUALIFIED ARB</td>
+                          @forelse ($generateform61 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form61_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form61_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>62</td>
+                          <td>LDF TRANSMITTAL TO PARO</td>
+                          @forelse ($generateform62 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form62_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form62_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>63</td>
+                          <td>TRANSMITTAL TO PARO RE SIGNED AND SEALED CLOA`s</td>
+                          @forelse ($generateform63 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form63_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form63_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>64</td>
+                          <td>REVISED 2022 TRANSMITTAL MEMORANDUM TO ROD OF CLOA`s FOR REGISTRATION</td>
+                          @forelse ($generateform64 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form64_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form64_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>65</td>
+                          <td>TRANSMITTAL MEMORANDUM OF REGISTERED CLOA TITLES FROM ROD TO LBP</td>
+                          @forelse ($generateform65 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form65_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form65_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>66</td>
+                          <td>MONTHLY REPORT CLOA</td>
+                          @forelse ($generateform66 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form66_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form66_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>67</td>
+                          <td>REPORT ON FAILURE TO TAKE POSSESSION</td>
+                          @forelse ($generateform67 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form67_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form67_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>68</td>
+                          <td>WRIT OF INSTALLATION</td>
+                          @forelse ($generateform68 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form68_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form68_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>68A</td>
+                          <td>REVISED 2022 NOTICE TO QUALIFIED AGRARIAN REFORM BENEFICIARIES (ARB/S) FOR PHYSICAL INSTALLATION</td>
+                          @forelse ($generateform68A as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form68A_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form68A_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>68B</td>
+                          <td>PHYSICAL INSTALLATION OF ARB`S IN THE LANDHOLDING</td>
+                          @forelse ($generateform68B as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form68B_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form68B_upload', $data->id )}}">
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>69</td>
+                          <td>LETTER TO PNP</td>
+                          @forelse ($generateform69 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="text-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form69_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm">
+                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  </button>
+                              </a>
+                              <a href="{{ route('form69_upload', $data->id )}}">
                                 <button type="submit" class="btn btn-warning btn-sm">
                                   <i class="fa fa-download"></i> UPLOAD APPROVED FORM
                                 </button>

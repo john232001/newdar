@@ -131,6 +131,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::put('admin/form42/updateuploadfile/{id}', [App\Http\Controllers\admin\Form42Controller::class, 'updatefile'])->name('updatefile_form42');
     Route::get('admin/form42/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form42Controller::class, 'deletefile'])->name('deletefile_form42');
     Route::get('admin/download_form42/{id}', [App\Http\Controllers\admin\Form42Controller::class, 'filedownload'])->name('filedownload_form42');
+    //Form No. 45A Routes
+    Route::get('admin/form45A/generateform/{id}', [App\Http\Controllers\admin\Form45AController::class, 'generateform'])->name('form45A_generate');
+    Route::get('admin/form45A/uploadform/{id}', [App\Http\Controllers\admin\Form45AController::class, 'uploadForm45A'])->name('form45A_upload');
+    Route::post('admin/form45A/adduploadfile', [App\Http\Controllers\admin\Form45AController::class, 'addfile'])->name('addfile_form45A');
+    Route::put('admin/form45A/updateuploadfile/{id}', [App\Http\Controllers\admin\Form45AController::class, 'updatefile'])->name('updatefile_form45A');
+    Route::get('admin/form45A/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form45AController::class, 'deletefile'])->name('deletefile_form45A');
+    Route::get('admin/download_form45A/{id}', [App\Http\Controllers\admin\Form45AController::class, 'filedownload'])->name('filedownload_form45A');
+
     //Form No. 46 Routes
     Route::get('admin/form46/generateform/{id}', [App\Http\Controllers\admin\Form46Controller::class, 'generateform'])->name('form46_generate');
     Route::get('admin/form46/uploadform/{id}', [App\Http\Controllers\admin\Form46Controller::class, 'uploadForm46'])->name('form46_upload');
@@ -159,6 +167,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::put('admin/form47/updateuploadfile/{id}', [App\Http\Controllers\admin\Form47Controller::class, 'updatefile'])->name('updatefile_form47');
     Route::get('admin/form47/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form47Controller::class, 'deletefile'])->name('deletefile_form47');
     Route::get('admin/download_form47/{id}', [App\Http\Controllers\admin\Form47Controller::class, 'filedownload'])->name('filedownload_form47');
+    //Form No. 52A Routes
+    Route::get('admin/form52A/generateform/{id}', [App\Http\Controllers\admin\Form52AController::class, 'generateform'])->name('form52A_generate');
+    Route::get('admin/form52A/uploadform/{id}', [App\Http\Controllers\admin\Form52AController::class, 'uploadForm52A'])->name('form52A_upload');
+    Route::post('admin/form52A/adduploadfile', [App\Http\Controllers\admin\Form52AController::class, 'addfile'])->name('addfile_form52A');
+    Route::put('admin/form52A/updateuploadfile/{id}', [App\Http\Controllers\admin\Form52AController::class, 'updatefile'])->name('updatefile_form52A');
+    Route::get('admin/form52A/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form52AController::class, 'deletefile'])->name('deletefile_form52A');
+    Route::get('admin/download_form52A/{id}', [App\Http\Controllers\admin\Form52AController::class, 'filedownload'])->name('filedownload_form52A');
     //Form No. 54 Routes
     Route::get('admin/form54/generateform/{id}', [App\Http\Controllers\admin\Form54Controller::class, 'generateform'])->name('form54_generate');
     Route::get('admin/form54/uploadform/{id}', [App\Http\Controllers\admin\Form54Controller::class, 'uploadForm54'])->name('form54_upload');
@@ -187,6 +202,111 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::put('admin/form53/updateuploadfile/{id}', [App\Http\Controllers\admin\Form53Controller::class, 'updatefile'])->name('updatefile_form53');
     Route::get('admin/form53/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form53Controller::class, 'deletefile'])->name('deletefile_form53');
     Route::get('admin/download_form53/{id}', [App\Http\Controllers\admin\Form53Controller::class, 'filedownload'])->name('filedownload_form53');
+    //Form No. 57 Routes
+    Route::get('admin/form57/generateform/{id}', [App\Http\Controllers\admin\Form57Controller::class, 'generateform'])->name('form57_generate');
+    Route::get('admin/form57/uploadform/{id}', [App\Http\Controllers\admin\Form57Controller::class, 'uploadForm57'])->name('form57_upload');
+    Route::post('admin/form57/adduploadfile', [App\Http\Controllers\admin\Form57Controller::class, 'addfile'])->name('addfile_form57');
+    Route::put('admin/form57/updateuploadfile/{id}', [App\Http\Controllers\admin\Form57Controller::class, 'updatefile'])->name('updatefile_form57');
+    Route::get('admin/form57/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form57Controller::class, 'deletefile'])->name('deletefile_form57');
+    Route::get('admin/download_form57/{id}', [App\Http\Controllers\admin\Form57Controller::class, 'filedownload'])->name('filedownload_form57');
+    //Form No. 58 Routes
+    Route::get('admin/form58/generateform/{id}', [App\Http\Controllers\admin\Form58Controller::class, 'generateform'])->name('form58_generate');
+    Route::get('admin/form58/uploadform/{id}', [App\Http\Controllers\admin\Form58Controller::class, 'uploadForm58'])->name('form58_upload');
+    Route::post('admin/form58/adduploadfile', [App\Http\Controllers\admin\Form58Controller::class, 'addfile'])->name('addfile_form58');
+    Route::put('admin/form58/updateuploadfile/{id}', [App\Http\Controllers\admin\Form58Controller::class, 'updatefile'])->name('updatefile_form58');
+    Route::get('admin/form58/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form58Controller::class, 'deletefile'])->name('deletefile_form58');
+    Route::get('admin/download_form58/{id}', [App\Http\Controllers\admin\Form58Controller::class, 'filedownload'])->name('filedownload_form58');
+    //Form No. 59 Routes
+    Route::get('admin/form59/generateform/{id}', [App\Http\Controllers\admin\Form59Controller::class, 'generateform'])->name('form59_generate');
+    Route::get('admin/form59/uploadform/{id}', [App\Http\Controllers\admin\Form59Controller::class, 'uploadForm59'])->name('form59_upload');
+    Route::post('admin/form59/adduploadfile', [App\Http\Controllers\admin\Form59Controller::class, 'addfile'])->name('addfile_form59');
+    Route::put('admin/form59/updateuploadfile/{id}', [App\Http\Controllers\admin\Form59Controller::class, 'updatefile'])->name('updatefile_form59');
+    Route::get('admin/form59/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form59Controller::class, 'deletefile'])->name('deletefile_form59');
+    Route::get('admin/download_form59/{id}', [App\Http\Controllers\admin\Form59Controller::class, 'filedownload'])->name('filedownload_form59');
+    //Form No. 60 Routes
+    Route::get('admin/form60/generateform/{id}', [App\Http\Controllers\admin\Form60Controller::class, 'generateform'])->name('form60_generate');
+    Route::get('admin/form60/uploadform/{id}', [App\Http\Controllers\admin\Form60Controller::class, 'uploadForm60'])->name('form60_upload');
+    Route::post('admin/form60/adduploadfile', [App\Http\Controllers\admin\Form60Controller::class, 'addfile'])->name('addfile_form60');
+    Route::put('admin/form60/updateuploadfile/{id}', [App\Http\Controllers\admin\Form60Controller::class, 'updatefile'])->name('updatefile_form60');
+    Route::get('admin/form60/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form60Controller::class, 'deletefile'])->name('deletefile_form60');
+    Route::get('admin/download_form60/{id}', [App\Http\Controllers\admin\Form60Controller::class, 'filedownload'])->name('filedownload_form60');
+    //Form No. 61 Routes
+    Route::get('admin/form61/generateform/{id}', [App\Http\Controllers\admin\Form61Controller::class, 'generateform'])->name('form61_generate');
+    Route::get('admin/form61/uploadform/{id}', [App\Http\Controllers\admin\Form61Controller::class, 'uploadForm61'])->name('form61_upload');
+    Route::post('admin/form61/adduploadfile', [App\Http\Controllers\admin\Form61Controller::class, 'addfile'])->name('addfile_form61');
+    Route::put('admin/form61/updateuploadfile/{id}', [App\Http\Controllers\admin\Form61Controller::class, 'updatefile'])->name('updatefile_form61');
+    Route::get('admin/form61/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form61Controller::class, 'deletefile'])->name('deletefile_form61');
+    Route::get('admin/download_form61/{id}', [App\Http\Controllers\admin\Form61Controller::class, 'filedownload'])->name('filedownload_form61');
+    //Form No. 62 Routes
+    Route::get('admin/form62/generateform/{id}', [App\Http\Controllers\admin\Form62Controller::class, 'generateform'])->name('form62_generate');
+    Route::get('admin/form62/uploadform/{id}', [App\Http\Controllers\admin\Form62Controller::class, 'uploadForm62'])->name('form62_upload');
+    Route::post('admin/form62/adduploadfile', [App\Http\Controllers\admin\Form62Controller::class, 'addfile'])->name('addfile_form62');
+    Route::put('admin/form62/updateuploadfile/{id}', [App\Http\Controllers\admin\Form62Controller::class, 'updatefile'])->name('updatefile_form62');
+    Route::get('admin/form62/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form62Controller::class, 'deletefile'])->name('deletefile_form62');
+    Route::get('admin/download_form62/{id}', [App\Http\Controllers\admin\Form62Controller::class, 'filedownload'])->name('filedownload_form62');
+    //Form No. 63 Routes
+    Route::get('admin/form63/generateform/{id}', [App\Http\Controllers\admin\Form63Controller::class, 'generateform'])->name('form63_generate');
+    Route::get('admin/form63/uploadform/{id}', [App\Http\Controllers\admin\Form63Controller::class, 'uploadForm63'])->name('form63_upload');
+    Route::post('admin/form63/adduploadfile', [App\Http\Controllers\admin\Form63Controller::class, 'addfile'])->name('addfile_form63');
+    Route::put('admin/form63/updateuploadfile/{id}', [App\Http\Controllers\admin\Form63Controller::class, 'updatefile'])->name('updatefile_form63');
+    Route::get('admin/form63/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form63Controller::class, 'deletefile'])->name('deletefile_form63');
+    Route::get('admin/download_form63/{id}', [App\Http\Controllers\admin\Form63Controller::class, 'filedownload'])->name('filedownload_form63');
+    //Form No. 64 Routes
+    Route::get('admin/form64/generateform/{id}', [App\Http\Controllers\admin\Form64Controller::class, 'generateform'])->name('form64_generate');
+    Route::get('admin/form64/uploadform/{id}', [App\Http\Controllers\admin\Form64Controller::class, 'uploadForm64'])->name('form64_upload');
+    Route::post('admin/form64/adduploadfile', [App\Http\Controllers\admin\Form64Controller::class, 'addfile'])->name('addfile_form64');
+    Route::put('admin/form64/updateuploadfile/{id}', [App\Http\Controllers\admin\Form64Controller::class, 'updatefile'])->name('updatefile_form64');
+    Route::get('admin/form64/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form64Controller::class, 'deletefile'])->name('deletefile_form64');
+    Route::get('admin/download_form64/{id}', [App\Http\Controllers\admin\Form64Controller::class, 'filedownload'])->name('filedownload_form64');
+    //Form No. 65 Routes
+    Route::get('admin/form65/generateform/{id}', [App\Http\Controllers\admin\Form65Controller::class, 'generateform'])->name('form65_generate');
+    Route::get('admin/form65/uploadform/{id}', [App\Http\Controllers\admin\Form65Controller::class, 'uploadForm65'])->name('form65_upload');
+    Route::post('admin/form65/adduploadfile', [App\Http\Controllers\admin\Form65Controller::class, 'addfile'])->name('addfile_form65');
+    Route::put('admin/form65/updateuploadfile/{id}', [App\Http\Controllers\admin\Form65Controller::class, 'updatefile'])->name('updatefile_form65');
+    Route::get('admin/form65/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form65Controller::class, 'deletefile'])->name('deletefile_form65');
+    Route::get('admin/download_form65/{id}', [App\Http\Controllers\admin\Form65Controller::class, 'filedownload'])->name('filedownload_form65');
+    //Form No. 66 Routes
+    Route::get('admin/form66/generateform/{id}', [App\Http\Controllers\admin\Form66Controller::class, 'generateform'])->name('form66_generate');
+    Route::get('admin/form66/uploadform/{id}', [App\Http\Controllers\admin\Form66Controller::class, 'uploadForm66'])->name('form66_upload');
+    Route::post('admin/form66/adduploadfile', [App\Http\Controllers\admin\Form66Controller::class, 'addfile'])->name('addfile_form66');
+    Route::put('admin/form66/updateuploadfile/{id}', [App\Http\Controllers\admin\Form66Controller::class, 'updatefile'])->name('updatefile_form66');
+    Route::get('admin/form66/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form66Controller::class, 'deletefile'])->name('deletefile_form66');
+    Route::get('admin/download_form66/{id}', [App\Http\Controllers\admin\Form66Controller::class, 'filedownload'])->name('filedownload_form66');
+    //Form No. 67 Routes
+    Route::get('admin/form67/generateform/{id}', [App\Http\Controllers\admin\Form67Controller::class, 'generateform'])->name('form67_generate');
+    Route::get('admin/form67/uploadform/{id}', [App\Http\Controllers\admin\Form67Controller::class, 'uploadForm67'])->name('form67_upload');
+    Route::post('admin/form67/adduploadfile', [App\Http\Controllers\admin\Form67Controller::class, 'addfile'])->name('addfile_form67');
+    Route::put('admin/form67/updateuploadfile/{id}', [App\Http\Controllers\admin\Form67Controller::class, 'updatefile'])->name('updatefile_form67');
+    Route::get('admin/form67/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form67Controller::class, 'deletefile'])->name('deletefile_form67');
+    Route::get('admin/download_form67/{id}', [App\Http\Controllers\admin\Form67Controller::class, 'filedownload'])->name('filedownload_form67');
+    //Form No. 68 Routes
+    Route::get('admin/form68/generateform/{id}', [App\Http\Controllers\admin\Form68Controller::class, 'generateform'])->name('form68_generate');
+    Route::get('admin/form68/uploadform/{id}', [App\Http\Controllers\admin\Form68Controller::class, 'uploadForm68'])->name('form68_upload');
+    Route::post('admin/form68/adduploadfile', [App\Http\Controllers\admin\Form68Controller::class, 'addfile'])->name('addfile_form68');
+    Route::put('admin/form68/updateuploadfile/{id}', [App\Http\Controllers\admin\Form68Controller::class, 'updatefile'])->name('updatefile_form68');
+    Route::get('admin/form68/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form68Controller::class, 'deletefile'])->name('deletefile_form68');
+    Route::get('admin/download_form68/{id}', [App\Http\Controllers\admin\Form68Controller::class, 'filedownload'])->name('filedownload_form68');
+    //Form No. 68A Routes
+    Route::get('admin/form68A/generateform/{id}', [App\Http\Controllers\admin\Form68AController::class, 'generateform'])->name('form68A_generate');
+    Route::get('admin/form68A/uploadform/{id}', [App\Http\Controllers\admin\Form68AController::class, 'uploadForm68A'])->name('form68A_upload');
+    Route::post('admin/form68A/adduploadfile', [App\Http\Controllers\admin\Form68AController::class, 'addfile'])->name('addfile_form68A');
+    Route::put('admin/form68A/updateuploadfile/{id}', [App\Http\Controllers\admin\Form68AController::class, 'updatefile'])->name('updatefile_form68A');
+    Route::get('admin/form68A/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form68AController::class, 'deletefile'])->name('deletefile_form68A');
+    Route::get('admin/download_form68A/{id}', [App\Http\Controllers\admin\Form68AController::class, 'filedownload'])->name('filedownload_form68A');
+    //Form No. 68B Routes
+    Route::get('admin/form68B/generateform/{id}', [App\Http\Controllers\admin\Form68BController::class, 'generateform'])->name('form68B_generate');
+    Route::get('admin/form68B/uploadform/{id}', [App\Http\Controllers\admin\Form68BController::class, 'uploadForm68B'])->name('form68B_upload');
+    Route::post('admin/form68B/adduploadfile', [App\Http\Controllers\admin\Form68BController::class, 'addfile'])->name('addfile_form68B');
+    Route::put('admin/form68B/updateuploadfile/{id}', [App\Http\Controllers\admin\Form68BController::class, 'updatefile'])->name('updatefile_form68B');
+    Route::get('admin/form68B/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form68BController::class, 'deletefile'])->name('deletefile_form68B');
+    Route::get('admin/download_form68B/{id}', [App\Http\Controllers\admin\Form68BController::class, 'filedownload'])->name('filedownload_form68B');
+    //Form No. 69 Routes
+    Route::get('admin/form69/generateform/{id}', [App\Http\Controllers\admin\Form69Controller::class, 'generateform'])->name('form69_generate');
+    Route::get('admin/form69/uploadform/{id}', [App\Http\Controllers\admin\Form69Controller::class, 'uploadForm69'])->name('form69_upload');
+    Route::post('admin/form69/adduploadfile', [App\Http\Controllers\admin\Form69Controller::class, 'addfile'])->name('addfile_form69');
+    Route::put('admin/form69/updateuploadfile/{id}', [App\Http\Controllers\admin\Form69Controller::class, 'updatefile'])->name('updatefile_form69');
+    Route::get('admin/form69/deleteuploadedfile/{id}', [App\Http\Controllers\admin\Form69Controller::class, 'deletefile'])->name('deletefile_form69');
+    Route::get('admin/download_form69/{id}', [App\Http\Controllers\admin\Form69Controller::class, 'filedownload'])->name('filedownload_form69');
     //Upload Generated File
     Route::post('admin/UploadFile/store', [App\Http\Controllers\admin\GeneratedFileController::class, 'store'])->name('file_store');
     Route::put('admin/UploadFile/update/{id}', [App\Http\Controllers\admin\GeneratedFileController::class, 'update'])->name('file_update');
