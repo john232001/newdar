@@ -3,82 +3,48 @@
 @section('content')
 
 @include('admin.admin_navbar')
-@include('admin.admin_sidebar')
 
-    <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Manage User Accounts
-      </h1>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box box-success">
-            <div class="box-header">
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-modal">
-                <i class="fa fa-plus"></i> ADD USER
-              </button>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>NAME</th>
-                    <th>EMAIL</th>
-                    <th>ROLE</th>
-                    <th>LAST SEEN</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $data)
-                        <tr>
-                            <td>{{ $data->name }}</td>
-                            <td>{{ $data->email }}</td>
-                            <td>{{ $data->role_type }}</td>
-                            <td>{{ Carbon\Carbon::parse($data->last_seen)->diffForHumans()}}</td>
-                            <td>
-                              <span class="badge bg-{{ $data->last_seen >= now()->subMinutes(2) ? 'green' : 'red' }}">
-                                {{ $data->last_seen >= now()->subMinutes(2) ? 'Online' : 'Offline' }}
-                              </span>
-                            </td>
-                            <td>
-                                <a href="" data-toggle="modal" data-target="#edit-modal{{ $data->id }}">
-                                    <button class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i> EDIT
-                                    </button>
-                                </a>
-                                <a href="" data-toggle="modal" data-target="#delete-modal{{ $data->id }}">
-                                    <button class="btn btn-danger btn-sm" >
-                                        <i class="fa fa-trash"></i> DELETE
-                                    </button>
-                                </a>
-                            </td>
-                            @include('admin.user_accounts.edit')
-                            @include('admin.user_accounts.delete')
-                        </tr>
-                    @endforeach
-              </tbody>
+<div class="container">
+  <h2 class="title-text">Manage Users</h2>
+  <div class="row">
+      <div class="col-lg-12 col-md-12">
+          <div class="card p-5 rounded-4">
+            <!-- Button trigger modal -->
+            <button class="btn btn-success btn-sm mb-5" data-bs-toggle="modal" data-bs-target="#addmodal" style="width: 160px;"><i class="fa-solid fa-add"></i> Add User</button>
+              <table id="example" class="table table-responsive table-striped" style="width:100%">
+                  <thead>
+                      <tr>
+                          <th>Username</th>
+                          <th>Role</th>
+                          <th>Last Seen</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($users as $data)
+                      <tr>
+                          <td>{{ $data->username }}</td>
+                          <td>{{ $data->role_type }}</td>
+                          <td>{{ Carbon\Carbon::parse($data->last_seen)->diffForHumans()}}</td>
+                          <td>
+                            <span class="badge rounded-pill bg-{{ $data->last_seen >= now()->subMinutes(2) ? 'success' : 'danger' }}">
+                              {{ $data->last_seen >= now()->subMinutes(2) ? 'Online' : 'Offline' }}
+                            </span>
+                          </td>
+                          <td>
+                              <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodal{{ $data->id }}"><i class="fa-solid fa-edit"></i> Edit</a>
+                              <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodal{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                          </td>
+                        @include('admin.user_accounts.edit')
+                        @include('admin.user_accounts.delete')
+                      </tr>
+                      @endforeach
+                  </tbody>
               </table>
-            </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  @include('admin.admin_footer')
-  @include('admin.user_accounts.create')
+</div>
+@include('admin.user_accounts.create')
 @endsection

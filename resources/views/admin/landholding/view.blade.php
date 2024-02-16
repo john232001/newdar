@@ -3,520 +3,395 @@
 @section('content')
 
 @include('admin.admin_navbar')
-@include('admin.admin_sidebar')
-
-    <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-          <div class="row">   
-            <div class="col-xs-12">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">BASIC INFORMATION</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <div class="row">
-                      @foreach ($landholdings as $data)
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>LANDHOLDING ID:</strong><span class="text-success"> {{ $data->lhid }}</span><br>
-                                          <strong>LANDOWNER:</strong><span class="text-success"> {{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span><br>
-                                          <strong>OCT/TCT NUMBER:</strong><span class="text-success"> {{ $data->octNo }}</span><br>
-                                          <strong>SURVEY NUMBER:</strong><span class="text-success"> {{ $data->surveyNo }}</span><br>
-                                          <strong>LOT NUMBER:</strong><span class="text-success"> {{ $data->lotNo }}</span><br>
-                                          <strong>TITLE/SURVEY AREA:</strong><span class="text-success"> {{ $data->surveyArea }}</span><br>
-                                          <strong>TAX DECLARATION NUMBER: </strong><span class="text-success"> {{ $data->taxNo }}</span><br>
-                                          <strong>MODE OF ACQUISITION:</strong><span class="text-success"> {{ $data->modeOfAcquisition }}</span>
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>COVERABLE AREA:</strong><span class="text-success"> {{ $data->coverableArea }}</span><br>
-                                          <strong>CARPABLE AREA:</strong><span class="text-success"> {{ $data->carpableArea }}</span><br>
-                                          <strong>NON-CARPABLE AREA:</strong><span class="text-success"> {{ $data->noncarpableArea }}</span><br>
-                                          <strong>RETAINED AREA:</strong><span class="text-success"> {{ $data->retainedArea }}</span><br>
-                                          <strong>DISTRIBUTED AREA:</strong><span class="text-success"> {{ $data->distributeArea }}</span><br>
-                                          <strong>LAND SIZE:</strong><span class="text-success"> {{ $data->landsize }}</span><br>
-                                          <strong>PHASE:</strong><span class="text-success"> {{ $data->phase }}</span><br>
-                                          <strong>UPALS:</strong><span class="text-success"> {{ $data->upals }}</span><br>
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
-                                          <strong>MAJOR CROPS AREA:</strong><span class="text-success"> {{ $data->majorCrops }}</span><br>
-                                          <strong>YEAR ADDED:</strong><span class="text-success"> {{ $data->yearAdded }}</span><br>
-                                          <strong>PIPE LINE:</strong><span class="text-success"> {{ $data->pipeline }}</span><br>
-                                          <strong>TARGET YEAR:</strong><span class="text-success"> {{ $data->targetyear }}</span><br>
-                                          <strong>PROJECTED DELIVERY:</strong><span class="text-success"> {{ $data->projectedDelivery }}</span><br>
-                                      </div>
-                                  @endforeach
-                  </div>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-          </div>
-          <div class="row">
-            <!-- ./col -->
-            <div class="col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addarb">
-                      <i class="fa fa-plus"></i> ADD ARB
-                    </button>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+  <div class="container">
+    <h2 class="title-text">Basic Information</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <table class="table" style="width:100%">
                     <thead>
-                      <tr>
-                          <th>FIRST NAME</th>
-                          <th>LAST NAME</th>
-                          <th>MIDDLE INITIAL</th>
-                          <th>EXTENSION</th>
-                          <th>SPOUSE NAME</th>
-                          <th>DATE OF BIRTH</th>
-                          <th>GENDER</th>
-                          <th>ADDRESS</th>
-                          <th>OWNERSHIP PREFERENCE</th>
-                          <th>DATE OF OATHTAKING</th>
-                          <th>ACTION</th>
-                      </tr>
+                      @foreach($landholdings as $data)
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Landholding ID : <span class="text-success">{{ $data->lhid }}</span></td>
+                            <td>Coverable Area : <span class="text-success"> {{ $data->coverableArea }}</td>
+                            <td>Major Crops Area : <span class="text-success"> {{ $data->majorCrops }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Landowner : <span class="text-success"> {{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span></td>
+                            <td>Carpable Area : <span class="text-success"> {{ $data->carpableArea }}</span></td>
+                            <td>Year Added : <span class="text-success"> {{ $data->yearAdded }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>OCT/TCT No. : <span class="text-success"> {{ $data->octNo }}</span></td>
+                            <td>Non-Carpable Area : <span class="text-success"> {{ $data->noncarpableArea }}</span></td>
+                            <td>Pipeline : <span class="text-success"> {{ $data->pipeline }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Survey No. : <span class="text-success"> {{ $data->surveyNo }}</span></td>
+                            <td>Retained Area : <span class="text-success"> {{ $data->retainedArea }}</span></td>
+                            <td>Target Year : <span class="text-success"> {{ $data->targetyear }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lot No. : <span class="text-success"> {{ $data->lotNo }}</span></td>
+                            <td>Distribute Area : <span class="text-success"> {{ $data->distributeArea }}</span></td>
+                            <td>Projected Delivery : </strong><span class="text-success"> {{ $data->projectedDelivery }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Title/Survey Area : <span class="text-success"> {{ $data->surveyArea }}</span></td>
+                            <td>Land size: <span class="text-success"> {{ $data->landsize }}</span></td>
+                            <td>Mode of Acquisition : <span class="text-success"> {{ $data->modeOfAcquisition }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Declaration No. : <span class="text-success"> {{ $data->taxNo }}</span></td>
+                            <td>Phase : <span class="text-success"> {{ $data->phase }}</span></td>
+                            <td>UPALS : <span class="text-success"> {{ $data->upals }}</span></td>
+                        </tr>
+                      @endforeach
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="title-text mt-4">ARBs</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodalarb"><i class="fa-solid fa-add"></i> Add ARB</button>
+                <table id="arb" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Firstname </th>
+                            <th>Lastname</th>
+                            <th>Middle initial</th>
+                            <th>Extension</th>
+                            <th>Spouse name</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Ownership Preference</th>
+                            <th>Date of Oathtaking</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
                       @foreach ($arb as $data)
-                          <tr>
-                              <td>{{ $data->fname }}</td>
-                              <td>{{ $data->lname }}</td>
-                              <td>{{ $data->mname }}</td>
-                              <td>{{ $data->extension }}</td>
-                              <td>{{ $data->spousename }}</td>
-                              <td>{{ $data->datebirth }}</td>
-                              <td>{{ $data->gender }}</td>
-                              <td>{{ $data->address }}</td>
-                              <td>{{ $data->ownership}}</td>
-                              <td>{{ $data->dateOfOath }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editarb{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i> EDIT
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletearb{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i> DELETE
-                                      </button>
-                                  </a>
-                              </td>
+                        <tr>
+                            <td>{{ $data->fname }}</td>
+                            <td>{{ $data->lname }}</td>
+                            <td>{{ $data->mname }}</td>
+                            <td>{{ $data->extension }}</td>
+                            <td>{{ $data->spousename }}</td>
+                            <td>{{ $data->datebirth }}</td>
+                            <td>{{ $data->gender }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->ownership}}</td>
+                            <td>{{ $data->dateOfOath }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#editmodalarb{{ $data->id }}"> <i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodalarb{{ $data->id }}"><i class="fa-solid fa-trash"></i>Delete</a>
+                            </td>
+                            @include('admin.arb.delete')
+                            @include('admin.arb.edit')
                           </tr>
-                          @include('admin.arb.edit')
-                          @include('admin.arb.delete')
                       @endforeach
-                  </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <div class="row">
-            <!-- ./col -->
-            <div class="col-xs-6">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addlot">
-                    <i class="fa fa-plus"></i> ADD LOT
-                  </button>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table id="lottable" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                          <th>ARB NAME</th>
-                          <th>LOT NUMBER</th>
-                          <th>LOT TYPE</th>
-                          <th>LOT AREA</th>
-                          <th>CROP</th>
-                          <th>ACTION</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($lots as $data)
-                    <tr>
-                        <td>{{ $data->fname }} {{ $data->lname }}</td>
-                        <td>{{ $data->lotNo}}</td>
-                        <td>{{ $data->lotType}}</td>
-                        <td>{{ $data->lotArea}}</td>
-                        <td>{{ $data->crop}}</td>
-                        <td>
-                            <a href="" data-toggle="modal" data-target="#editlot{{ $data->id }}">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fa fa-edit"></i> EDIT
-                                </button>
-                            </a>
-                            <a href="" data-toggle="modal" data-target="#deletelot{{ $data->id }}">
-                                <button class="btn btn-danger btn-sm" >
-                                    <i class="fa fa-trash"></i> DELETE
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    @include('admin.lot.edit')
-                    @include('admin.lot.delete')
-                    @endforeach
-                </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-          <!-- ./col -->
-          <div class="col-xs-6">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addsurvey">
-                  <i class="fa fa-plus"></i> ADD SURVEY PLAN
-                </button>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="surveyplan" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                        <th>ASP NUMBER</th>
-                        <th>ASP DATE APPROVED</th>
-                        <th>ASP AREA</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  @foreach ($asp as $data)
-                    <tr>
-                      <td>{{ $data->aspNo}}</td>
-                      <td>{{ $data->aspDate}}</td>
-                      <td>{{ $data->aspArea}}</td>
-                      <td>
-                          <a href="" data-toggle="modal" data-target="#editmodalasp{{ $data->id }}">
-                              <button class="btn btn-primary btn-sm">
-                                  <i class="fa fa-edit"></i> EDIT
-                              </button>
-                          </a>
-                          <a href="" data-toggle="modal" data-target="#deletemodalasp{{ $data->id }}">
-                              <button class="btn btn-danger btn-sm" >
-                                  <i class="fa fa-trash"></i> DELETE
-                              </button>
-                          </a>
-                      </td>
-                  </tr>
-                  @include('admin.asp.edit')
-                  @include('admin.asp.delete')
-                @endforeach
-              </tbody>
+                    </tbody>
                 </table>
-              </div>
-              <!-- /.box-body -->
             </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-          </div>
-          <div class="row">
-            <!-- ./col -->
-            <div class="col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmodalvaluation">
-                    <i class="fa fa-plus"></i> ADD VALUATION
-                  </button>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table id="valuation" class="table table-bordered table-striped">
+        </div>
+    </div>
+    <h2 class="title-text mt-4">Lots</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodallot"><i class="fa-solid fa-add"></i> Add Lot</button>
+                <table id="lot" class="table table-responsive table-striped" style="width:100%">
                     <thead>
-                      <tr>
-                          <th>LOT NUMBER</th>
-                          <th>AOC NUMBER</th>
-                          <th>LBP CLAIM NUMBER</th>
-                          <th>AMOUNT</th>
-                          <th>DATE TRANSMITTED TO LBP/AOC</th>
-                          <th>DATE OF MOV</th>
-                          <th>DATE NVLA SERVED TO LO</th>
-                          <th>DATE OF FI</th>
-                          <th>DATE of CF RECEIPT</th>
-                          <th>TRANSMITTAL STATUS</th>
-                          <th>ACTION</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      @foreach ($valuation as $data)
-                          <tr>
-                              <td>{{ $data->lotNo }}</td>
-                              <td>{{ $data->aocNo }}</td>
-                              <td>{{ $data->claimNo }}</td>
-                              <td>{{ $data->amount }}</td>
-                              <td>{{ $data->dateTransmitted }}</td>
-                              <td>{{ $data->dateofMov }}</td>
-                              <td>{{ $data->dateServed }}</td>
-                              <td>{{ $data->dateofFI }}</td>
-                              <td>{{ $data->dateofCF }}</td>
-                              <td>{{ $data->transmittalStatus }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editmodalvaluation{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i> 
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletemodalvaluation{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i>
-                                      </button>
-                                  </a>
-                              </td>
-                          </tr>
-                          @include('admin.valuation.edit')
-                          @include('admin.valuation.delete')
-                      @endforeach
-                  </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <div class="row">
-            <!-- ./col -->
-            <div class="col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmodalawardtitle">
-                    <i class="fa fa-plus"></i>
-                  </button>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table id="awardtitle" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                          <th>LOT NUMBER</th>
-                          <th>FB/COLLECTIVE NAME</th>
-                          <th>CLOA SERIAL #</th>
-                          <th>AWARD TYPE</th>
-                          <th>GENERATION DATE</th>
-                          <th>CLOA EPEB #</th>
-                          <th>CLOA EPEB DATE</th>
-                          <th>REGISTERED DATE</th>
-                          <th>AWARD TITLE #</th>
-                          <th>DISTRIBUTION DATE</th>
-                          <th>ACTION</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      @foreach ($awardtitle as $data)
-                          <tr>
-                              <td>{{ $data->lotNo }}</td>
-                              <td>{{ $data->fbOrcname }}</td>
-                              <td>{{ $data->serialNo }}</td>
-                              <td>{{ $data->awardType }}</td>
-                              <td>{{ $data->genDate }}</td>
-                              <td>{{ $data->epebNo }}</td>
-                              <td>{{ $data->epebDate }}</td>
-                              <td>{{ $data->registerDate }}</td>
-                              <td>{{ $data->awardtitleNo }}</td>
-                              <td>{{ $data->distributeDate }}</td>
-                              <td>
-                                  <a href="" data-toggle="modal" data-target="#editawardtitle{{ $data->id }}">
-                                      <button class="btn btn-primary btn-sm">
-                                          <i class="fa fa-edit"></i>
-                                      </button>
-                                  </a>
-                                  <a href="" data-toggle="modal" data-target="#deletemodalawardtitle{{ $data->id }}">
-                                      <button class="btn btn-danger btn-sm" >
-                                          <i class="fa fa-trash"></i>
-                                      </button>
-                                  </a>
-                              </td>
-                          </tr>
-                          @include('admin.awardtitle.edit')
-                          @include('admin.awardtitle.delete')
-                      @endforeach
-                  </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <div class="row">
-            <!-- ./col -->
-            <div class="col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h1>GENERATE FORMS</h1>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                  <table id="forms" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                          <th>FORM NO.</th>
-                          <th>FORM NAME</th>
-                          <th>DATE AND TIME GENERATED</th>
-                          <th>ACTION</th>
-                      </tr>
-                  </thead>
+                        <tr>
+                            <th>ARB Name</th>
+                            <th>Lot No.</th>
+                            <th>Lot Type</th>
+                            <th>Lot Area</th>
+                            <th>Crop</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                      @foreach ($landholdings as $data)
+                      @foreach ($lots as $data)
+                        <tr>
+                            <td>{{ $data->fname }} {{ $data->lname }}</td>
+                            <td>{{ $data->lotNo}}</td>
+                            <td>{{ $data->lotType}}</td>
+                            <td>{{ $data->lotArea}}</td>
+                            <td>{{ $data->crop}}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodallot{{ $data->id }}"> <i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodallot{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        @include('admin.lot.edit')
+                        @include('admin.lot.delete')
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="title-text mt-4">Approved Survey Plan</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodalasp"><i class="fa-solid fa-add"></i> Add Survey Plan</button>
+                <table id="asp" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ASP No.</th>
+                            <th>ASP Date Approved</th>
+                            <th>ASP Area</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($asp as $data)
+                        <tr>
+                            <td>{{ $data->aspNo}}</td>
+                            <td>{{ $data->aspDate}}</td>
+                            <td>{{ $data->aspArea}}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodalasp{{ $data->id }}"><i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodalasp{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        @include('admin.asp.edit')
+                        @include('admin.asp.delete')
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="title-text mt-4">Valuations</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodalvaluation"><i class="fa-solid fa-add"></i> Add Valuation</button>
+                <table id="valuation" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Lot No.</th>
+                            <th>AOC No.</th>
+                            <th>LBP Claim No.</th>
+                            <th>Amount</th>
+                            <th>Date Transmitted To LBP/AOC</th>
+                            <th>Date of MOV</th>
+                            <th>Date NVLA Served To LO</th>
+                            <th>Date of FI</th>
+                            <th>Date of CF Receipt</th>
+                            <th>Transmittal Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($valuation as $data)
+                        <tr>
+                            <td>{{ $data->lotNo }}</td>
+                            <td>{{ $data->aocNo }}</td>
+                            <td>{{ $data->claimNo }}</td>
+                            <td>{{ $data->amount }}</td>
+                            <td>{{ $data->dateTransmitted }}</td>
+                            <td>{{ $data->dateofMov }}</td>
+                            <td>{{ $data->dateServed }}</td>
+                            <td>{{ $data->dateofFI }}</td>
+                            <td>{{ $data->dateofCF }}</td>
+                            <td>{{ $data->transmittalStatus }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#editmodalvaluation{{ $data->id }}"><i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodalvaluation{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        @include('admin.valuation.edit')
+                        @include('admin.valuation.delete')
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="title-text mt-4">Award Land</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodalawardland"><i class="fa-solid fa-add"></i> Add Award Land</button>
+                <table id="awardland" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Lot No.</th>
+                            <th>FB/Collective Name</th>
+                            <th>CLOA Serial #</th>
+                            <th>Award Type</th>
+                            <th>Generation Date</th>
+                            <th>CLOA EPEB #</th>
+                            <th>CLOA EPEB Date</th>
+                            <th>Registered Date</th>
+                            <th>Award Title #</th>
+                            <th>Distribution Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($awardtitle as $data)
+                        <tr>
+                            <td>{{ $data->lotNo }}</td>
+                            <td>{{ $data->fbOrcname }}</td>
+                            <td>{{ $data->serialNo }}</td>
+                            <td>{{ $data->awardType }}</td>
+                            <td>{{ $data->genDate }}</td>
+                            <td>{{ $data->epebNo }}</td>
+                            <td>{{ $data->epebDate }}</td>
+                            <td>{{ $data->registerDate }}</td>
+                            <td>{{ $data->awardtitleNo }}</td>
+                            <td>{{ $data->distributeDate }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#editmodalawardland{{ $data->id }}"><i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodalawardland{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                            @include('admin.awardtitle.delete')
+                            @include('admin.awardtitle.edit')
+                        </tr>
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="title-text mt-4">Forms</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <table id="form" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Form No.</th>
+                            <th>Form Name</th>
+                            <th>Date and Time Generated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($landholdings as $data)
                           <tr>
                               <td>1</td>
-                              <td>CONDUCT OF PRELIMINARY OCULAR INSPECTION</td>
+                              <td>Conduct of Preliminary Ocular Inspection</td>
                               @forelse ($generateform1 as $items)
                                 <td>{{ $items->generation_date}}</td>
                               @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                               @endforelse
                               <td>
                                   <a href="{{ route('form1_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form1_upload', $data->id ) }}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                               </td>
                           </tr>
                           <tr>
                               <td>2</td>
-                              <td>CERTIFICATE OF PRELIMINARY PROJECTION</td>
+                              <td>Certificate of Preliminary Projection</td>
                               @forelse ($generateform2 as $items)
                                 <td>{{ $items->generation_date}}</td>
                               @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                               @endforelse
                               <td>
                                   <a href="{{ route('form2_generate', $data->id )}}">
-                                      <button type="submit" class="btn btn-success btn-sm">
-                                        <i class="fa fa-print"></i> GENERATE FORM
+                                      <button type="submit" class="btn btn-success btn-sm mb-1">
+                                        <i class="fa fa-print"></i> Generate
                                       </button>
-                                  </a>
-                                  <a href="{{ route('form2_upload', $data->id ) }}">
-                                    <button type="submit" class="btn btn-warning btn-sm">
-                                      <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                    </button>
                                   </a>
                               </td>
                           </tr>
                           <tr>
                             <td>3</td>
-                            <td>NOTICE OF COVERAGE</td>
+                            <td>Notice of Coverage</td>
                             @forelse ($generateform3 as $items)
                               <td>{{ $items->generation_date}}</td>
                             @empty
-                              <td><span class="text-danger">No Generate Date</span></td>
+                              <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                             <td>
                                 <a href="{{ route('form3_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form3_upload', $data->id )}}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                             </td>
                           </tr>
                           <tr>
                             <td>10</td>
-                            <td>DIRECTIVE TO MARO TO PROCEED WITH COVERAGE OF AGRICULTURAL LANDS WITH NOTICE OF COVERAGE</td>
+                            <td>Directive to MARO to Proceed with Coverage of Agricultural Lands with Notice of Coverage</td>
                             @forelse ($generateform10 as $items)
                               <td>{{ $items->generation_date}}</td>
                             @empty
-                              <td><span class="text-danger">No Generate Date</span></td>
+                              <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                             <td>
                                 <a href="{{ route('form10_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form10_upload', $data->id )}}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                             </td>
                           </tr>
                           <tr>
                             <td>11</td>
-                            <td>CF DOCUMENTATION MEMO</td>
+                            <td>CF Documentation Memo</td>
                             @forelse ($generateform11 as $items)
                               <td>{{ $items->generation_date}}</td>
                             @empty
-                              <td><span class="text-danger">No Generate Date</span></td>
+                              <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                             <td>
                                 <a href="{{ route('form11_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form11_upload', $data->id )}}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                             </td>
                           </tr>
                           <tr>
                             <td>18</td>
-                            <td>LO LETTER OFFER</td>
+                            <td>LO Letter Offer</td>
                             @forelse ($generateform18 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                             <td>
                                 <a href="{{ route('form18_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form18_upload', $data->id )}}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                             </td>
                           </tr>
                           <tr>
                             <td>20</td>
-                            <td>ACCEPTANCE LETTER FOR VOS</td>
+                            <td>Acceptance Letter for VOS</td>
                             @forelse ($generateform20 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                             <td>
                                 <a href="{{ route('form20_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                      <i class="fa fa-print"></i> GENERATE FORM
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
                                     </button>
-                                </a>
-                                <a href="{{ route('form20_upload', $data->id )}}">
-                                  <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                  </button>
                                 </a>
                             </td>
                         </tr>
@@ -526,564 +401,461 @@
                           @forelse ($generateform37 as $items)
                             <td>{{ $items->generation_date}}</td>
                           @empty
-                            <td><span class="text-danger">No Generate Date</span></td>
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
                           <td>
                               <a href="{{ route('form37_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form37_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>42</td>
-                          <td>CERTIFICATION ON LOs FAILURE TO SUBMIT BIR-FILED AUDITED FINANCIAL STATEMENT</td>
+                          <td>Certification on LOs Failure to submit BIR-Filed Audited Financial Statement</td>
                           @forelse ($generateform42 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form42_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form42_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>45-A</td>
-                          <td>NOTICE TO CONDUCT JOINT FIELD INVESTIGATION</td>
+                          <td>Notice to Conduct Joint Field Investigation</td>
                           @forelse ($generateform45A as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form45A_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form45A_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>46</td>
-                          <td>REVISED 2022 FIELD INVESTIGATION REPORT</td>
+                          <td>Revised 2022 Field Investigation Report</td>
                           @forelse ($generateform46 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form46_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form46_upload', $data->id ) }}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>47</td>
-                          <td>LAND DISTRIBUTION AND INFORMATION SCHEDULE</td>
+                          <td>Land Distribution and Information Schedule</td>
                           @forelse ($generateform47 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form47_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form47_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>49</td>
-                          <td>REVISED 2022 REQUEST TO VALUE LAND AND PAY LANDOWNER</td>
+                          <td>Revised 2022 Request to Value Land and Pay Landowner</td>
                           @forelse ($generateform49 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form49_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form49_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>51</td>
-                          <td>NOTICE OF LVA</td>
+                          <td>Notice of LVA</td>
                           @forelse ($generateform51 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form51_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form51_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>52A</td>
-                          <td>NOTICE OF LVA</td>
+                          <td>Publication on the Issuance of NLVA</td>
                           @forelse ($generateform52A as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form52A_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form52A_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>52B</td>
-                          <td>POSTING ON THE ISSUANCE OF NLVA</td>
+                          <td>Posting on the Issuance of NLVA</td>
                           @forelse ($generateform52B as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form52B_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i> GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form52B_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>53</td>
-                          <td>LAND OWNERS'S REPLY TO NOTICE OF LAND VALUATION AND AQUISITION</td>
+                          <td>Land Owner's Reply to Notice of Land Valuation and Aquisition</td>
                           @forelse ($generateform53 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form53_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form53_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>54</td>
-                          <td>ORDER TO DEPOSIT LANDOWNER COMPENSATION</td>
+                          <td>Order to Deposit Landowner Compensation</td>
                           @forelse ($generateform54 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form54_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form54_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>57</td>
-                          <td>REQUEST ISSUANCE TRANSFER CERTIFICATE (TCT) IN THE NAME OF THE REPUBLIC OF THE PHILIPPINES (RP)</td>
+                          <td>Request Issuance Transfer Certificate (TCT) in the Name of the Republic of the Philippines (RP)</td>
                           @forelse ($generateform57 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form57_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form57_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>58</td>
-                          <td>TRANSMITTAL TO LBP OF COPY OF RP TITLE</td>
+                          <td>Transmittal to LBP of Copy of RP Title</td>
                           @forelse ($generateform58 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form58_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form58_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>59</td>
-                          <td>ADVICE TO DARAB ADJUDICATOR TO CONDUCT ADMINISTRATIVE PROCEEDINGS</td>
+                          <td>Advice to DARAB Adjudicator to Conduct Administrative Proceedings</td>
                           @forelse ($generateform59 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form59_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form59_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>60</td>
-                          <td>PARO DIRECTIVE TO TAKE ACTUAL & PHYSICAL POSSESSION</td>
+                          <td>PARO Directive to take Actual & Physical Possession</td>
                           @forelse ($generateform60 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form60_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form60_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>61</td>
-                          <td>LETTER TO QUALIFIED ARB</td>
+                          <td>Letter to Qualified ARB</td>
                           @forelse ($generateform61 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form61_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form61_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>62</td>
-                          <td>LDF TRANSMITTAL TO PARO</td>
+                          <td>LDF Transmittal to PARO</td>
                           @forelse ($generateform62 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form62_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form62_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>63</td>
-                          <td>TRANSMITTAL TO PARO RE SIGNED AND SEALED CLOA`s</td>
+                          <td>Transmittal to PARO re Signed and Sealed CLOAs</td>
                           @forelse ($generateform63 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form63_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form63_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>64</td>
-                          <td>REVISED 2022 TRANSMITTAL MEMORANDUM TO ROD OF CLOA`s FOR REGISTRATION</td>
+                          <td>Revised 2022 Transmittal Memorandum to ROD of CLOAs for Registration</td>
                           @forelse ($generateform64 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form64_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form64_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>65</td>
-                          <td>TRANSMITTAL MEMORANDUM OF REGISTERED CLOA TITLES FROM ROD TO LBP</td>
+                          <td>Transmittal Memorandum of Registered CLOA Titles from ROD to LBP</td>
                           @forelse ($generateform65 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form65_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form65_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>66</td>
-                          <td>MONTHLY REPORT CLOA</td>
+                          <td>Monthly Report CLOA</td>
                           @forelse ($generateform66 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form66_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form66_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>67</td>
-                          <td>REPORT ON FAILURE TO TAKE POSSESSION</td>
+                          <td>Report on Failure to Take Possession</td>
                           @forelse ($generateform67 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form67_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form67_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>68</td>
-                          <td>WRIT OF INSTALLATION</td>
+                          <td>Writ of Installation</td>
                           @forelse ($generateform68 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form68_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form68_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>68A</td>
-                          <td>REVISED 2022 NOTICE TO QUALIFIED AGRARIAN REFORM BENEFICIARIES (ARB/S) FOR PHYSICAL INSTALLATION</td>
+                          <td>Revised 2022 Notice to Qualified Agrarian Reform beneficiary/ies for Physical Installation</td>
                           @forelse ($generateform68A as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form68A_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form68A_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>68B</td>
-                          <td>PHYSICAL INSTALLATION OF ARB`S IN THE LANDHOLDING</td>
+                          <td>Physical Installation of ARBs in the Landholding</td>
                           @forelse ($generateform68B as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form68B_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form68B_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                         <tr>
                           <td>69</td>
-                          <td>LETTER TO PNP</td>
+                          <td>Letter to PNP</td>
                           @forelse ($generateform69 as $items)
                                 <td>{{ $items->generation_date}}</td>
                             @empty
-                                <td><span class="text-danger">No Generate Date</span></td>
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
                           <td>
                               <a href="{{ route('form69_generate', $data->id )}}">
-                                  <button type="submit" class="btn btn-success btn-sm">
-                                    <i class="fa fa-print"></i>  GENERATE FORM
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
                                   </button>
-                              </a>
-                              <a href="{{ route('form69_upload', $data->id )}}">
-                                <button type="submit" class="btn btn-warning btn-sm">
-                                  <i class="fa fa-download"></i> UPLOAD APPROVED FORM
-                                </button>
                               </a>
                           </td>
                         </tr>
                       @endforeach
-                  </tbody>
-                  </table>
-                </div>
-                <!-- /.box-body -->
-              </div>
-              <!-- /.box -->
+                    </tbody>
+                </table>
             </div>
-            <!-- /.col -->
-          </div>
         </div>
-        <!-- /.row -->
+    </div>
+    <h2 class="title-text mt-4">Approved Forms</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <button class="btn btn-success btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodalapproved"><i class="fa-solid fa-add"></i> Upload Form</button>
+                <table id="approved" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Form No.</th>
+                            <th>Form Name</th>
+                            <th>Date Upload</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($approvedform as $data)
+                        <tr>
+                            <td>{{ $data->formNo }}</td>
+                            <td>{{ $data->uploadfile }}</td>
+                            <td>{{ $data->date_upload}}</td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodalapproved{{ $data->id }}"><i class="fa-solid fa-edit"></i> Edit</a>
+                                <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodalapproved{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
+                                <a href="{{ route('approvedform_download', $data->id )}}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-upload"></i> Download</a>
+                            </td>
+                            @include('admin.approvedform.edit')
+                            @include('admin.approvedform.delete')
+                        </tr>
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
   </div>
-  <!-- /.content-wrapper -->
   @include('admin.arb.create')
   @include('admin.lot.create')
   @include('admin.asp.create')
   @include('admin.awardtitle.create')
   @include('admin.valuation.create')
-  
+  @include('admin.approvedform.create')
 @endsection

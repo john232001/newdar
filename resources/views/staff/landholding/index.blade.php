@@ -3,43 +3,31 @@
 @section('content')
 
 @include('staff.staff_navbar')
-@include('staff.staff_sidebar')
 
-    <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Manage Landholding
-      </h1>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box box-success">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                      <th>LHID</th>
-                      <th>FIRST NAME</th>
-                      <th>LAST NAME</th>
-                      <th>MIDDLE NAME</th>
-                      <th>MUNICIPALITY</th>
-                      <th>BARANGAY</th>
-                      <th>OCT/TCT NO.</th>
-                      <th>LOT NO.</th>
-                      <th>SURVEY NO.</th>
-                      <th>ACTION</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                      @foreach ($landholdings as $data)
+  <div class="container-fluid mx-1">
+    <h2 class="title-text">Landholdings</h2>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card p-5 rounded-4">
+                <table id="example" class="table table-responsive table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                          <th>LHID</th>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>Middlename</th>
+                          <th>Municipality</th>
+                          <th>Barangay</th>
+                          <th>OCT/TCT No.</th>
+                          <th>Lot No.</th>
+                          <th>Survey No.</th>
+                          <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($landholdings as $data)
                           <tr>
-                              <td><a href="{{ route('staff_landholding_view', $data->id )}}" class="btn btn-link">{{ $data->lhid}}</a></td>
+                              <td><a href="{{ route('staff_landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
                               <td>{{ $data->firstname}}</td>
                               <td>{{ $data->familyname}}</td>
                               <td>{{ $data->middlename}}</td>
@@ -49,28 +37,14 @@
                               <td>{{ $data->lotNo}}</td>
                               <td>{{ $data->surveyNo}}</td>
                               <td>
-                                <a href="" data-toggle="modal" data-target="#viewmodal{{ $data->id }}">
-                                  <button class="btn btn-warning btn-sm">
-                                    <i class="fa fa-search"></i> VIEW DOCUMENTS
-                                  </button>
-                              </a>
+                                  <a href="{{ route('staff_uploaded_file', $data->id ) }}" class="btn btn-secondary btn-sm mb-2"><i class="fa-solid fa-magnifying-glass"></i> View File</a>
                               </td>
-                              @include('staff.landholding.view_documents')
                           </tr>
-                      @endforeach
-                  </tbody>
-              </table>
+                        @endforeach
+                    </tbody>
+                </table>    
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+    </div>
   </div>
-  <!-- /.content-wrapper -->
-  @include('staff.staff_footer')
 @endsection

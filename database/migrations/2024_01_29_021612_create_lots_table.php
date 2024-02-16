@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('arb_name');
             $table->string('lotNo');
             $table->string('lotType_id');
-            $table->float('lotArea');
+            $table->string('lotArea');
             $table->string('crop')->nullable();
             $table->timestamps();
         });

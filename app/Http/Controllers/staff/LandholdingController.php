@@ -25,6 +25,10 @@ class LandholdingController extends Controller
         $paro = DB::table('officers')->where('officers.position_id', 2)->get();
         return view('staff.landholding.index', compact('landholdings', 'maro', 'paro', 'municipalities','barangays'));
     }
+    public function uploadedfile($id){
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->get();
+        return view('staff.landholding.view_documents', compact('data'));
+    }
     public function downloadtitle($id)
     {
         $landholding = Landholding::findOrFail($id);
@@ -83,21 +87,47 @@ class LandholdingController extends Controller
             ->select('valuations.*', 'lots.lotNo')
             ->where('valuations.landholding_id', $id)
             ->get();
+
+        $approvedform = DB::table('generated_files')
+            ->join('landholdings', 'landholdings.id', '=', 'generated_files.landholding_id')
+            ->select('generated_files.*')
+            ->where('generated_files.landholding_id', $id )
+            ->get();
         
         $generateform1 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_1')->get();
         $generateform2 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_2')->get();
         $generateform3 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_3')->get();
+        $generateform10 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_10')->get();
+        $generateform11 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_11')->get();
+        $generateform17 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_17')->get();
         $generateform18 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_18')->get();
         $generateform20 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_20')->get();
         $generateform37 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_37')->get();
         $generateform42 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_42')->get();
+        $generateform45A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_45A')->get();
         $generateform46 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_46')->get();
         $generateform47 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_47')->get();
         $generateform49 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_49')->get();
         $generateform51 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_51')->get();
+        $generateform52A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_52A')->get();
         $generateform52B = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_52B')->get();
         $generateform53 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_53')->get();
         $generateform54 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_54')->get();
+        $generateform57 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_57')->get();
+        $generateform58 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_58')->get();
+        $generateform59 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_59')->get();
+        $generateform60 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_60')->get();
+        $generateform61 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_61')->get();
+        $generateform62 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_62')->get();
+        $generateform63 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_63')->get();
+        $generateform64 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_64')->get();
+        $generateform65 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_65')->get();
+        $generateform66 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_66')->get();
+        $generateform67 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_67')->get();
+        $generateform68 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_68')->get();
+        $generateform68A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_68A')->get();
+        $generateform68B = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_68B')->get();
+        $generateform69 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_69')->get();
         //get only the value 'Carpable' in ID
         $lotNumber = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 
@@ -107,8 +137,11 @@ class LandholdingController extends Controller
         $arbname = DB::table('arbs')->where('arbs.landholding_id', $id)->get();
         
         $categories = DB::table('categories')->get();
-        return view('staff.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation',
-                                                    'generateform1','generateform2','generateform3','generateform18','generateform20','generateform37','generateform42',
-                                                    'generateform46','generateform47','generateform49','generateform51','generateform52B','generateform53','generateform54'));
+        return view('staff.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation','approvedform',
+                                                        'generateform1','generateform2','generateform3','generateform10','generateform11','generateform17','generateform18','generateform20',
+                                                        'generateform37','generateform42','generateform45A','generateform46','generateform47','generateform49','generateform51','generateform52A',
+                                                        'generateform52B','generateform53','generateform54','generateform57','generateform58','generateform59','generateform60','generateform61',
+                                                        'generateform62','generateform63','generateform64','generateform65','generateform66','generateform67','generateform68','generateform68A',
+                                                        'generateform68B','generateform69'));
     }
 }

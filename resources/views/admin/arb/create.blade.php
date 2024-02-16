@@ -1,97 +1,73 @@
-<form action="{{ route('arb_store') }}" method="POST" >
-    @csrf
-<div class="modal fade" id="addarb">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">ADD ARB</h4>
-        </div>
-        <div class="modal-body">
-                <div class="form-group">
-                    <div class="row">
-                        @foreach ($landholdings as $data)
-                            <input type="hidden" class="form-control" name="landholding_id" value="{{ $data->id}}" >
-                        @endforeach
-                      <div class="col-xs-6 mb-4">
-                        <label for="">FIRST NAME <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">LAST NAME <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="lname" placeholder="Enter Family Name">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">MIDDLE NAME</label>
-                        <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name">
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">EXTENSION</label>
-                        <input type="text" class="form-control" name="extension" placeholder="Enter Extension">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">SPOUSE NAME</label>
-                        <input type="text" class="form-control" name="spousename" placeholder="Enter Spouse Name">
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">DATE OF BIRTH <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" name="datebirth" placeholder="Enter Date of Birth">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">GENDER <span class="text-danger">*</span></label>
-                        <select class="form-control" name="gender_id">
-                            <option value="">SELECT GENDER</option>
-                            @foreach ($categories as $data)
-                                <option value="{{ $data->id}}">{{ $data->gender }}</option>
-                            @endforeach
-                        </select>
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">ADDRESS <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="address" placeholder="Enter Address">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">OWNERSHIP PREFERENCE <span class="text-danger">*</span></label>
-                        <select class="form-control" name="ownership_id">
-                            <option value="">SELECT OPTION</option>
-                            @foreach ($categories as $data)
-                                <option value="{{ $data->id }}">{{ $data->ownership }}</option>
-                            @endforeach
-                        </select>
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">DATE OF OATHTAKING <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" name="dateOfOath" placeholder="Enter Date of OathTaking">
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-        </div>
+<!-- addmodal arb -->
+<div class="modal fade" id="addmodalarb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add ARB</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- /.modal-content -->
+      <div class="modal-body">
+          <form action="{{ route('arb_store') }}" method="POST" class="row g-3">
+            @csrf
+              @foreach ($landholdings as $data)
+                <input type="hidden" class="form-control" name="landholding_id" value="{{ $data->id}}" >
+              @endforeach
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Firstname <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="fname" placeholder="Firstname">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Middle Initial</label>
+                  <input type="text" class="form-control" name="mname" placeholder="Middle Initial">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Lastname <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="lname" placeholder="Lastname">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Extension</label>
+                  <input type="text" class="form-control" name="extension" placeholder="Extension">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Spouse Name</label>
+                  <input type="text" class="form-control" name="spousename" placeholder="Spouse Name">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" name="datebirth" >
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Gender <span class="text-danger">*</span></label>
+                  <select class="form-select" name="gender_id">
+                      <option value="">Select option</option>
+                      @foreach ($categories as $data)
+                        <option value="{{ $data->id}}">{{ $data->gender }}</option>
+                      @endforeach
+                  </select>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="address" placeholder="Address">
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Ownership Preference <span class="text-danger">*</span></label>
+                  <select class="form-select" name="ownership_id">
+                      <option value="">Select option</option>
+                      @foreach ($categories as $data)
+                        <option value="{{ $data->id }}">{{ $data->ownership }}</option>
+                      @endforeach
+                  </select>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
+                  <label class="form-label">Date of Oathtaking <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" name="dateOfOath" placeholder="Date of Oathtaking">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+          </div>
+      </form>
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
-</form>
+</div>

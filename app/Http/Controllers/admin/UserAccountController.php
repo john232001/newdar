@@ -24,8 +24,7 @@ class UserAccountController extends Controller
     {
         try {
             $request->validate([
-                'name' => 'required',
-                'email' => 'required|email',
+                'username' => 'required',
                 'password' => 'required|min:6',
                 'type' => 'required'
             ], [
@@ -33,8 +32,7 @@ class UserAccountController extends Controller
             ]);
 
             DB::table('users')->insert([
-                'name' => $request->name,
-                'email' => $request->email,
+                'username' => $request->username,
                 'password' => Hash::make($request->password),
                 'type' => $request->type,
                 'created_at' =>  date('Y-m-d H:i:s'),
@@ -49,8 +47,7 @@ class UserAccountController extends Controller
     public function update(Request $request, $id)
     {
         $users_update = [
-            'name' => $request->name,
-            'email' => $request->email,
+            'username' => $request->username,
             'password' => Hash::make($request->password),
             'type' => $request->type,
             'created_at' =>  date('Y-m-d H:i:s'),

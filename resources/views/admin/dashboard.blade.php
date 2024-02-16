@@ -3,137 +3,100 @@
 @section('content')
 
 @include('admin.admin_navbar')
-@include('admin.admin_sidebar')
- 
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-      </h1>
-
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>{{ $totalLandholdings}}</h3>
-
-              <p>Total Landholdings</p>
+<div class="container">
+  <h2 class="title-text">Dashboard</h2>
+  <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-landholdings.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Landholdings</h5>
+                    <p class="card-text">{{ $totalLandholdings}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-ios-home"></i>
-            </div>
-              <a href="{{ route('landholding')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>{{ $totalLots }}</h3>
-
-              <p>Total Lots</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="{{ route('landholding')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>{{ $totalArbs }}</h3>
-
-              <p>Total ARB`s</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-ios-contact-outline"></i>
-            </div>
-            <a href="{{ route('landholding') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>{{ $totalAwardland }}</h3>
-
-              <p>Total Awarded Land</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-trophy"></i>
-            </div>
-            <a href="{{ route('landholding') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>{{ $totalAsp }}</h3>
-
-              <p>Total ASP</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-clipboard"></i>
-            </div>
-            <a href="{{ route('landholding') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>{{ $totalValuation }}</h3>
-
-              <p>Total Valuations</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-compose"></i>
-            </div>
-            <a href="{{ route('landholding') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>{{ $totalUser }}</h3>
-
-              <p>Total Users</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-android-person-add"></i>
-            </div>
-            <a href="{{ route('user_account') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
-      <!-- /.row -->
-      
-
-    </section>
-    <!-- /.content -->
-  </div>
-  @include('admin.admin_footer')
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-lots.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Lots</h5>
+                    <p class="card-text">{{ $totalLots }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-arbs.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total ARBs</h5>
+                    <p class="card-text">{{ $totalArbs }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-award.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Award Lands</h5>
+                    <p class="card-text">{{ $totalAwardland }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-valuations.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Valuations</h5>
+                    <p class="card-text">{{ $totalValuation }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <img src="{{ asset('assets/img/dashboard-users.png')}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text">{{ $totalUser }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

@@ -20,7 +20,7 @@ class LandholdingController extends Controller
             ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
             ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->get();
-        $barangays = DB::table('barangays')->get();
+        $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
         $municipalities = DB::table('municipalities')->get();
         $maro = DB::table('officers')->where('officers.position_id', 1)->get();
         $paro = DB::table('officers')->where('officers.position_id', 2)->get();
@@ -102,7 +102,7 @@ class LandholdingController extends Controller
                 "created_at" => date('Y-m-d H:i:s'),
                 "updated_at" => date('Y-m-d H:i:s'),
             ]);
-            return redirect()->back()->with('success', 'File uploaded successfully.');
+            return redirect()->back()->with('success', 'Added successfully.');
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', 'Failed to insert data ' . $e->getMessage());
@@ -226,6 +226,10 @@ class LandholdingController extends Controller
 
         return redirect()->back()->with('error', 'Deleted successfully');
     }
+    public function uploadedfile($id){
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->get();
+        return view('admin.landholding.view_documents', compact('data'));
+    }
     public function downloadtitle($id)
     {
         $landholding = Landholding::findOrFail($id);
@@ -284,13 +288,19 @@ class LandholdingController extends Controller
             ->select('valuations.*', 'lots.lotNo')
             ->where('valuations.landholding_id', $id)
             ->get();
-        
+
+        $approvedform = DB::table('generated_files')
+            ->join('landholdings', 'landholdings.id', '=', 'generated_files.landholding_id')
+            ->select('generated_files.*')
+            ->where('generated_files.landholding_id', $id )
+            ->get();
         
         $generateform1 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_1')->get();
         $generateform2 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_2')->get();
         $generateform3 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_3')->get();
         $generateform10 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_10')->get();
         $generateform11 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_11')->get();
+        $generateform17 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_17')->get();
         $generateform18 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_18')->get();
         $generateform20 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_20')->get();
         $generateform37 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_37')->get();
@@ -328,8 +338,8 @@ class LandholdingController extends Controller
         $arbname = DB::table('arbs')->where('arbs.landholding_id', $id)->get();
         
         $categories = DB::table('categories')->get();
-        return view('admin.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation',
-                                                      'generateform1','generateform2','generateform3','generateform10','generateform11','generateform18','generateform20','generateform37',
+        return view('admin.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation','approvedform',
+                                                      'generateform1','generateform2','generateform3','generateform10','generateform11','generateform17','generateform18','generateform20','generateform37',
                                                       'generateform42','generateform45A','generateform46','generateform47','generateform49','generateform51','generateform52A',
                                                       'generateform52B','generateform53','generateform54','generateform57','generateform58','generateform59','generateform60','generateform61',
                                                        'generateform62','generateform63','generateform64','generateform65','generateform66','generateform67','generateform68','generateform68A',

@@ -1,24 +1,20 @@
-<div class="modal fade" id="deletemodalasp{{ $data->id }}">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">DELETE ASP</h4>
-        </div>
-        <div class="modal-body">
-            ARE YOU SURE YOU WANT TO DELETE?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <a href="{{ route('asp_delete', $data->id )}}">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </a>
-          </div>
+<!-- delete modal lot -->
+<div class="modal fade" id="deletemodalasp{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete ASP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- /.modal-content -->
+      <div class="modal-body">
+        <label for="" class="form-label">Are you sure you want to delete? </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        <a href="{{ route('asp_delete', $data->id )}}">
+          <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+        </a>
+      </div>
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
-</form>
+</div>

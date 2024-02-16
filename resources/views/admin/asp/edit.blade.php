@@ -1,45 +1,35 @@
-<div class="modal fade" id="editmodalasp{{ $data->id }}">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">EDIT ASP</h4>
-        </div>
-        <div class="modal-body">
-            <form action="{{ route('asp_update', $data->id )}}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">ASP NUMBER <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="aspNo" value="{{ $data->aspNo }}" placeholder="Enter ASP Number">
-                      </div>
-                      <div class="col-xs-6 mb-4">
-                        <label for="">ASP DATE APPROVED <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" name="aspDate" value="{{ $data->aspDate }}" placeholder="Enter ASP Date Approved">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-6 mb-4">
-                        <label for="">ASP AREA <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="aspArea" value="{{ $data->aspArea }}" placeholder="Enter ASP Area">
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-        </div>
+<!--Edit Modal -->
+<div class="modal fade" id="editmodalasp{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Edit Survey Plan</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+      <div class="modal-body">
+          <div class="row">
+            <form action="{{ route('asp_update', $data->id )}}" method="POST">
+              @csrf
+              @method('PUT')
+              <div class="mb-3">
+                  <label class="form-label">ASP No. <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="aspNo" value="{{ $data->aspNo }}" placeholder="ASP No.">
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">ASP Date Approved <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" name="aspDate" value="{{ $data->aspDate }}" placeholder="ASP Date Approved">
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">ASP Area <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="aspArea" value="{{ $data->aspArea }}" placeholder="ASP Area">
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+        </div>
+      </form>
   </div>
-  <!-- /.modal -->
-</form>
+  </div>
+</div>

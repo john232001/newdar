@@ -45,31 +45,31 @@ class LoginController extends Controller
         $input = $request->all();
        
         $this->validate($request, [
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
        
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        if(auth()->attempt(array('username' => $input['username'], 'password' => $input['password'])))
         {
             if (auth()->user()->type == 'admin') {
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.home')->with('success', 'Login Successfully!!');
             }
             else if(auth()->user()->type == 'staff')
             {
-                return redirect()->route('staff.home');
+                return redirect()->route('staff.home')->with('success', 'Login Successfully!!');
             }else{
                 return redirect()->route('login');
             }
         }else{
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with('error','Invalid Username or Password.');
         }
             
     }
     public function logout(Request $request)
     {
         auth()->logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Logout Successfully!!');
     }
     
 }

@@ -1,51 +1,29 @@
-<header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <small>DAR System</small>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light m-4 rounded-5 p-3">
+  <div class="container-fluid">
+    <img src="{{ asset('assets/img/dar-logo.png')}}" style="width: 50px;" alt="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link {{ request()->routeIs('staff.home') ? 'active':'' }}" href="{{ route('staff.home') }}"> <i class="fa-solid fa-house"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('staff_landholding') ? 'active':'' }}" href="{{ route('staff_landholding') }}"> <i class="fa-solid fa-envelope"></i> Land Tenure Services</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <a class="btn btn-login btn-sm" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+            <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
+        </a>
 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('assets/dist/img/admin.png')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ Auth::user()->name}}</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="{{ asset('assets/dist/img/admin.png')}}" class="img-circle" alt="User Image">
-
-                <p>
-                  
-                  <small>Staff</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                        <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
       </div>
-    </nav>
-  </header>
+    </div>
+  </div>
+</nav>

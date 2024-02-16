@@ -1,38 +1,48 @@
-<div class="modal fade" id="viewmodal{{ $data->id }}">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">LIST OF DOCUMENTS</h4>
-        </div>
-        <div class="modal-body">
-            <div class="box box-primary">
-                <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{ asset('assets/dist/img/admin.png')}}" alt="User profile picture">
+@extends('layouts.app')
 
-                    <h3 class="profile-username text-center">{{ $data->firstname }} {{ $data->familyname }}</h3>
-                    <p class="text-muted text-center">Landholding</p>
+@section('content')
 
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                        <b>Title</b> <a class="pull-right" href="{{ route('download_title', $data->id )}}"> <i class="fa fa-mail-forward"></i> Download</a>
-                        </li>
-                        <li class="list-group-item">
-                        <b>Tax Declaration</b> <a class="pull-right" href="{{ route('download_taxDec', $data->id )}}"> <i class="fa fa-mail-forward"></i> Download</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.box-body -->
+@include('admin.admin_navbar')
+
+  <div class="container">
+    <h2 class="title-text text-center">Download Scanned Files</h2>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 col-md-12">
+            <div class="card rounded-4">
+              <div class="card-body d-flex justify-content-center">
+                <img src="{{ asset('assets/img/dashboard-landholdings.png')}}" class="card-img-top" alt="dar-logo" style="width: 150px;">
+                @foreach($data as $items )
+                  <div class="card border-0">
+                    <h5 class="card-title text-center text-success mt-4" style="font-weight: 800;">{{ $items->firstname }} {{ $items->familyname }}</h5>
+                    <div class="card-body">
+                      <table class="table">
+                        <tr>
+                          <th>Title Documents</th>
+                          <td>
+                            <a href="{{ route('download_title', $items->id )}}" class="btn btn-success btn-sm rounded-5"><i class="fa-solid fa-download"></i> Download</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Tax Declaration</th>
+                          <td>
+                            <a href="{{ route('download_taxDec', $items->id )}}" class="btn btn-success btn-sm rounded-5"><i class="fa-solid fa-download"></i> Download</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Tax Declaration</th>
+                          <td>
+                            <a href="" class="btn btn-success btn-sm rounded-5"><i class="fa-solid fa-download"></i> Download</a>
+                          </td>
+                        </tr>
+                    </table>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+              <a href="{{ route('landholding')}}" class="btn btn-success rounded-4">Go back</a>
             </div>
-            <!-- /.box -->
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal -->
+
+@endsection
