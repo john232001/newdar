@@ -28,12 +28,6 @@
                             <a href="{{ route('staff_download_taxDec', $items->id )}}" class="btn btn-success btn-sm rounded-5"><i class="fa-solid fa-download"></i> Download</a>
                           </td>
                         </tr>
-                        <tr>
-                          <th>Tax Declaration</th>
-                          <td>
-                            <a href="" class="btn btn-success btn-sm rounded-5"><i class="fa-solid fa-download"></i> Download</a>
-                          </td>
-                        </tr>
                     </table>
                     </div>
                   </div>

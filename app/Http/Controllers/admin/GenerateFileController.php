@@ -24,6 +24,7 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
+
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
@@ -41,8 +42,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('phase', $data->phase);
-        $templateProcessor->setValue('maro', $maro->officer_name);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
@@ -90,7 +91,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.2' . '-' . $fileName . '.docx');
         return response()->download('Form No.2' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -129,7 +130,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('phase', $data->phase);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.3' . '-' . $fileName . '.docx');
         return response()->download('Form No.3' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -165,8 +166,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('phase', $data->phase);
-        $templateProcessor->setValue('maro', $maro->officer_name);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.10' . '-' . $fileName . '.docx');
 
@@ -202,17 +203,20 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.11.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
-        $templateProcessor->setValue('barangay', $data->brgy_names);
-        $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('phase', $data->phase);
-        $templateProcessor->setValue('maro', $maro->officer_name);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.11' . '-' . $fileName . '.docx');
 
@@ -297,9 +301,6 @@ class GenerateFileController extends Controller
         );
 
         $templateProcessor = new TemplateProcessor('form-template/FormNo.18.docx');
-        $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -307,7 +308,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.18' . '-' . $fileName . '.docx');
         return response()->download('Form No.18' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -338,7 +339,17 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.20.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -346,7 +357,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.20' . '-' . $fileName . '.docx');
         return response()->download('Form No.20' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -390,7 +401,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('maro', $data->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.37' . '-' . $fileName . '.docx');
         return response()->download('Form No.37' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -434,7 +445,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('maro', $data->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.42' . '-' . $fileName . '.docx');
         return response()->download('Form No.42' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -448,6 +459,11 @@ class GenerateFileController extends Controller
         ->select('landholdings.*', 'officers.officer_name','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
         // Assuming you have a variable $formIdentifier containing a unique identifier for each form
         $formIdentifier = 'form_45A'; // Replace this with your actual form identifier
 
@@ -460,15 +476,22 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('maro', $data->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.45A' . '-' . $fileName . '.docx');
         return response()->download('Form No.45A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -522,8 +545,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('aspNo', $data->aspNo);
-        $templateProcessor->setValue('maro', $maro->officer_name);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper ($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.46' . '-' . $fileName . '.docx');
         return response()->download('Form No.46' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -664,7 +687,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.49' . '-' . $fileName . '.docx');
@@ -682,14 +705,23 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
+
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
+        
         $lotnumbers = DB::table('lots')->select('lotNo')->where('lots.landholding_id', $id)->get();
-
         
+        $valuation = DB::table('valuations')
+            ->join('landholdings', 'landholdings.id', '=', 'valuations.landholding_id')
+            ->join('lots', 'lots.id', '=', 'valuations.lotNumber_id')
+            ->select('valuations.*', 'lots.lotNo','lots.arb_name')
+            ->where('valuations.landholding_id', $id)
+            ->groupBy('lots.arb_name')
+            ->sum('amount');
         
+            dd($valuation);
         $lotNos = [];
         foreach ($lotnumbers as $lotnumber) {
             $lotNos[] = $lotnumber->lotNo;
@@ -726,7 +758,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.51' . '-' . $fileName . '.docx');
@@ -763,7 +795,17 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -771,7 +813,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('modeOfAcquisition', $data->modeOfAcquisition);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.52A' . '-' . $fileName . '.docx');
         return response()->download('Form No.52A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -825,7 +867,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.52B' . '-' . $fileName . '.docx');
@@ -864,7 +906,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', $paro->officer_name);
-        $templateProcessor->setValue('amount', $data->amount);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.53' . '-' . $fileName . '.docx');
         return response()->download('Form No.53' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -920,8 +961,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.54' . '-' . $fileName . '.docx');
@@ -977,8 +1017,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.57' . '-' . $fileName . '.docx');
@@ -1016,7 +1056,17 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -1025,7 +1075,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.58' . '-' . $fileName . '.docx');
@@ -1063,7 +1113,17 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.59.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -1072,7 +1132,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.59' . '-' . $fileName . '.docx');
@@ -1115,7 +1175,17 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -1125,8 +1195,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
-        $templateProcessor->setValue('maro', $maro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.60' . '-' . $fileName . '.docx');
@@ -1178,7 +1248,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('maro', $maro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.61' . '-' . $fileName . '.docx');
@@ -1235,8 +1305,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('maro', $maro->officer_name);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.62' . '-' . $fileName . '.docx');
@@ -1288,7 +1358,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.63' . '-' . $fileName . '.docx');
@@ -1340,7 +1410,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.64' . '-' . $fileName . '.docx');
@@ -1382,7 +1452,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.65' . '-' . $fileName . '.docx');
@@ -1424,7 +1494,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.66' . '-' . $fileName . '.docx');
@@ -1456,8 +1526,8 @@ class GenerateFileController extends Controller
         );
 
         $templateProcessor = new TemplateProcessor('form-template/FormNo.67.docx');
-        $templateProcessor->setValue('paro', $paro->officer_name);
-        $templateProcessor->setValue('maro', $maro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.67' . '-' . $fileName . '.docx');
@@ -1487,10 +1557,20 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.68.docx');
+        $templateProcessor = new TemplateProcessor('form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -1499,11 +1579,11 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
-        $templateProcessor->saveAs('Form No.68' . '-' . $fileName . '.docx');
-        return response()->download('Form No.68' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+        $templateProcessor->saveAs('Form No.68A' . '-' . $fileName . '.docx');
+        return response()->download('Form No.68A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
     public function generateform68B($id)
     {
@@ -1546,8 +1626,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
-        $templateProcessor->setValue('maro', $maro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.68B' . '-' . $fileName . '.docx');
@@ -1589,7 +1669,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.68' . '-' . $fileName . '.docx');
@@ -1634,7 +1714,7 @@ class GenerateFileController extends Controller
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.69' . '-' . $fileName . '.docx');

@@ -4,7 +4,6 @@ body{
     font-family: 'Poppins', sans-serif;
     background: #1b5f24;
 }
-
 /* login */
 .box-area{
     width: 930px;
@@ -109,9 +108,35 @@ table{
     text-decoration: none;
     color: #1b5f24;
 }
+/* small screen navbar */
 @media only screen and (max-width: 425px){
-    .card-body img{
-        display: none;
+    ul{
+        margin: 20px 0px;
+    }
+    .nav-item{
+        font-size: 18px;
     }
     
+}
+/* medium screen navbar */
+@media only screen and (max-width: 768px){
+    ul{
+        margin: 20px 0px;
+    }
+    .nav-item{
+        font-size: 18px;
+    }
+    
+}
+.breadcrumb li a{
+    color: #ffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.breadcrumb-item.active{
+    font-weight: 600;
+    color: #929b96;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #ffff;
 }

@@ -22,15 +22,15 @@
                   </select>
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
-                  <label class="form-label">AOC No.</label>
+                  <label class="form-label">AOC No. <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="aocNo" placeholder="AOC No.">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
-                  <label class="form-label">LBP Claim No.</label>
+                  <label class="form-label">LBP Claim No. <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="claimNo" placeholder="LBP Claim No.">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
-                  <label class="form-label">Amount</label>
+                  <label class="form-label">Amount <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="amount" placeholder="Amount">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">

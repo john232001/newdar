@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Date Upload <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" name="date_upload">
+                    <input type="date" class="form-control" name="date_upload" value="{{ now()->toDateString() }}">
                 </div>
               </div>
               <div class="modal-footer">

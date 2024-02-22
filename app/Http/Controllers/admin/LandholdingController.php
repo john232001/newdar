@@ -105,7 +105,7 @@ class LandholdingController extends Controller
             return redirect()->back()->with('success', 'Added successfully.');
         }
         catch(\Exception $e){
-            return redirect()->back()->with('error', 'Failed to insert data ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to insert data!!! ' . $e->getMessage());
         }
 
     }

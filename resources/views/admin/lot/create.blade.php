@@ -40,7 +40,7 @@
               </div>
               <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
                   <label class="form-label">Crop <span class="text-danger">(Fill the field if lot type is Carpable)</span></label>
-                  <input type="text" class="form-control" name="lotNo" placeholder="Crop">
+                  <input type="text" class="form-control" name="crop" placeholder="Crop">
               </div>
           </div>
           <div class="modal-footer">
