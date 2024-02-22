@@ -80,7 +80,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.2.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.2.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -118,7 +118,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.3.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.3.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -300,7 +300,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.18.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.18.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -336,7 +336,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.20.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.20.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -380,7 +380,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.37.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.37.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -424,7 +424,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.42.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.42.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -473,7 +473,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.45A.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -523,7 +523,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.46.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.46.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -581,7 +581,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.47.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.47.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -666,7 +666,7 @@ class GenerateFileController extends Controller
         );
 
         $lotNoString = implode(', ', $lotNos);
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.49.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.49.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -737,7 +737,7 @@ class GenerateFileController extends Controller
         );
 
         $lotNoString = implode(', ', $lotNos);
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.51.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -792,7 +792,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.52A.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -845,7 +845,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.52B.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -897,7 +897,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.53.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.53.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -939,7 +939,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.54.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.54.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -996,7 +996,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.57.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.57.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1053,7 +1053,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.58.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1110,7 +1110,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.59.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.59.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1172,7 +1172,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.60.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1226,7 +1226,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.61.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.61.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1283,7 +1283,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.62.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.62.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1336,7 +1336,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.63.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.63.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1388,7 +1388,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.64.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.64.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1440,7 +1440,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.65.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.65.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -1468,6 +1468,11 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
+        $maro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
@@ -1482,7 +1487,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.66.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.66.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -1494,8 +1499,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.66' . '-' . $fileName . '.docx');
         return response()->download('Form No.66' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1525,7 +1530,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.67.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.67.docx');
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
@@ -1557,7 +1562,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.68A.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
@@ -1614,7 +1619,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.68B.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.68B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -1657,7 +1662,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.68.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.68.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
@@ -1698,7 +1703,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $templateProcessor = new TemplateProcessor('form-template/FormNo.69.docx');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.69.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         // Check if middlename is not null
