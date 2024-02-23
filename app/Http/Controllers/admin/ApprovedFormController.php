@@ -12,23 +12,34 @@ use Illuminate\Http\Request;
 class ApprovedFormController extends Controller
 {
     public function store(Request $request){
+        try{
 
-        // Store the file
-       $file = $request->file('uploadfile');
-       $fileName = $file->getClientOriginalName();
-       $file->move(public_path('uploads/ApprovedForm'), $fileName);
+            $request->validate([
+                'uploadfile' => 'required',
+                'formNo' => 'required',
+                'date_upload' => 'required'
+            ]);
 
-       // Insert file path into the database using Query Builder
-       $data = DB::table('generated_files')->insert([
-           'landholding_id' => $request->landholding_id,
-           'uploadfile' => $fileName,
-           'formNo' => $request->formNo,
-           'date_upload' => $request->date_upload,
-           'created_at' => now(),
-           'updated_at' => now(),
-       ]);
+             // Store the file
+            $file = $request->file('uploadfile');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('uploads/ApprovedForm'), $fileName);
 
-       return redirect()->back()->with('success', 'File uploaded successfully.');
+            // Insert file path into the database using Query Builder
+            $data = DB::table('generated_files')->insert([
+                'landholding_id' => $request->landholding_id,
+                'uploadfile' => $fileName,
+                'formNo' => $request->formNo,
+                'date_upload' => $request->date_upload,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->back()->with('success', 'File uploaded successfully.');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Failed to insert data!!! ' . $e->getMessage());
+        }
     }
     public function update(Request $request, $id){
 

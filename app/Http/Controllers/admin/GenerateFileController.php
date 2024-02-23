@@ -30,6 +30,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        $currentdate = date('m-d-Y');
+
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -44,6 +46,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('phase', $data->phase);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
@@ -154,6 +157,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        $currentdate = date('m-d-Y');
+
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.10.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -168,6 +173,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('phase', $data->phase);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.10' . '-' . $fileName . '.docx');
 
@@ -199,7 +205,9 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
-        
+
+        $currentdate = date('m-d-Y');
+
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.11.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -217,6 +225,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.11' . '-' . $fileName . '.docx');
 
@@ -336,6 +345,8 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
+
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.20.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -358,6 +369,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.20' . '-' . $fileName . '.docx');
         return response()->download('Form No.20' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -380,6 +392,8 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
+
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.37.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -401,6 +415,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.37' . '-' . $fileName . '.docx');
@@ -472,6 +487,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
+        $currentdate = date('m-d-Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -491,6 +507,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.45A' . '-' . $fileName . '.docx');
@@ -713,15 +730,6 @@ class GenerateFileController extends Controller
         
         $lotnumbers = DB::table('lots')->select('lotNo')->where('lots.landholding_id', $id)->get();
         
-        $valuation = DB::table('valuations')
-            ->join('landholdings', 'landholdings.id', '=', 'valuations.landholding_id')
-            ->join('lots', 'lots.id', '=', 'valuations.lotNumber_id')
-            ->select('valuations.*', 'lots.lotNo','lots.arb_name')
-            ->where('valuations.landholding_id', $id)
-            ->groupBy('lots.arb_name')
-            ->sum('amount');
-        
-            dd($valuation);
         $lotNos = [];
         foreach ($lotnumbers as $lotnumber) {
             $lotNos[] = $lotnumber->lotNo;
@@ -735,6 +743,8 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
+
+        $currentdate = date('m-d-Y');
 
         $lotNoString = implode(', ', $lotNos);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
@@ -760,6 +770,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.51' . '-' . $fileName . '.docx');
         return response()->download('Form No.51' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -792,6 +803,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -814,6 +826,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.52A' . '-' . $fileName . '.docx');
         return response()->download('Form No.52A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -845,6 +858,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -867,6 +881,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
+        $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
@@ -938,7 +953,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.54.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -962,6 +977,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.54' . '-' . $fileName . '.docx');
@@ -996,6 +1012,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.57.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1017,9 +1034,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.57' . '-' . $fileName . '.docx');
         return response()->download('Form No.57' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1053,6 +1069,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1076,6 +1093,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.58' . '-' . $fileName . '.docx');
@@ -1109,7 +1127,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.59.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1132,6 +1150,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
@@ -1172,6 +1191,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1197,6 +1217,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.60' . '-' . $fileName . '.docx');
@@ -1226,6 +1247,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.61.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1249,6 +1271,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.61' . '-' . $fileName . '.docx');
@@ -1282,7 +1305,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.62.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1307,6 +1330,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.62' . '-' . $fileName . '.docx');
@@ -1335,7 +1359,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.63.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1359,6 +1383,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.63' . '-' . $fileName . '.docx');
@@ -1387,7 +1412,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.64.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1411,7 +1436,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.64' . '-' . $fileName . '.docx');
         return response()->download('Form No.64' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1439,7 +1464,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.65.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1453,7 +1478,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.65' . '-' . $fileName . '.docx');
         return response()->download('Form No.65' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1529,11 +1554,11 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.67.docx');
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.67' . '-' . $fileName . '.docx');
         return response()->download('Form No.67' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1561,7 +1586,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1585,7 +1610,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.68A' . '-' . $fileName . '.docx');
         return response()->download('Form No.68A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1703,6 +1728,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        $currentdate = date('m-d-Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.69.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1720,7 +1746,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.69' . '-' . $fileName . '.docx');
         return response()->download('Form No.69' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
