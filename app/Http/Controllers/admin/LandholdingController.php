@@ -107,7 +107,6 @@ class LandholdingController extends Controller
         catch(\Exception $e){
             return redirect()->back()->with('error', 'Failed to insert data!!! ' . $e->getMessage());
         }
-
     }
     public function update(Request $request, $id)
     {
