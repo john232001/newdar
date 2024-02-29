@@ -191,11 +191,11 @@ class LandholdingController extends Controller
         $generatedFile = DB::table('generated_files')->where('landholding_id', $id)->first();
 
         if ($generatedFile) {
-            $generatedfilePath = public_path('uploads/GeneratedFile/' . $generatedFile->uploadfile);
+            $generatedfilePath = public_path('uploads/ApprovedForm/' . $generatedFile->uploadfile);
 
             if (File::exists($generatedfilePath)) {
                 File::delete($generatedfilePath);
-                Storage::delete(storage_path('app/public/uploads/Title/' . $generatedFile->uploadfile));
+                Storage::delete(storage_path('app/public/uploads/ApprovedForm/' . $generatedFile->uploadfile));
             }
 
             // Delete the record from the database
@@ -213,7 +213,7 @@ class LandholdingController extends Controller
             File::delete($taxfilePath);
             Storage::delete(storage_path('app/public/uploads/Title/' . $landholding->taxDocuments));
         }
-
+        
         DB::table('lots')->where('landholding_id', $id)->delete();
         DB::table('asps')->where('landholding_id', $id)->delete();
         DB::table('arbs')->where('landholding_id', $id)->delete();

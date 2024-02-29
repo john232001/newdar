@@ -1,14 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+@include('layouts.home-navbar')
+
+<div class="container-fluid d-flex justify-content-center align-items-center bg-white bg-cover" style="min-height: 100vh; background-image: url('../assets/img/backgroundarb.jpg')">
   <div class="row border rounded-5 p-3 bg-white shadow box-area">
   <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #1b5f24;">
       <div class="featured-image mb-3">
-       <img src="assets/img/dar-logo.png" class="img-fluid" style="width: 250px;">
+       <img src="{{ asset('assets/img/dar-logo.png')}}" class="img-fluid" style="width: 250px;">
       </div>
-      <small class="text-center text-white">Republic of the Philippines</small>
-      <p class="text-center text-white fs-5" style="font-weight: bold">Department of Agrarian Reform</p>
   </div>      
   <div class="col-md-6 right-box">
      <div class="row align-items-center">

@@ -20,15 +20,21 @@
         </li>
       </ul>
       <div class="d-flex align-items-center">
-        <a class="btn btn-login btn-sm" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-            <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
+        <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('assets/img/admin.png')}}" style="width: 25px" alt=""> {{ auth()->user()->username}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"> <i class="fa-solid fa-power-off"></i> {{ __('Logout') }}
+              </a>
+            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

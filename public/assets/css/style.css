@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: #1b5f24;
+    background-color: #1b5f24;
 }
 /* login */
 .box-area{
@@ -117,6 +117,7 @@ table{
     .nav-item{
         font-size: 18px;
     }
+
     
 }
 /* medium screen navbar */
@@ -141,3 +142,50 @@ table{
 .breadcrumb-item+.breadcrumb-item::before {
     color: #ffff;
 }
+.leader{
+    font-size: 18px;
+    font-weight: 700;
+}
+.term{
+    font-size: 14px;
+}
+/* background */
+.bg-cover{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media only screen and (max-width: 320px){
+    .title-text{
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: -20px;
+    }
+    .info{
+        display: flex;
+        font-size: 9px;
+    }
+    .dataTables_filter input {
+        width: 100px !important;
+        margin-top: 10px; 
+    }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+        font-size: 12px;
+    }
+    
+}
+@media only screen and (max-width: 425px){
+    
+   .card .hero-img{
+    display: none;
+   }
+  .download-title{
+    font-size: 16px;
+  }
+  .title-text{
+    text-align: center;
+  }  
+}
+
+

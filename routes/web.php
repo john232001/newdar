@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -16,7 +17,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [HomeController::class, 'login']);
+//Homepage Routes
+Route::get('/', [LandingPageController::class, 'home'])->name('home');
+Route::get('about', [LandingPageController::class, 'about'])->name('about');
+Route::get('darleaders', [LandingPageController::class, 'darleaders'])->name('darleaders');
+Route::get('services', [LandingPageController::class, 'services'])->name('services');
+
+Route::get('login', [HomeController::class, 'login'])->name('login');
 
 Auth::routes();
 //Admin Routes List
@@ -85,8 +92,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/form10/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform10'])->name('form10_generate');
     Route::get('admin/form11/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform11'])->name('form11_generate');
     Route::get('admin/form17/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform17'])->name('form17_generate');
-    Route::get('admin/form18/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform18'])->name('form18_generate');
-    Route::get('admin/form20/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform20'])->name('form20_generate');
     Route::get('admin/form42/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform42'])->name('form42_generate');
     Route::get('admin/form45A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform45A'])->name('form45A_generate');
     Route::get('admin/form46/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform46'])->name('form46_generate');
@@ -137,8 +142,6 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
     Route::get('staff/form10/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform10'])->name('staff_form10_generate');
     Route::get('staff/form11/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform11'])->name('staff_form11_generate');
     Route::get('staff/form17/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform17'])->name('staff_form17_generate');
-    Route::get('staff/form18/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform18'])->name('staff_form18_generate');
-    Route::get('staff/form20/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform20'])->name('staff_form20_generate');
     Route::get('staff/form42/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform42'])->name('staff_form42_generate');
     Route::get('staff/form45A/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform45A'])->name('staff_form45A_generate');
     Route::get('staff/form46/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform46'])->name('staff_form46_generate');

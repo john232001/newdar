@@ -12,7 +12,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
         <a href="{{ route('valuation_delete', $data->id )}}">
-          <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </a>
       </div>
     </div>

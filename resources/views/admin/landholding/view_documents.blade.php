@@ -10,10 +10,10 @@
         <div class="col-lg-6 col-md-12">
             <div class="card rounded-4">
               <div class="card-body d-flex justify-content-center">
-                <img src="{{ asset('assets/img/dashboard-landholdings.png')}}" class="card-img-top" alt="dar-logo" style="width: 150px;">
+                <img src="{{ asset('assets/img/dashboard-landholdings.png')}}" class="hero-img" alt="dar-logo" style="width: 150px;">
                 @foreach($data as $items )
-                  <div class="card border-0">
-                    <h5 class="card-title text-center text-success mt-4" style="font-weight: 800;">{{ $items->firstname }} {{ $items->familyname }}</h5>
+                  <div class="card-download border-0">
+                    <h5 class="download-title text-center text-success mt-4" style="font-weight: 800;">{{ $items->firstname }} {{ $items->familyname }}</h5>
                     <div class="card-body">
                       <table class="table">
                         <tr>

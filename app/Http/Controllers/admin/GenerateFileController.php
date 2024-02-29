@@ -30,7 +30,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -113,6 +113,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        $currentdate = date('F j, Y');
+
         $formIdentifier = 'form_3';
 
         // Update or create a log record with a unique identifier for each form
@@ -134,6 +136,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('phase', $data->phase);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.3' . '-' . $fileName . '.docx');
         return response()->download('Form No.3' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -157,12 +160,22 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.10.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        // Check if middlename is not null
+        if ($data->middlename !== null) {
+            // Get the first letter of the middle name
+            $firstLetter = substr($data->middlename, 0, 1);
+            // Set the value of the 'middlename' placeholder to the first letter
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            // Handle the case where middlename is null
+            // You can set a default value or handle it as needed
+            $templateProcessor->setValue('middlename', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -206,7 +219,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.11.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -285,95 +298,7 @@ class GenerateFileController extends Controller
 
         return response()->download('Form No.17' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
-    public function generateform18($id)
-    {
-
-        $data = DB::table('landholdings')
-            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
-            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
-            ->where('landholdings.id', $id)
-            ->first();
-
-        $paro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
-        
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_18'; // Replace this with your actual form identifier
-
-        // Update or create a log record with a unique identifier for each form
-        GenerateLog::updateOrCreate(
-            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
-            ['generation_date' => now()]
-        );
-
-        $templateProcessor = new TemplateProcessor('Form-template/FormNo.18.docx');
-        $templateProcessor->setValue('municipality', $data->muni_name);
-        $templateProcessor->setValue('barangay', $data->brgy_names);
-        $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
-        $templateProcessor->saveAs('Form No.18' . '-' . $fileName . '.docx');
-        return response()->download('Form No.18' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
-    }
-    public function generateform20($id)
-    {
-        $data = DB::table('landholdings')
-            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
-            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
-            ->where('landholdings.id', $id)
-            ->first();
-
-        $paro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
-
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_20'; // Replace this with your actual form identifier
-
-        // Update or create a log record with a unique identifier for each form
-        GenerateLog::updateOrCreate(
-            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
-            ['generation_date' => now()]
-        );
-
-        $currentdate = date('m-d-Y');
-
-        $templateProcessor = new TemplateProcessor('Form-template/FormNo.20.docx');
-        $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
-        if ($data->middlename !== null) {
-            // Get the first letter of the middle name
-            $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
-            $templateProcessor->setValue('middlename', $firstLetter . '.');
-        }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
-            $templateProcessor->setValue('middlename', '');
-        }
-        $templateProcessor->setValue('municipality', $data->muni_name);
-        $templateProcessor->setValue('barangay', $data->brgy_names);
-        $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
-        $templateProcessor->saveAs('Form No.20' . '-' . $fileName . '.docx');
-        return response()->download('Form No.20' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
-    }
+    
     public function generateform37($id)
     {
         $data = DB::table('landholdings')
@@ -392,7 +317,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.37.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -487,7 +412,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -744,7 +669,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
 
         $lotNoString = implode(', ', $lotNos);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
@@ -803,7 +728,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -858,7 +783,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1012,7 +937,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.57.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1069,7 +994,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1191,7 +1116,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1247,7 +1172,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.61.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1305,7 +1230,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.62.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1323,11 +1248,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
@@ -1359,7 +1279,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.63.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1377,14 +1297,9 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.63' . '-' . $fileName . '.docx');
         return response()->download('Form No.63' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -1412,7 +1327,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.64.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1450,11 +1365,6 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
             ->where('landholdings.id', $id)
             ->first();
-
-        $paro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
         
         // Assuming you have a variable $formIdentifier containing a unique identifier for each form
         $formIdentifier = 'form_65'; // Replace this with your actual form identifier
@@ -1464,7 +1374,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.65.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1472,12 +1382,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
-        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.65' . '-' . $fileName . '.docx');
@@ -1554,7 +1459,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.67.docx');
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
@@ -1586,7 +1491,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1604,11 +1509,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
@@ -1651,11 +1551,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
@@ -1728,7 +1624,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.69.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);

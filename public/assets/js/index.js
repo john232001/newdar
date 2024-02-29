@@ -2,7 +2,8 @@
 
 new DataTable('#example', {
     responsive: true,
-    autoWidth: false
+    autoWidth: false,
+    scrollX: true
 });
 new DataTable('#arb', {
     responsive: true,
@@ -34,6 +35,5 @@ new DataTable('#approved', {
     responsive: true,
     autoWidth: false,
 });
-
 
 

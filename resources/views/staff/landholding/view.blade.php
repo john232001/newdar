@@ -337,38 +337,6 @@
                                 </a>
                             </td>
                           </tr>
-                          <tr>
-                            <td>18</td>
-                            <td>LO Letter Offer</td>
-                            @forelse ($generateform18 as $items)
-                                <td>{{ $items->generation_date}}</td>
-                            @empty
-                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
-                            @endforelse
-                            <td>
-                                <a href="{{ route('staff_form18_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm mb-1">
-                                      <i class="fa fa-print"></i> Generate
-                                    </button>
-                                </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>20</td>
-                            <td>Acceptance Letter for VOS</td>
-                            @forelse ($generateform20 as $items)
-                                <td>{{ $items->generation_date}}</td>
-                            @empty
-                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
-                            @endforelse
-                            <td>
-                                <a href="{{ route('staff_form20_generate', $data->id )}}">
-                                    <button type="submit" class="btn btn-success btn-sm mb-1">
-                                      <i class="fa fa-print"></i> Generate
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
                         <tr>
                           <td>37</td>
                           <td>APFU</td>

@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
                 <label class="form-label">Middle Initial</label>
-                <input type="password" class="form-control" name="mname" value="{{ $data->mname }}"  placeholder="Middle Initial">
+                <input type="text" class="form-control" name="mname" value="{{ $data->mname }}"  placeholder="Middle Initial">
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
                 <label class="form-label">Lastname <span class="text-danger">*</span></label>
@@ -65,7 +65,7 @@
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+        <button type="submit" class="btn btn-primary btn-sm">Update</button>
       </div>
     </form>
   </div>
