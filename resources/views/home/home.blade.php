@@ -4,18 +4,7 @@
 
 @include('layouts.home-navbar')
 <section id="home">
-    <div class="bg-cover min-vh-100 d-flex align-items-center" style="background-image: url('../assets/img/backgroundarb.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="text-white fs-1">Deparment of Agrarian Reform</h2>
-                    <p class="text-white">The Department of Agrarian Reform is the lead government agency that
-                    holds and implements comprehensive and genuine agrarian reform which actualizes equitable land distribution,
-                    ownership, agricultural productivity, and tenurial security for,
-                    of and with the tillers of the land towards the improvement of their quality of life.</p>
-                </div>
-            </div>
-        </div>
+    <div class="bg-cover min-vh-100 d-flex align-items-center" style="background-image: url('../assets/img/background.jpg')">
     </div>
 </section>
 <!-- About Us Sections -->

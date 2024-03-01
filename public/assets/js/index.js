@@ -2,7 +2,7 @@
 
 new DataTable('#example', {
     responsive: true,
-    autoWidth: false,
+    autoWidth: true,
     scrollX: true
 });
 new DataTable('#arb', {

@@ -4,6 +4,11 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: #1b5f24;
 }
+.bg-cover{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
 /* login */
 .box-area{
     width: 930px;
@@ -162,16 +167,18 @@ table{
         font-size: 20px;
         margin-bottom: -20px;
     }
-    .info{
-        display: flex;
-        font-size: 9px;
-    }
     .dataTables_filter input {
         width: 100px !important;
         margin-top: 10px; 
     }
     div.dataTables_wrapper div.dataTables_paginate ul.pagination{
         font-size: 12px;
+    }
+    strong{
+        font-size: 10px;
+    }
+    .info{
+        font-size: 10px;
     }
     
 }

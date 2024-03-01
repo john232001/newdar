@@ -4,7 +4,7 @@
 
 @include('layouts.home-navbar')
 
-<div class="container-fluid d-flex justify-content-center align-items-center bg-white bg-cover" style="min-height: 100vh; background-image: url('../assets/img/backgroundarb.jpg')">
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="row border rounded-5 p-3 bg-white shadow box-area">
   <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #1b5f24;">
       <div class="featured-image mb-3">

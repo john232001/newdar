@@ -5,7 +5,7 @@
 @include('admin.admin_navbar')
 
   <div class="container">
-    <h2 class="title-text text-center">Download Scanned Files</h2>
+    <h2 class="title-text text-center">Download Scanned Documents</h2>
     <div class="row d-flex justify-content-center">
         <div class="col-lg-6 col-md-12">
             <div class="card rounded-4">
