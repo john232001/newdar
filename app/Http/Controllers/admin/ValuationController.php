@@ -23,7 +23,7 @@ class ValuationController extends Controller
                 'amount.required' => 'The amount field is required.',
             ]);
 
-            DB::table('valuations')->insert([
+        DB::table('valuations')->insert([
                 'landholding_id' => $request->landholding_id,
                 'lotNumber_id' => $request->lotNumber_id,
                 'aocNo' => $request->aocNo,
@@ -39,7 +39,6 @@ class ValuationController extends Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
-
             return redirect()->back()->with('success', 'Added successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to insert data!!!' . $e->getMessage());

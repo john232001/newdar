@@ -179,7 +179,14 @@
                             <td>{{ $data->dateServed }}</td>
                             <td>{{ $data->dateofFI }}</td>
                             <td>{{ $data->dateofCF }}</td>
-                            <td>{{ $data->transmittalStatus }}</td>
+                            <td>
+                              @if($data->transmittalStatus == 'Accepted')
+                                <span class="badge bg-primary">{{ $data->transmittalStatus }}</span>
+                              @endif
+                              @if($data->transmittalStatus == 'Returned')
+                                <span class="badge bg-danger">{{ $data->transmittalStatus }}</span>
+                              @endif
+                            </td>
                         </tr>
                       @endforeach
                     </tbody>
@@ -747,6 +754,118 @@
                             @endforelse
                           <td>
                               <a href="{{ route('staff_form69_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A1</td>
+                          <td>List of Potential Children-Awardee under CARP</td>
+                          @forelse($generateawardform1 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform1_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A2</td>
+                          <td>Letter to Potential Children-Awardees Regarding the Award <br> of Agricultural Lands owned by Parent-Landowner</td>
+                          @forelse($generateawardform2 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform2_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A3</td>
+                          <td>Certificate of Posting Compliance</td>
+                          @forelse($generateawardform3 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform3_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A4</td>
+                          <td>Field Investigation Report</td>
+                          @forelse($generateawardform4 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform4_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A5</td>
+                          <td>Recommendation for Approval/Disapproval of Award to Children <br> of Agricultural Lands owned by Parent-Landowner</td>
+                          @forelse($generateawardform5 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform5_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A6</td>
+                          <td>Order of Award to Qualified Children of Parent-Landowner</td>
+                          @forelse($generateawardform6 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform6_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>A7</td>
+                          <td>Order of Denial to Disqualified Children of Parent-Landowner</td>
+                          @forelse($generateawardform7 as $items)
+                                <td>{{ $items->generation_date }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('staff_awardform7_generate', $data->id )}}">
                                   <button type="submit" class="btn btn-success btn-sm mb-1">
                                     <i class="fa fa-print"></i>  Generate
                                   </button>

@@ -328,6 +328,13 @@ class LandholdingController extends Controller
         $generateform68A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_68A')->get();
         $generateform68B = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_68B')->get();
         $generateform69 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_69')->get();
+        $generateawardform1 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_1')->get();
+        $generateawardform2 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_2')->get();
+        $generateawardform3 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_3')->get();
+        $generateawardform4 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_4')->get();
+        $generateawardform5 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_5')->get();
+        $generateawardform6 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_6')->get();
+        $generateawardform7 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_7')->get();
         //get only the value 'Carpable' in ID
         $lotNumber = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 
@@ -342,6 +349,7 @@ class LandholdingController extends Controller
                                                       'generateform42','generateform45A','generateform46','generateform47','generateform49','generateform51','generateform52A',
                                                       'generateform52B','generateform53','generateform54','generateform57','generateform58','generateform59','generateform60','generateform61',
                                                        'generateform62','generateform63','generateform64','generateform65','generateform66','generateform67','generateform68','generateform68A',
-                                                    'generateform68B','generateform69'));
+                                                        'generateform68B','generateform69','generateawardform1','generateawardform2','generateawardform3','generateawardform4','generateawardform5','generateawardform6',
+                                                        'generateawardform7'));
     }
 }

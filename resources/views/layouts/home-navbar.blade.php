@@ -21,7 +21,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('login' )}}">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-outline-light fw-bold" type="submit">Login</button>
             </a>
           </li>
         </ul>

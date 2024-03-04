@@ -54,13 +54,13 @@
                   <input type="text" class="form-control" name="dateofCF" placeholder="Date NVLA Served to LO">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
-                  <label class="form-label">Transmittal Status</label>
-                  <select class="form-select" name="transmittalStatus">
-                      <option value="">Select option</option>
-                      <option value="Accepted">Accepted</option>
-                      <option value="Returned">Returned</option>
-                  </select>
-              </div>
+                <label class="form-label">Transmittal Status</label>
+                <select class="form-select" name="transmittalStatus_id">
+                    <option value="">Select option</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Returned">Returned</option>
+                </select>
+            </div>
               <div class="col-lg-12 mb-2">
                   <label class="form-label"><span class="text-danger">If returned, state reasons</span></label>
                   <input type="text" class="form-control" name="dateofCF">

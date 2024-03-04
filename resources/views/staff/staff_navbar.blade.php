@@ -21,7 +21,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">{{ __('Logout') }}
+                document.getElementById('logout-form').submit();"> <i class="fa-solid fa-power-off"></i> {{ __('Logout') }}
               </a>
             </li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

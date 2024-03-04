@@ -118,7 +118,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/form68A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform68A'])->name('form68A_generate');
     Route::get('admin/form68B/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform68B'])->name('form68B_generate');
     Route::get('admin/form69/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform69'])->name('form69_generate');
-
+    Route::get('admin/AwardForm1/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform1'])->name('awardform1_generate');
+    Route::get('admin/AwardForm2/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform2'])->name('awardform2_generate');
+    Route::get('admin/AwardForm3/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform3'])->name('awardform3_generate');
+    Route::get('admin/AwardForm4/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform4'])->name('awardform4_generate');
+    Route::get('admin/AwardForm5/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform5'])->name('awardform5_generate');
+    Route::get('admin/AwardForm6/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform6'])->name('awardform6_generate');
+    Route::get('admin/AwardForm7/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateawardform7'])->name('awardform7_generate');
 });
 
 //Staff Routes List
@@ -168,4 +174,11 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
     Route::get('staff/form68A/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform68A'])->name('staff_form68A_generate');
     Route::get('staff/form68B/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform68B'])->name('staff_form68B_generate');
     Route::get('staff/form69/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateform69'])->name('staff_form69_generate');
+    Route::get('staff/AwardForm1/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform1'])->name('staff_awardform1_generate');
+    Route::get('staff/AwardForm2/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform2'])->name('staff_awardform2_generate');
+    Route::get('staff/AwardForm3/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform3'])->name('staff_awardform3_generate');
+    Route::get('staff/AwardForm4/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform4'])->name('staff_awardform4_generate');
+    Route::get('staff/AwardForm5/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform5'])->name('staff_awardform5_generate');
+    Route::get('staff/AwardForm6/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform6'])->name('staff_awardform6_generate');
+    Route::get('staff/AwardForm7/generateform/{id}', [App\Http\Controllers\staff\GenerateFileController::class, 'generateawardform7'])->name('staff_awardform7_generate');
 });
