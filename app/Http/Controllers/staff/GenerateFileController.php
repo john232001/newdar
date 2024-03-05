@@ -50,10 +50,8 @@ class GenerateFileController extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_1'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_1';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -77,7 +75,6 @@ class GenerateFileController extends Controller
         
         $formIdentifier = 'form_2';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -117,7 +114,6 @@ class GenerateFileController extends Controller
 
         $formIdentifier = 'form_3';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -165,15 +161,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.10.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -190,10 +181,8 @@ class GenerateFileController extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.10' . '-' . $fileName . '.docx');
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_10'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_10';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -224,15 +213,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.11.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -242,10 +226,8 @@ class GenerateFileController extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.11' . '-' . $fileName . '.docx');
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_11'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_11';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -265,15 +247,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.17.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -287,10 +264,8 @@ class GenerateFileController extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.17' . '-' . $fileName . '.docx');
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_17'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_17';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -308,10 +283,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name','municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)->first();
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_37'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_37';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -322,15 +295,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.37.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -355,10 +323,8 @@ class GenerateFileController extends Controller
         ->select('landholdings.*', 'officers.officer_name','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_42'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_42';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -367,15 +333,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.42.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -404,10 +365,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_45A'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_45A';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -417,15 +376,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -456,10 +410,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_46'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_46';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -468,15 +420,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.46.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -514,10 +461,8 @@ class GenerateFileController extends Controller
             ->where('arbs.landholding_id', $id)
             ->get();
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_47'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_47';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -526,15 +471,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.47.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -546,12 +486,9 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('aspNo', $data->aspNo);
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
-        // Prepare an array to hold the modified values
         $values = [];
 
-        // Iterate through each user record
         foreach ($getarbs as $arbs) {
-            // Manipulate the data or create a new structure based on your requirements
             $values[] = [
                 'fname' => $arbs->fname,
                 'lname' => $arbs->lname,
@@ -567,7 +504,6 @@ class GenerateFileController extends Controller
             ];
         }
 
-        // Clone rows and set values for each user in the $values array
         $templateProcessor->cloneRowAndSetValues('fname', $values);
 
         $fileName = $data->familyname;
@@ -582,6 +518,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
+
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
@@ -597,11 +534,9 @@ class GenerateFileController extends Controller
         foreach ($lotnumbers as $lotnumber) {
             $lotNos[] = $lotnumber->lotNo;
         }
-        
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_49'; // Replace this with your actual form identifier
+    
+        $formIdentifier = 'form_49';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -611,15 +546,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.49.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename','');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -628,7 +558,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('lotNo', $lotNoString);
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
         $fileName = $data->familyname;
@@ -660,10 +589,8 @@ class GenerateFileController extends Controller
             $lotNos[] = $lotnumber->lotNo;
         }
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_51'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_51';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -675,15 +602,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -719,10 +641,8 @@ class GenerateFileController extends Controller
         ->where('lots.lotType_id', 1)
         ->sum('lotArea');
 
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_52A'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_52A';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -732,15 +652,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -769,15 +684,9 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
-        
-        $gettotalArea = DB::table('lots')
-            ->where('lots.landholding_id', $id)
-            ->where('lots.lotType_id', 1)
-            ->sum('lotArea');
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_52B'; // Replace this with your actual form identifier
 
-        // Update or create a log record with a unique identifier for each form
+        $formIdentifier = 'form_52B';
+
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -787,15 +696,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -805,10 +709,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.52B' . '-' . $fileName . '.docx');
         return response()->download('Form No.52B' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -816,10 +718,9 @@ class GenerateFileController extends Controller
     public function generateform53($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -828,10 +729,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_53'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_53';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -853,10 +752,9 @@ class GenerateFileController extends Controller
     public function generateform54($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -870,10 +768,8 @@ class GenerateFileController extends Controller
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_54'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_54';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -882,15 +778,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.54.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -911,10 +802,9 @@ class GenerateFileController extends Controller
     public function generateform57($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -928,10 +818,8 @@ class GenerateFileController extends Controller
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_57'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_57'; 
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -941,21 +829,15 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.57.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
@@ -968,10 +850,9 @@ class GenerateFileController extends Controller
     public function generateform58($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -985,10 +866,8 @@ class GenerateFileController extends Controller
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_58'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_58';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -998,15 +877,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1027,10 +901,9 @@ class GenerateFileController extends Controller
     public function generateform59($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1044,10 +917,8 @@ class GenerateFileController extends Controller
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_59'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_59';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1056,15 +927,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.59.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1085,10 +951,9 @@ class GenerateFileController extends Controller
     public function generateform60($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1107,10 +972,8 @@ class GenerateFileController extends Controller
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_60'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_60';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1120,15 +983,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1139,7 +997,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
@@ -1151,10 +1008,9 @@ class GenerateFileController extends Controller
     public function generateform61($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1163,10 +1019,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_61'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_61';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1176,15 +1030,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.61.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1192,9 +1041,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
@@ -1205,10 +1052,9 @@ class GenerateFileController extends Controller
     public function generateform62($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1222,10 +1068,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_62'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_62';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1234,15 +1078,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.62.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1259,10 +1098,9 @@ class GenerateFileController extends Controller
     public function generateform63($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1270,11 +1108,9 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
-        
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_63'; // Replace this with your actual form identifier
 
-        // Update or create a log record with a unique identifier for each form
+        $formIdentifier = 'form_63';
+
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1283,15 +1119,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.63.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1319,10 +1150,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_64'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_64';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1331,15 +1160,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.64.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1359,17 +1183,14 @@ class GenerateFileController extends Controller
     public function generateform65($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_65'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_65';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1408,10 +1229,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_66'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_66';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1451,10 +1270,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_67'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_67';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1471,10 +1288,9 @@ class GenerateFileController extends Controller
     public function generateform68A($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1483,10 +1299,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_68A'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_68A';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1495,15 +1309,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -1518,10 +1327,9 @@ class GenerateFileController extends Controller
     public function generateform68B($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
+            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
 
@@ -1535,10 +1343,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_68B'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_68B';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1561,40 +1367,22 @@ class GenerateFileController extends Controller
     }
     public function generateform68($id)
     {
-        $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
-            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
-            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names','valuations.amount')
-            ->where('landholdings.id', $id)
-            ->first();
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
 
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_68'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_68';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68.docx');
-        $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
-        $templateProcessor->setValue('municipality', $data->muni_name);
-        $templateProcessor->setValue('barangay', $data->brgy_names);
-        $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $data->lotNo);
-        $templateProcessor->setValue('surveyNo', $data->surveyNo);
-        $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
         $fileName = $data->familyname;
@@ -1604,7 +1392,6 @@ class GenerateFileController extends Controller
     public function generateform69($id)
     {
         $data = DB::table('landholdings')
-            ->leftJoin('valuations', 'landholdings.id', '=', 'valuations.landholding_id')
             ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
             ->where('landholdings.id', $id)
@@ -1615,10 +1402,8 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        // Assuming you have a variable $formIdentifier containing a unique identifier for each form
-        $formIdentifier = 'form_69'; // Replace this with your actual form identifier
+        $formIdentifier = 'form_69';
 
-        // Update or create a log record with a unique identifier for each form
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
@@ -1628,15 +1413,10 @@ class GenerateFileController extends Controller
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.69.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
-        // Check if middlename is not null
         if ($data->middlename !== null) {
-            // Get the first letter of the middle name
             $firstLetter = substr($data->middlename, 0, 1);
-            // Set the value of the 'middlename' placeholder to the first letter
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
-            // Handle the case where middlename is null
-            // You can set a default value or handle it as needed
             $templateProcessor->setValue('middlename', '');
         }
         $templateProcessor->setValue('municipality', $data->muni_name);
