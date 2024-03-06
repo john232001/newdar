@@ -42,6 +42,10 @@ class Landholding extends Model
         'projectedDelivery',
         'maro_id',
         'paro_id',
+        'carpo_id',
+        'ceo_id',
+        'manager_id',
+        'rod_id',
         'title',
         'taxDocuments'
     ];

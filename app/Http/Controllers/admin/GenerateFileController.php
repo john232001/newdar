@@ -409,6 +409,11 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
+        
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_46';
 
@@ -436,6 +441,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('aspNo', $data->aspNo);
         $templateProcessor->setValue('maro', strtoupper ($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.46' . '-' . $fileName . '.docx');
         return response()->download('Form No.46' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -523,6 +529,17 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
             ->where('lots.lotType_id', 1)
@@ -559,6 +576,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
+        $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.49' . '-' . $fileName . '.docx');
@@ -763,6 +782,16 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
             ->where('lots.lotType_id', 1)
@@ -774,7 +803,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-        $currentdate = date('m-d-Y');
+        $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.54.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -793,6 +822,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
+        $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
@@ -810,6 +841,11 @@ class GenerateFileController extends Controller
 
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
@@ -842,6 +878,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
         $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.57' . '-' . $fileName . '.docx');
@@ -858,6 +895,16 @@ class GenerateFileController extends Controller
 
         $paro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
@@ -892,6 +939,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
+        $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
@@ -1068,6 +1117,11 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
         $formIdentifier = 'form_62';
 
         GenerateLog::updateOrCreate(
@@ -1089,6 +1143,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
         $fileName = $data->familyname;
@@ -1150,6 +1205,11 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
         $formIdentifier = 'form_64';
 
         GenerateLog::updateOrCreate(
@@ -1175,6 +1235,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
         $templateProcessor->setValue('date', $currentdate);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.64' . '-' . $fileName . '.docx');
@@ -1188,6 +1249,16 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
+        
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_65';
 
@@ -1205,6 +1276,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
+        $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
+        $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.65' . '-' . $fileName . '.docx');
         return response()->download('Form No.65' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);

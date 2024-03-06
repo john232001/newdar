@@ -20,11 +20,16 @@ class LandholdingController extends Controller
             ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
             ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
             ->get();
+            
         $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
         $municipalities = DB::table('municipalities')->get();
         $maro = DB::table('officers')->where('officers.position_id', 1)->get();
         $paro = DB::table('officers')->where('officers.position_id', 2)->get();
-        return view('admin.landholding.index', compact('landholdings', 'maro', 'paro', 'municipalities','barangays'));
+        $carpo = DB::table('officers')->where('officers.position_id', 3)->get();
+        $ceo = DB::table('officers')->where('officers.position_id', 4)->get();
+        $manager = DB::table('officers')->where('officers.position_id', 5)->get();
+        $rod = DB::table('officers')->where('officers.position_id', 6)->get();
+        return view('admin.landholding.index', compact('landholdings', 'maro', 'paro','carpo','ceo','manager','rod', 'municipalities','barangays'));
     }
     public function store(Request $request)
     {
@@ -40,12 +45,19 @@ class LandholdingController extends Controller
                 'surveyNo' => 'required',
                 'lotNo' => 'required',
                 'maro_id' => 'required',
-                'paro_id' => 'required'
+                'paro_id' => 'required',
+                'manager_id' => 'required',
+                'carpo_id' => 'required',
+                'ceo_id' => 'required',
+                'rod_id' => 'required',
             ], [
                 'municipality_id' => 'The municipality field is required',
                 'barangay_id' => 'The barangay field is required',
-                'maro_id.required' => 'The maro field is required.',
-                'paro_id.required' => 'The paro field is required.'
+                'maro_id.required' => 'The MARO field is required.',
+                'paro_id.required' => 'The PARO field is required.',
+                'manager_id.required' => 'The Manager/Head field is required.',
+                'carpo_id.required' => 'The CARPO field is required.',
+                'ceo_id.required' => 'The President and CEO field is required.',
             ]);
 
             // Check if title file is present
@@ -83,6 +95,10 @@ class LandholdingController extends Controller
                 'taxNo' => $request->taxNo,
                 'maro_id' => $request->maro_id,
                 'paro_id' => $request->paro_id,
+                'carpo_id' => $request->carpo_id,
+                'manager_id' => $request->manager_id,
+                'ceo_id' => $request->ceo_id,
+                'rod_id' => $request->rod_id,
                 'modeOfAcquisition' => $request->modeOfAcquisition,
                 'coverableArea' => $request->coverableArea,
                 'carpableArea' => $request->carpableArea,
@@ -140,6 +156,10 @@ class LandholdingController extends Controller
             'projectedDelivery' => $request->projectedDelivery,
             'maro_id' => $request->maro_id,
             'paro_id' => $request->paro_id,
+            'carpo_id' => $request->carpo_id,
+            'manager_id' => $request->manager_id,
+            'ceo_id' => $request->ceo_id,
+            'rod_id' => $request->rod_id,
             "created_at" =>  date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s'),
         ]);
@@ -335,6 +355,7 @@ class LandholdingController extends Controller
         $generateawardform5 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_5')->get();
         $generateawardform6 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_6')->get();
         $generateawardform7 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_7')->get();
+        
         //get only the value 'Carpable' in ID
         $lotNumber = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 

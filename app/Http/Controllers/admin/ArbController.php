@@ -71,7 +71,7 @@ class ArbController extends Controller
     }
     public function delete($id)
     {
-        DB::table('arbs')->where('id', $id)->delete();
+        DB::table('arbs')->where('arbs.id', $id)->delete();
         return redirect()->back()->with('error', 'Deleted successfully');
     }
 }
