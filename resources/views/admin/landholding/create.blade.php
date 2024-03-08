@@ -10,7 +10,6 @@
 
           <form action="{{ route('landholding_store') }}" method="POST" enctype="multipart/form-data" class="row">
             @csrf
-            <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
               <label class="form-label">Landholding ID <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="lhid" placeholder="Landholding ID">
@@ -61,7 +60,15 @@
               <label class="form-label">Title/Survey Area <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="surveyArea" placeholder="Title/Survey Area (in hectares)">
             </div>
-            
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+              <label class="form-label">MARO <span class="text-danger">*</span></label>
+              <select class="form-select" name="maro_id">
+                <option selected>Select option</option>
+                @foreach ($maro as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
               <label class="form-label">Tax Declaration No.</label>
               <input type="text" class="form-control" name="taxNo" placeholder="Tax Declaration No.">
@@ -118,62 +125,6 @@
               <label class="form-label">Project Delivery</label>
               <input type="text" class="form-control" name="projectedDelivery" placeholder="Project Delivery">
             </div>
-            <h5 class="modal-title mb-2" id="exampleModalLabel">Officers</h5>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">MARO <span class="text-danger">*</span></label>
-              <select class="form-select" name="maro_id">
-                <option selected>Select option</option>
-                @foreach ($maro as $items)
-                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">PARO <span class="text-danger">*</span></label>
-              <select class="form-select" name="paro_id">
-                <option selected>Select option</option>
-                @foreach ($paro as $items)
-                    <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">CARPO <span class="text-danger">*</span></label>
-              <select class="form-select" name="carpo_id">
-                <option selected>Select option</option>
-                @foreach ($carpo as $items)
-                    <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Department Manager/Head <span class="text-danger">*</span></label>
-              <select class="form-select" name="manager_id">
-                <option selected>Select option</option>
-                @foreach ($manager as $items)
-                    <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">The President and CEO <span class="text-danger">*</span></label>
-              <select class="form-select" name="ceo_id">
-                <option selected>Select option</option>
-                @foreach ($ceo as $items)
-                    <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Register of Deeds <span class="text-danger">*</span></label>
-              <select class="form-select" name="rod_id">
-                <option selected>Select option</option>
-                @foreach ($rod as $items)
-                    <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <h5 class="modal-title mb-2" id="exampleModalLabel">Upload Documents</h5>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
               <label class="form-label">Title Documents</label>
               <input type="file" class="form-control" name="title">

@@ -5,7 +5,7 @@
 @include('admin.admin_navbar')
 
 <div class="container">
-  <h2 class="title-text">Manage Users</h2>
+  <h2 class="title-text">List of users</h2>
   <div class="row">
       <div class="col-lg-12 col-md-12">
           <div class="card p-5 rounded-4">
