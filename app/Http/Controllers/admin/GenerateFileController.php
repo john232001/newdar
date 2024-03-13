@@ -679,7 +679,764 @@ class GenerateFileController extends Controller
 
         return response()->download('Form No.17' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
-    
+    public function generateform18($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.18.docx');
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.18' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_18';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.18' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform18A($id)
+    {  
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.18A.docx');
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.18A' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_18A';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.18A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform19($id)
+    {  
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.19.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.19' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_19';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.19' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform20($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.20.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('date', $currentdate);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.20' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_20';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.20' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform21($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.21.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('date', $currentdate);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.21' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_21';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.21' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform22($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.22.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.22' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_22';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.22' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform23($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.23.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.23' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_23';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.23' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform24($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.24.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.24' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_24';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.24' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform25($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.25.docx');
+        $templateProcessor->setValue('firstname', strtoupper($data->firstname));
+        $templateProcessor->setValue('familyname', strtoupper($data->familyname));
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.25' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_25';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.25' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform26($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.26.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        $templateProcessor->setValue('middlename', $data->middlename);
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.26' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_26';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.26' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform27($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.27.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.27' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_27';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.27' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform28($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.28.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('maro', $data->officer_name);
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.28' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_28';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.28' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform29($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.29.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('date', $currentdate);
+        $templateProcessor->setValue('maro', $data->officer_name);
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.29' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_29';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.29' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform30($id)
+    {  
+        $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
+
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.30.docx');
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.30' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_30';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.30' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform31($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.31.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.31' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_31';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.31' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform32($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $currentdate = date('F j, Y');
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.32.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.32' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_32';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.32' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform33($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+        
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.33.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.33' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_33';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.33' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform34($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)
+            ->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.34.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.34' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_34';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.34' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform35($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.35.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.35' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_35';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.35' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform36($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.36.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename' , $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.36' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_36';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.36' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
     public function generateform37($id)
     {
         $data = DB::table('landholdings')
@@ -720,6 +1477,187 @@ class GenerateFileController extends Controller
         $templateProcessor->saveAs('Form No.37' . '-' . $fileName . '.docx');
         return response()->download('Form No.37' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
+    public function generateform37A($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)->first();
+
+        $formIdentifier = 'form_37A';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.37A.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.37A' . '-' . $fileName . '.docx');
+        return response()->download('Form No.37A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform38($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $formIdentifier = 'form_38';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.38.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.38' . '-' . $fileName . '.docx');
+        return response()->download('Form No.38' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform39($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $formIdentifier = 'form_39';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.39.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.39' . '-' . $fileName . '.docx');
+        return response()->download('Form No.39' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform40($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $formIdentifier = 'form_40';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.40.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.40' . '-' . $fileName . '.docx');
+        return response()->download('Form No.40' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform41($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $formIdentifier = 'form_41';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.41.docx');
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.41' . '-' . $fileName . '.docx');
+        return response()->download('Form No.41' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
     public function generateform42($id)
     {
         $data = DB::table('landholdings')
@@ -756,6 +1694,71 @@ class GenerateFileController extends Controller
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.42' . '-' . $fileName . '.docx');
         return response()->download('Form No.42' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform43($id)
+    {
+        $data = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $formIdentifier = 'form_43';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.43.docx');
+        $templateProcessor->setValue('maro', strtoupper($data->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.43' . '-' . $fileName . '.docx');
+        return response()->download('Form No.43' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
+    public function generateform44($id)
+    {
+        $data = DB::table('landholdings')
+        ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+        ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+        ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+        ->where('landholdings.id', $id)->first();
+
+
+        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $formIdentifier = 'form_44';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.44.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', ' ,'. $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.44' . '-' . $fileName . '.docx');
+        return response()->download('Form No.44' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
     public function generateform45A($id)
     {

@@ -548,6 +548,326 @@
                                 </a>
                             </td>
                           </tr>
+                          <tr>
+                            <td>18</td>
+                            <td>LO Letter Offer</td>
+                            @forelse ($generateform18 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form18_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>18A</td>
+                            <td>Checklist of Required Docs</td>
+                            @forelse ($generateform18A as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form18A_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>19</td>
+                            <td>Landowner's Information Sheet</td>
+                            @forelse ($generateform19 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form19_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>20</td>
+                            <td>Acceptance Letter for VOS</td>
+                            @forelse ($generateform20 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form20_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>21</td>
+                            <td>Rejection Letter for VOS</td>
+                            @forelse ($generateform21 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form21_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>22</td>
+                            <td>OCI Report</td>
+                            @forelse ($generateform22 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form22_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>23</td>
+                            <td>Notice to LO on Selected Retained Area</td>
+                            @forelse ($generateform23 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form23_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>24</td>
+                            <td>Certificate of Retention</td>
+                            @forelse ($generateform24 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form24_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>25</td>
+                            <td>Request for Cert.of Retention</td>
+                            @forelse ($generateform25 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form25_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>26</td>
+                            <td>List of LH with Issued CR</td>
+                            @forelse ($generateform26 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form26_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>27</td>
+                            <td>RSS</td>
+                            @forelse ($generateform27 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form27_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>28</td>
+                            <td>Preliminary List of Potential ARBs</td>
+                            @forelse ($generateform28 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form28_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>29</td>
+                            <td>Request-Petition to be included as PARBs</td>
+                            @forelse ($generateform29 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form29_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>30</td>
+                            <td>ARB Application with Revision - 11-23-2011</td>
+                            @forelse ($generateform30 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form30_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>31</td>
+                            <td>BARC Certified Master List of Qualified ARBs approved by the PARO</td>
+                            @forelse ($generateform31 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form31_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>32</td>
+                            <td>Transmittal Letter to BARC for certification of Master List</td>
+                            @forelse ($generateform32 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form32_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>33</td>
+                            <td>Notice on the BARC Certified Master List</td>
+                            @forelse ($generateform33 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form33_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>34</td>
+                            <td>Notice of Disqualification</td>
+                            @forelse ($generateform34 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form34_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>35</td>
+                            <td>Amended Master List of Qualified ARBs</td>
+                            @forelse ($generateform35 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form35_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>36</td>
+                            <td>Notice</td>
+                            @forelse ($generateform36 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                            <td>
+                                <a href="{{ route('form36_generate', $data->id )}}">
+                                    <button type="submit" class="btn btn-success btn-sm mb-1">
+                                      <i class="fa fa-print"></i> Generate
+                                    </button>
+                                </a>
+                            </td>
+                          </tr>
                         <tr>
                           <td>37</td>
                           <td>APFU</td>
@@ -565,6 +885,86 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>37A</td>
+                          <td>Agreement of Equal Award</td>
+                          @forelse ($generateform37A as $items)
+                            <td>{{ $items->generation_date}}</td>
+                          @empty
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('form37A_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>38</td>
+                          <td>Notice to ARB Schedule of APFU Signing</td>
+                          @forelse ($generateform38 as $items)
+                            <td>{{ $items->generation_date}}</td>
+                          @empty
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('form38_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>39</td>
+                          <td>Notice to Absentee ARB om Waiver of ARB Rights for failure to sign</td>
+                          @forelse ($generateform39 as $items)
+                            <td>{{ $items->generation_date}}</td>
+                          @empty
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('form39_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>40</td>
+                          <td>Letter to ARB Attendees who refused to sign APFU</td>
+                          @forelse ($generateform40 as $items)
+                            <td>{{ $items->generation_date}}</td>
+                          @empty
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('form40_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>41</td>
+                          <td>Report on the ARBs Failure or refusal to sign APFU</td>
+                          @forelse ($generateform41 as $items)
+                            <td>{{ $items->generation_date}}</td>
+                          @empty
+                            <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                          @endforelse
+                          <td>
+                              <a href="{{ route('form41_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>42</td>
                           <td>Certification on LOs Failure to submit BIR-Filed Audited Financial Statement</td>
                           @forelse ($generateform42 as $items)
@@ -574,6 +974,38 @@
                             @endforelse
                           <td>
                               <a href="{{ route('form42_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>43</td>
+                          <td>Claim Folder Transmittal Memorandum</td>
+                          @forelse ($generateform43 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form43_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>44</td>
+                          <td>Request on the conduct of Field Investigation</td>
+                          @forelse ($generateform44 as $items)
+                                <td>{{ $items->generation_date}}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form44_generate', $data->id )}}">
                                   <button type="submit" class="btn btn-success btn-sm mb-1">
                                     <i class="fa fa-print"></i> Generate
                                   </button>
