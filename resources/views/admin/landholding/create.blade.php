@@ -57,7 +57,7 @@
               <input type="text" class="form-control" name="lotNo" placeholder="Lot No.">
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Title/Survey Area <span class="text-danger">*</span></label>
+              <label class="form-label">Title/Survey Area (in hectares)<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="surveyArea" placeholder="Title/Survey Area (in hectares)">
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">

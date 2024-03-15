@@ -280,7 +280,7 @@
                               <td>1</td>
                               <td>Conduct of Preliminary Ocular Inspection</td>
                               @forelse ($generateform1 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                               @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                               @endforelse
@@ -296,7 +296,7 @@
                               <td>2</td>
                               <td>Certificate of Preliminary Projection</td>
                               @forelse ($generateform2 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                               @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                               @endforelse
@@ -312,7 +312,7 @@
                             <td>3</td>
                             <td>Notice of Coverage</td>
                             @forelse ($generateform3 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -328,7 +328,7 @@
                             <td>4</td>
                             <td>LO Letter Reply to NOC</td>
                             @forelse ($generateform4 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -344,7 +344,7 @@
                             <td>5</td>
                             <td>LO Manifestation to Apply for Retention</td>
                             @forelse ($generateform5 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -360,7 +360,7 @@
                             <td>6</td>
                             <td>Sketch Map of the Selected Retained Area</td>
                             @forelse ($generateform6 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -376,7 +376,7 @@
                             <td>7</td>
                             <td>LO Nomination Children as preferred beneficiaries</td>
                             @forelse ($generateform7 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -392,7 +392,7 @@
                             <td>8</td>
                             <td>Landowner's Certification on Duly Attested List of Tenants, Lessees, and-or Regular <br>Farmworkers</td>
                             @forelse ($generateform8 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -408,7 +408,7 @@
                             <td>9</td>
                             <td>Manifestation to Apply Petition for Exemption Exclusion Clearance or file <br> Petition Protest from CARP Cov</td>
                             @forelse ($generateform9 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -424,7 +424,7 @@
                             <td>10</td>
                             <td>Directive to MARO to Proceed with Coverage of Agricultural Lands with Notice of Coverage</td>
                             @forelse ($generateform10 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -440,7 +440,7 @@
                             <td>11</td>
                             <td>CF Documentation Memo</td>
                             @forelse ($generateform11 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -456,7 +456,7 @@
                             <td>12A</td>
                             <td>Request for Personal Service of the NOC or VOS Acceptance Letter <br>to the LO residing in MM</td>
                             @forelse ($generateform12A as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -472,7 +472,7 @@
                             <td>13A</td>
                             <td>Request for Personal Service of the NOC or VOS Acceptance Letter <br>to the LO residing in MM</td>
                             @forelse ($generateform13A as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -488,7 +488,7 @@
                             <td>14</td>
                             <td>Report on Failure to Serve NOC or VOS Acceptance Letter to the LO and <br> Request for NOC Publication</td>
                             @forelse ($generateform14 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -504,7 +504,7 @@
                             <td>15</td>
                             <td>Request for Publication by BLAD</td>
                             @forelse ($generateform15 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -520,7 +520,7 @@
                             <td>16</td>
                             <td>Publication of NOC or VOS Acceptance Letter</td>
                             @forelse ($generateform16 as $items)
-                              <td>{{ $items->generation_date}}</td>
+                              <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                               <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -536,7 +536,7 @@
                             <td>17</td>
                             <td>Certificate of Posting Compliance</td>
                             @forelse ($generateform17 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -552,7 +552,7 @@
                             <td>18</td>
                             <td>LO Letter Offer</td>
                             @forelse ($generateform18 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -568,7 +568,7 @@
                             <td>18A</td>
                             <td>Checklist of Required Docs</td>
                             @forelse ($generateform18A as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -584,7 +584,7 @@
                             <td>19</td>
                             <td>Landowner's Information Sheet</td>
                             @forelse ($generateform19 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -600,7 +600,7 @@
                             <td>20</td>
                             <td>Acceptance Letter for VOS</td>
                             @forelse ($generateform20 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -616,7 +616,7 @@
                             <td>21</td>
                             <td>Rejection Letter for VOS</td>
                             @forelse ($generateform21 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -632,7 +632,7 @@
                             <td>22</td>
                             <td>OCI Report</td>
                             @forelse ($generateform22 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -648,7 +648,7 @@
                             <td>23</td>
                             <td>Notice to LO on Selected Retained Area</td>
                             @forelse ($generateform23 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -664,7 +664,7 @@
                             <td>24</td>
                             <td>Certificate of Retention</td>
                             @forelse ($generateform24 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -680,7 +680,7 @@
                             <td>25</td>
                             <td>Request for Cert.of Retention</td>
                             @forelse ($generateform25 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -696,7 +696,7 @@
                             <td>26</td>
                             <td>List of LH with Issued CR</td>
                             @forelse ($generateform26 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -712,7 +712,7 @@
                             <td>27</td>
                             <td>RSS</td>
                             @forelse ($generateform27 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -728,7 +728,7 @@
                             <td>28</td>
                             <td>Preliminary List of Potential ARBs</td>
                             @forelse ($generateform28 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -744,7 +744,7 @@
                             <td>29</td>
                             <td>Request-Petition to be included as PARBs</td>
                             @forelse ($generateform29 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -760,7 +760,7 @@
                             <td>30</td>
                             <td>ARB Application with Revision - 11-23-2011</td>
                             @forelse ($generateform30 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -776,7 +776,7 @@
                             <td>31</td>
                             <td>BARC Certified Master List of Qualified ARBs approved by the PARO</td>
                             @forelse ($generateform31 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -792,7 +792,7 @@
                             <td>32</td>
                             <td>Transmittal Letter to BARC for certification of Master List</td>
                             @forelse ($generateform32 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -808,7 +808,7 @@
                             <td>33</td>
                             <td>Notice on the BARC Certified Master List</td>
                             @forelse ($generateform33 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -824,7 +824,7 @@
                             <td>34</td>
                             <td>Notice of Disqualification</td>
                             @forelse ($generateform34 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -840,7 +840,7 @@
                             <td>35</td>
                             <td>Amended Master List of Qualified ARBs</td>
                             @forelse ($generateform35 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -856,7 +856,7 @@
                             <td>36</td>
                             <td>Notice</td>
                             @forelse ($generateform36 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -872,7 +872,7 @@
                           <td>37</td>
                           <td>APFU</td>
                           @forelse ($generateform37 as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -888,7 +888,7 @@
                           <td>37A</td>
                           <td>Agreement of Equal Award</td>
                           @forelse ($generateform37A as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -904,7 +904,7 @@
                           <td>38</td>
                           <td>Notice to ARB Schedule of APFU Signing</td>
                           @forelse ($generateform38 as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -920,7 +920,7 @@
                           <td>39</td>
                           <td>Notice to Absentee ARB om Waiver of ARB Rights for failure to sign</td>
                           @forelse ($generateform39 as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -936,7 +936,7 @@
                           <td>40</td>
                           <td>Letter to ARB Attendees who refused to sign APFU</td>
                           @forelse ($generateform40 as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -952,7 +952,7 @@
                           <td>41</td>
                           <td>Report on the ARBs Failure or refusal to sign APFU</td>
                           @forelse ($generateform41 as $items)
-                            <td>{{ $items->generation_date}}</td>
+                            <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
                             <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -968,7 +968,7 @@
                           <td>42</td>
                           <td>Certification on LOs Failure to submit BIR-Filed Audited Financial Statement</td>
                           @forelse ($generateform42 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -984,7 +984,7 @@
                           <td>43</td>
                           <td>Claim Folder Transmittal Memorandum</td>
                           @forelse ($generateform43 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1000,7 +1000,7 @@
                           <td>44</td>
                           <td>Request on the conduct of Field Investigation</td>
                           @forelse ($generateform44 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1013,10 +1013,26 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>45</td>
+                          <td>Notice to conduct FI</td>
+                          @forelse ($generateform45 as $items)
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form45_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>45-A</td>
                           <td>Notice to Conduct Joint Field Investigation</td>
                           @forelse ($generateform45A as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1032,7 +1048,7 @@
                           <td>46</td>
                           <td>Revised 2022 Field Investigation Report</td>
                           @forelse ($generateform46 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1048,7 +1064,7 @@
                           <td>47</td>
                           <td>Land Distribution and Information Schedule</td>
                           @forelse ($generateform47 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1064,7 +1080,7 @@
                           <td>49</td>
                           <td>Revised 2022 Request to Value Land and Pay Landowner</td>
                           @forelse ($generateform49 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1077,10 +1093,26 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>50</td>
+                          <td>Memo of Valuation</td>
+                          @forelse ($generateform50 as $items)
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form50_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>51</td>
                           <td>Notice of LVA</td>
                           @forelse ($generateform51 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1096,7 +1128,7 @@
                           <td>52A</td>
                           <td>Publication on the Issuance of NLVA</td>
                           @forelse ($generateform52A as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1112,7 +1144,7 @@
                           <td>52B</td>
                           <td>Posting on the Issuance of NLVA</td>
                           @forelse ($generateform52B as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1128,7 +1160,7 @@
                           <td>53</td>
                           <td>Land Owner's Reply to Notice of Land Valuation and Aquisition</td>
                           @forelse ($generateform53 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1144,7 +1176,7 @@
                           <td>54</td>
                           <td>Order to Deposit Landowner Compensation</td>
                           @forelse ($generateform54 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1157,10 +1189,26 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>55</td>
+                          <td>Certificate of Deposit</td>
+                          @forelse ($generateform55 as $items)
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form55_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i>  Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>57</td>
                           <td>Request Issuance Transfer Certificate (TCT) in the Name of the Republic of the Philippines (RP)</td>
                           @forelse ($generateform57 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1176,7 +1224,7 @@
                           <td>58</td>
                           <td>Transmittal to LBP of Copy of RP Title</td>
                           @forelse ($generateform58 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1192,7 +1240,7 @@
                           <td>59</td>
                           <td>Advice to DARAB Adjudicator to Conduct Administrative Proceedings</td>
                           @forelse ($generateform59 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1208,7 +1256,7 @@
                           <td>60</td>
                           <td>PARO Directive to take Actual & Physical Possession</td>
                           @forelse ($generateform60 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1224,7 +1272,7 @@
                           <td>61</td>
                           <td>Letter to Qualified ARB</td>
                           @forelse ($generateform61 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1240,7 +1288,7 @@
                           <td>62</td>
                           <td>LDF Transmittal to PARO</td>
                           @forelse ($generateform62 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1256,7 +1304,7 @@
                           <td>63</td>
                           <td>Transmittal to PARO re Signed and Sealed CLOAs</td>
                           @forelse ($generateform63 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1272,7 +1320,7 @@
                           <td>64</td>
                           <td>Revised 2022 Transmittal Memorandum to ROD of CLOAs for Registration</td>
                           @forelse ($generateform64 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1288,7 +1336,7 @@
                           <td>65</td>
                           <td>Transmittal Memorandum of Registered CLOA Titles from ROD to LBP</td>
                           @forelse ($generateform65 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1304,7 +1352,7 @@
                           <td>66</td>
                           <td>Monthly Report CLOA</td>
                           @forelse ($generateform66 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1320,7 +1368,7 @@
                           <td>67</td>
                           <td>Report on Failure to Take Possession</td>
                           @forelse ($generateform67 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1336,7 +1384,7 @@
                           <td>68</td>
                           <td>Writ of Installation</td>
                           @forelse ($generateform68 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1352,7 +1400,7 @@
                           <td>68A</td>
                           <td>Revised 2022 Notice to Qualified Agrarian Reform beneficiary/ies for Physical Installation</td>
                           @forelse ($generateform68A as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1368,7 +1416,7 @@
                           <td>68B</td>
                           <td>Physical Installation of ARBs in the Landholding</td>
                           @forelse ($generateform68B as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1384,7 +1432,7 @@
                           <td>69</td>
                           <td>Letter to PNP</td>
                           @forelse ($generateform69 as $items)
-                                <td>{{ $items->generation_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                             @endforelse
@@ -1400,7 +1448,7 @@
                           <td>A1</td>
                           <td>List of Potential Children-Awardee under CARP</td>
                           @forelse($generateawardform1 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1416,7 +1464,7 @@
                           <td>A2</td>
                           <td>Letter to Potential Children-Awardees Regarding the Award <br> of Agricultural Lands owned by Parent-Landowner</td>
                           @forelse($generateawardform2 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1432,7 +1480,7 @@
                           <td>A3</td>
                           <td>Certificate of Posting Compliance</td>
                           @forelse($generateawardform3 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1448,7 +1496,7 @@
                           <td>A4</td>
                           <td>Field Investigation Report</td>
                           @forelse($generateawardform4 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1464,7 +1512,7 @@
                           <td>A5</td>
                           <td>Recommendation for Approval/Disapproval of Award to Children <br> of Agricultural Lands owned by Parent-Landowner</td>
                           @forelse($generateawardform5 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1480,7 +1528,7 @@
                           <td>A6</td>
                           <td>Order of Award to Qualified Children of Parent-Landowner</td>
                           @forelse($generateawardform6 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse
@@ -1496,7 +1544,7 @@
                           <td>A7</td>
                           <td>Order of Denial to Disqualified Children of Parent-Landowner</td>
                           @forelse($generateawardform7 as $items)
-                                <td>{{ $items->generation_date }}</td>
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                             @empty
                                 <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
                           @endforelse

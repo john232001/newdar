@@ -345,15 +345,18 @@ class LandholdingController extends Controller
         $generateform42 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_42')->get();
         $generateform43 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_43')->get();
         $generateform44 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_44')->get();
+        $generateform45 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_45')->get();
         $generateform45A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_45A')->get();
         $generateform46 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_46')->get();
         $generateform47 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_47')->get();
         $generateform49 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_49')->get();
+        $generateform50 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_50')->get();
         $generateform51 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_51')->get();
         $generateform52A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_52A')->get();
         $generateform52B = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_52B')->get();
         $generateform53 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_53')->get();
         $generateform54 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_54')->get();
+        $generateform55 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_55')->get();
         $generateform57 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_57')->get();
         $generateform58 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_58')->get();
         $generateform59 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_59')->get();
@@ -393,10 +396,11 @@ class LandholdingController extends Controller
                                                       'generateform22','generateform23','generateform24','generateform25','generateform26','generateform27','generateform28',
                                                       'generateform29','generateform30','generateform31','generateform32','generateform33','generateform34','generateform35',
                                                       'generateform36','generateform37','generateform37A','generateform38','generateform39','generateform40','generateform41',
-                                                      'generateform42','generateform43','generateform44','generateform45A','generateform46','generateform47','generateform49',
-                                                      'generateform51','generateform52A','generateform52B','generateform53','generateform54','generateform57','generateform58',
-                                                      'generateform59','generateform60','generateform61','generateform62','generateform63','generateform64','generateform65',
-                                                      'generateform66','generateform67','generateform68','generateform68A','generateform68B','generateform69','generateawardform1',
-                                                      'generateawardform2','generateawardform3','generateawardform4','generateawardform5','generateawardform6','generateawardform7'));
+                                                      'generateform42','generateform43','generateform44','generateform45','generateform45A','generateform46','generateform47',
+                                                      'generateform49','generateform50','generateform51','generateform52A','generateform52B','generateform53','generateform54',
+                                                      'generateform55','generateform57','generateform58','generateform59','generateform60','generateform61','generateform62',
+                                                      'generateform63','generateform64','generateform65','generateform66','generateform67','generateform68','generateform68A',
+                                                      'generateform68B','generateform69','generateawardform1','generateawardform2','generateawardform3','generateawardform4',
+                                                      'generateawardform5','generateawardform6','generateawardform7'));
     }
 }
