@@ -136,6 +136,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/form45A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform45A'])->name('form45A_generate');
     Route::get('admin/form46/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform46'])->name('form46_generate');
     Route::get('admin/form47/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform47'])->name('form47_generate');
+    Route::get('admin/form48/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform48'])->name('form48_generate');
     Route::get('admin/form49/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform49'])->name('form49_generate');
     Route::get('admin/form50/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform50'])->name('form50_generate');
     Route::get('admin/form51/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform51'])->name('form51_generate');
@@ -233,6 +234,7 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
     Route::get('staff/form45A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform45A'])->name('staff_form45A_generate');
     Route::get('staff/form46/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform46'])->name('staff_form46_generate');
     Route::get('staff/form47/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform47'])->name('staff_form47_generate');
+    Route::get('staff/form48/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform48'])->name('staff_form48_generate');
     Route::get('staff/form49/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform49'])->name('staff_form49_generate');
     Route::get('staff/form50/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform50'])->name('staff_form50_generate');
     Route::get('staff/form51/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform51'])->name('staff_form51_generate');

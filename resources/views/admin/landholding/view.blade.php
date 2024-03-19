@@ -1077,6 +1077,22 @@
                           </td>
                         </tr>
                         <tr>
+                          <td>48</td>
+                          <td>Revised 2022 Checklist of Documentary Requirement in the Claim Folder for Transmittal to LBP</td>
+                          @forelse ($generateform48 as $items)
+                                <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
+                            @empty
+                                <td><span class="badge rounded-pill bg-danger">No Generate Date</span></td>
+                            @endforelse
+                          <td>
+                              <a href="{{ route('form48_generate', $data->id )}}">
+                                  <button type="submit" class="btn btn-success btn-sm mb-1">
+                                    <i class="fa fa-print"></i> Generate
+                                  </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <tr>
                           <td>49</td>
                           <td>Revised 2022 Request to Value Land and Pay Landowner</td>
                           @forelse ($generateform49 as $items)
