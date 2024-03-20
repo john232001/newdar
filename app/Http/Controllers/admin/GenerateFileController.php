@@ -34,7 +34,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
 
-        
+         
         $templateProcessor->setValue('fname', $data->firstname);
         $templateProcessor->setValue('lname', $data->familyname);
         if ($data->middlename !== null) {
