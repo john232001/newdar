@@ -45,6 +45,11 @@ class LandholdingController extends Controller
                 'surveyNo' => 'required',
                 'lotNo' => 'required',
                 'maro_id' => 'required',
+                'paro_id' => 'required',
+                'carpo_id' =>'required',
+                'manager_id' =>'required',    
+                'ceo_id' =>'required',
+                'rod_id' =>'required'
             ], [
                 'municipality_id' => 'The municipality field is required',
                 'barangay_id' => 'The barangay field is required',
@@ -53,6 +58,7 @@ class LandholdingController extends Controller
                 'manager_id.required' => 'The Manager/Head field is required.',
                 'carpo_id.required' => 'The CARPO field is required.',
                 'ceo_id.required' => 'The President and CEO field is required.',
+                'rod_id.required' => 'The Register of Deeds field is required.',
             ]);
 
             // Check if title file is present
@@ -88,7 +94,6 @@ class LandholdingController extends Controller
                 'surveyNo' => $request->surveyNo,
                 'surveyArea' => $request->surveyArea,
                 'taxNo' => $request->taxNo,
-                'maro_id' => $request->maro_id,
                 'modeOfAcquisition' => $request->modeOfAcquisition,
                 'coverableArea' => $request->coverableArea,
                 'carpableArea' => $request->carpableArea,
@@ -103,6 +108,12 @@ class LandholdingController extends Controller
                 'pipeline' => $request->pipeline,
                 'targetyear' => $request->targetyear,
                 'projectedDelivery' => $request->projectedDelivery,
+                'maro_id' => $request->maro_id,
+                'paro_id' => $request->paro_id,
+                'carpo_id' => $request->carpo_id,
+                'ceo_id' => $request->ceo_id,
+                'manager_id' => $request->manager_id,
+                'rod_id' => $request->rod_id,
                 'title' => $TitleDoc,
                 'taxDocuments' => $TaxDoc,
                 "created_at" => date('Y-m-d H:i:s'),
@@ -145,6 +156,11 @@ class LandholdingController extends Controller
             'targetyear' => $request->targetyear,
             'projectedDelivery' => $request->projectedDelivery,
             'maro_id' => $request->maro_id,
+            'paro_id' => $request->paro_id,
+            'carpo_id' => $request->carpo_id,
+            'ceo_id' => $request->ceo_id,
+            'manager_id' => $request->manager_id,
+            'rod_id' => $request->rod_id,
             "created_at" =>  date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s'),
         ]);

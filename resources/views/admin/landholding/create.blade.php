@@ -10,23 +10,24 @@
 
           <form action="{{ route('landholding_store') }}" method="POST" enctype="multipart/form-data" class="row">
             @csrf
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+            <h5 class="modal-title mb-4">Personal Information</h5>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Landholding ID <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="lhid" placeholder="Landholding ID">
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Firstname <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="firstname" placeholder="Firstname">
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Middlename</label>
               <input type="text" class="form-control" name="middlename" placeholder="Middlename">
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Lastname <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="familyname" placeholder="Lastname">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Municipality <span class="text-danger">*</span></label>
               <select class="form-select" name="municipality_id">
                 <option value="">Select municipality</option>
@@ -35,7 +36,7 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Barangay <span class="text-danger">*</span></label>
               <select class="form-select" name="barangay_id">
                 <option selected>Select barangay</option>
@@ -44,23 +45,91 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">OCT/TCT No. <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="octNo" placeholder="OCT/TCT No.">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Survey No. <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="surveyNo" placeholder="Survey No.">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Lot No. <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="lotNo" placeholder="Lot No.">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Title/Survey Area (in hectares)<span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="surveyArea" placeholder="Title/Survey Area (in hectares)">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Survey Area (in hectares)<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="surveyArea" placeholder="Survey Area (in hectares)">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Tax Declaration No.</label>
+              <input type="text" class="form-control" name="taxNo" placeholder="Tax Declaration No.">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Mode of Acquisition</label>
+              <input type="text" class="form-control" name="modeOfAcquisition" placeholder="Mode of Acquisition">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Coverable Area </label>
+              <input type="text" class="form-control" name="coverableArea" placeholder="Coverable Area">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Non-Carpable Area</label>
+              <input type="text" class="form-control" name="noncarpableArea" placeholder="Non-Carpable Area">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Retained Area</label>
+              <input type="text" class="form-control" name="retainedArea" placeholder="Retained Area">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Distribute Area</label>
+              <input type="text" class="form-control" name="distributeArea" placeholder="Distribute Area">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Landsize</label>
+              <input type="text" class="form-control" name="landsize" placeholder="Landsize">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Major Crops</label>
+              <input type="text" class="form-control" name="majorCrops" placeholder="Major Crops">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Phase</label>
+              <input type="text" class="form-control" name="phase" placeholder="Phase">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">UPALS</label>
+              <select class="form-select" name="upals">
+                <option value="">Select option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Year Added</label>
+              <input type="text" class="form-control" name="yearAdded" placeholder="Year Added">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Pipeline</label>
+              <input type="text" class="form-control" name="pipeline" placeholder="Pipeline">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-5">
+              <label class="form-label">Project Delivery</label>
+              <input type="text" class="form-control" name="projectedDelivery" placeholder="Project Delivery">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+            </div>
+            <h5 class="modal-title mb-4">Officers</h5>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+              <label class="form-label">PARO <span class="text-danger">*</span></label>
+              <select class="form-select" name="paro_id">
+                <option value="">Select option</option>
+                @foreach ($paro as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
               <label class="form-label">MARO <span class="text-danger">*</span></label>
               <select class="form-select" name="maro_id">
                 <option selected>Select option</option>
@@ -69,62 +138,45 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Tax Declaration No.</label>
-              <input type="text" class="form-control" name="taxNo" placeholder="Tax Declaration No.">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Mode of Acquisition</label>
-              <input type="text" class="form-control" name="modeOfAcquisition" placeholder="Mode of Acquisition">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Coverable Area </label>
-              <input type="text" class="form-control" name="coverableArea" placeholder="Coverable Area">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Non-Carpable Area</label>
-              <input type="text" class="form-control" name="noncarpableArea" placeholder="Non-Carpable Area">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Retained Area</label>
-              <input type="text" class="form-control" name="retainedArea" placeholder="Retained Area">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Distribute Area</label>
-              <input type="text" class="form-control" name="distributeArea" placeholder="Distribute Area">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Landsize</label>
-              <input type="text" class="form-control" name="landsize" placeholder="Landsize">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Major Crops</label>
-              <input type="text" class="form-control" name="majorCrops" placeholder="Major Crops">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Phase</label>
-              <input type="text" class="form-control" name="phase" placeholder="Phase">
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">UPALS</label>
-              <select class="form-select" name="upals">
-                <option value="">Select option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+              <label class="form-label">CARPO <span class="text-danger">*</span></label>
+              <select class="form-select" name="carpo_id">
+                <option selected>Select option</option>
+                @foreach ($carpo as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
               </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Year Added</label>
-              <input type="text" class="form-control" name="yearAdded" placeholder="Year Added">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+              <label class="form-label">The President and CEO <span class="text-danger">*</span></label>
+              <select class="form-select" name="ceo_id">
+                <option selected>Select option</option>
+                @foreach ($ceo as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
+              </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Pipeline</label>
-              <input type="text" class="form-control" name="pipeline" placeholder="Pipeline">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+              <label class="form-label">Department Manager/Head <span class="text-danger">*</span></label>
+              <select class="form-select" name="manager_id">
+                <option selected>Select option</option>
+                @foreach ($manager as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
+              </select>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-              <label class="form-label">Project Delivery</label>
-              <input type="text" class="form-control" name="projectedDelivery" placeholder="Project Delivery">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-5">
+              <label class="form-label">Register of Deeds <span class="text-danger">*</span></label>
+              <select class="form-select" name="rod_id">
+                <option selected>Select option</option>
+                @foreach ($rod as $items)
+                  <option value="{{ $items->id}}">{{ $items->officer_name }}</option>
+                @endforeach
+              </select>
             </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 mb-">
+            </div>
+            <h5 class="modal-title mb-4">Scanned Documents</h5>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
               <label class="form-label">Title Documents</label>
               <input type="file" class="form-control" name="title">

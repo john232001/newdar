@@ -38,7 +38,12 @@ return new class extends Migration
             $table->string('pipeline')->nullable();
             $table->string('targetyear')->nullable();
             $table->string('projectedDelivery')->nullable();
+            $table->bigInteger('paro_id');
             $table->bigInteger('maro_id');
+            $table->bigInteger('carpo_id');
+            $table->bigInteger('ceo_id');
+            $table->bigInteger('manager_id');
+            $table->bigInteger('rod_id');
             $table->string('title')->nullable();
             $table->string('taxDocuments')->nullable();
             $table->timestamps();

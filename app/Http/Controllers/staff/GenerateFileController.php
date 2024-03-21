@@ -24,8 +24,11 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
-
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -33,6 +36,17 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('middlename', $data->middlename);
+
+         
+        $templateProcessor->setValue('fname', $data->firstname);
+        $templateProcessor->setValue('lname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('mname', ', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('mname', '');
+        }
+
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -65,7 +79,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         
         $formIdentifier = 'form_2';
@@ -100,7 +117,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -178,6 +198,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -203,6 +227,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
+        $templateProcessor->setValue('paro', $paro->officer_name);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.5' . '-' . $fileName . '.docx');
         return response()->download('Form No.5' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -253,7 +278,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -316,12 +344,20 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
         $formIdentifier = 'form_9';
 
         GenerateLog::updateOrCreate(
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
+
+
+        $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.9.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -332,6 +368,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setvalue('date', $currentdate);
+        $templateProcessor->setvalue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.9' . '-' . $fileName . '.docx');
         return response()->download('Form No.9' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -350,7 +388,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -400,7 +441,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -439,7 +483,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -482,7 +529,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -526,7 +576,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -570,7 +623,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -688,7 +744,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.18.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
@@ -762,8 +821,16 @@ class GenerateFileController extends Controller
             ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
-        
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+
+        $gettotalArea = DB::table('lots')
+            ->where('lots.landholding_id', $id)
+            ->where('lots.lotType_id', 1)
+            ->sum('lotArea');
+
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -806,7 +873,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -933,7 +1003,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.24.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -974,7 +1047,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -1018,8 +1094,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.26.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -1056,8 +1139,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
@@ -1198,7 +1288,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.31.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -1281,7 +1374,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.33.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -1364,8 +1460,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first(); 
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.35.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -1406,7 +1509,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.36.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -1699,10 +1805,16 @@ class GenerateFileController extends Controller
     {
         $data = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names','officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
         $formIdentifier = 'form_43';
 
         GenerateLog::updateOrCreate(
@@ -1713,6 +1825,16 @@ class GenerateFileController extends Controller
         $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.43.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', ' ,'. $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
@@ -1729,7 +1851,10 @@ class GenerateFileController extends Controller
         ->where('landholdings.id', $id)->first();
 
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_44';
 
@@ -1769,7 +1894,10 @@ class GenerateFileController extends Controller
         ->where('landholdings.id', $id)->first();
 
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_45';
 
@@ -1811,7 +1939,10 @@ class GenerateFileController extends Controller
         ->select('landholdings.*', 'officers.officer_name','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_45A';
 
@@ -1854,10 +1985,15 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
-
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         $formIdentifier = 'form_46';
 
         GenerateLog::updateOrCreate(
@@ -1968,8 +2104,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
     
         $formIdentifier = 'form_48';
 
@@ -1982,7 +2125,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
         if ($data->middlename !== null) {
-            $firstLetter = substr(strtoupper($data->middlename), 0, 1);
+            $firstLetter = substr($data->middlename, 0, 1);
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
             $templateProcessor->setValue('middlename','');
@@ -2008,21 +2151,25 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $manager = DB::table('officers')->where('officers.position_id', 5)->first();
-        $ceo = DB::table('officers')->where('officers.position_id', 4)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+            
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
-        $lotnumbers = DB::table('lots')->select('lotNo')->where('lots.landholding_id', $id)->get();
-        
-        
-        $lotNos = [];
-        foreach ($lotnumbers as $lotnumber) {
-            $lotNos[] = $lotnumber->lotNo;
-        }
     
         $formIdentifier = 'form_49';
 
@@ -2031,12 +2178,11 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        $lotNoString = implode(', ', $lotNos);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.49.docx');
-        $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
+        $templateProcessor->setValue('firstname', strtoupper($data->firstname));
+        $templateProcessor->setValue('familyname', strtoupper($data->familyname));
         if ($data->middlename !== null) {
-            $firstLetter = substr($data->middlename, 0, 1);
+            $firstLetter = substr(strtoupper($data->middlename), 0, 1);
             $templateProcessor->setValue('middlename', $firstLetter . '.');
         }else {
             $templateProcessor->setValue('middlename','');
@@ -2044,7 +2190,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $lotNoString);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
@@ -2063,7 +2209,10 @@ class GenerateFileController extends Controller
         ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_50';
 
@@ -2071,6 +2220,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
+
         $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.50.docx');
@@ -2104,19 +2254,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
             ->where('lots.lotType_id', 1)
             ->sum('lotArea');
-        
-        $lotnumbers = DB::table('lots')->select('lotNo')->where('lots.landholding_id', $id)->get();
-        
-        $lotNos = [];
-        foreach ($lotnumbers as $lotnumber) {
-            $lotNos[] = $lotnumber->lotNo;
-        }
         
         $formIdentifier = 'form_51';
 
@@ -2127,7 +2273,6 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
-        $lotNoString = implode(', ', $lotNos);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2140,7 +2285,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
-        $templateProcessor->setValue('lotNo', $lotNoString);
+        $templateProcessor->setValue('lotNo', $data->lotNo); 
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
@@ -2160,7 +2305,10 @@ class GenerateFileController extends Controller
         ->select('landholdings.*', 'officers.officer_name','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $gettotalArea = DB::table('lots')
         ->where('lots.landholding_id', $id)
@@ -2206,7 +2354,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+            $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_52B';
 
@@ -2214,6 +2365,11 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
+
+        $gettotalArea = DB::table('lots')
+            ->where('lots.landholding_id', $id)
+            ->where('lots.lotType_id', 1)
+            ->sum('lotArea');
 
         $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
@@ -2232,6 +2388,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
@@ -2247,7 +2404,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_53';
 
@@ -2264,7 +2424,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('paro', $paro->officer_name);
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.53' . '-' . $fileName . '.docx');
         return response()->download('Form No.53' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
@@ -2278,9 +2438,20 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $manager = DB::table('officers')->where('officers.position_id', 5)->first();
-        $ceo = DB::table('officers')->where('officers.position_id', 4)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+            
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         
         $gettotalArea = DB::table('lots')
@@ -2329,8 +2500,15 @@ class GenerateFileController extends Controller
         ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
         ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $manager = DB::table('officers')->where('officers.position_id', 5)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_55';
 
@@ -2370,9 +2548,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
-        $rod = DB::table('officers')->where('officers.position_id', 6)->first();
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
@@ -2418,9 +2602,20 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $manager = DB::table('officers')->where('officers.position_id', 5)->first();
-        $ceo = DB::table('officers')->where('officers.position_id', 6)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+            
+        $ceo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.ceo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
@@ -2470,7 +2665,11 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
         
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
@@ -2522,7 +2721,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $gettotalArea = DB::table('lots')
             ->where('lots.landholding_id', $id)
@@ -2620,9 +2822,15 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
-        $carpo = DB::table('officers')->where('officers.position_id', 3)->first();
+        $carpo = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.carpo_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_62';
 
@@ -2661,7 +2869,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_63';
 
@@ -2699,8 +2910,15 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
-        $rod = DB::table('officers')->where('officers.position_id', 6)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_64';
 
@@ -2742,8 +2960,14 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-        $rod = DB::table('officers')->where('officers.position_id', 6)->first();
-        $manager = DB::table('officers')->where('officers.position_id', 5)->first();
+        $rod = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.rod_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        $manager = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.manager_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_65';
 
@@ -2782,7 +3006,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_66';
 
@@ -2820,7 +3047,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
 
         $formIdentifier = 'form_67';
 
@@ -2846,7 +3076,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_68A';
 
@@ -2882,7 +3115,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $maro = DB::table('landholdings')
             ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
@@ -2915,7 +3151,10 @@ class GenerateFileController extends Controller
     {
         $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_68';
 
@@ -2940,7 +3179,10 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'form_69';
 
@@ -3100,7 +3342,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'Awardform_4';
 
@@ -3144,7 +3389,10 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
         
-        $paro = DB::table('officers')->where('officers.position_id', 2)->first();
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
         
         $formIdentifier = 'Awardform_5';
 
