@@ -18,19 +18,13 @@
            </div>
            <form action="{{ route('login') }}" method="post">
             @csrf
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
               <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" value="{{ old('username') }}" required autocomplete="username" autofocus>
               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-            <div class="input-group mb-1">
+            <div class="input-group mb-4">
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="input-group mb-5 d-flex justify-content-between">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="formCheck">
-                    <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-                </div>  
             </div>
             <div class="input-group mb-3" >
                 <button type="submit" class="btn btn-lg w-100 fs-6" style="background: #1b5f24; color: #ffff;">Login</button>

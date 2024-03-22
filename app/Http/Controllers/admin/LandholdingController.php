@@ -398,27 +398,27 @@ class LandholdingController extends Controller
         $generateawardform6 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_6')->get();
         $generateawardform7 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'Awardform_7')->get();
         
-        //get only the value 'Carpable' in ID
+        //get only the value 'Carpable' lot
         $lotNumber = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 
-        //get only the value of lot number where the lot type is Carpable in ID of landholding
+        //get only the value of lot number where the lot type is Carpable
         $lotno = DB::table('lots')->where('lots.landholding_id', $id)->where('lots.lotType_id', 1)->get();
 
         $arbname = DB::table('arbs')->where('arbs.landholding_id', $id)->get();
         
         $categories = DB::table('categories')->get();
         return view('admin.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation','approvedform',
-                                                      'generateform1','generateform1A','generateform2','generateform3','generateform4','generateform5','generateform6','generateform7','generateform8',
-                                                      'generateform9','generateform10','generateform11','generateform12A','generateform13A','generateform14','generateform15',
-                                                      'generateform16','generateform17','generateform18','generateform18A','generateform19','generateform20','generateform21',
-                                                      'generateform22','generateform23','generateform24','generateform25','generateform26','generateform27','generateform28',
-                                                      'generateform29','generateform30','generateform31','generateform32','generateform33','generateform34','generateform35',
-                                                      'generateform36','generateform37','generateform37A','generateform38','generateform39','generateform40','generateform41',
-                                                      'generateform42','generateform43','generateform44','generateform45','generateform45A','generateform46','generateform47',
-                                                      'generateform48','generateform49','generateform50','generateform51','generateform52A','generateform52B','generateform53',
-                                                      'generateform54','generateform55','generateform57','generateform58','generateform59','generateform60','generateform61',
-                                                      'generateform62','generateform63','generateform64','generateform65','generateform66','generateform67','generateform68',
-                                                      'generateform68A','generateform68B','generateform69','generateawardform1','generateawardform2','generateawardform3',
-                                                      'generateawardform4','generateawardform5','generateawardform6','generateawardform7'));
+                                                      'generateform1','generateform1A','generateform2','generateform3','generateform4','generateform5','generateform6',
+                                                      'generateform7','generateform8','generateform9','generateform10','generateform11','generateform12A','generateform13A',
+                                                      'generateform14','generateform15','generateform16','generateform17','generateform18','generateform18A','generateform19',
+                                                      'generateform20','generateform21','generateform22','generateform23','generateform24','generateform25','generateform26',
+                                                      'generateform27','generateform28','generateform29','generateform30','generateform31','generateform32','generateform33',
+                                                      'generateform34','generateform35','generateform36','generateform37','generateform37A','generateform38','generateform39',
+                                                      'generateform40','generateform41','generateform42','generateform43','generateform44','generateform45','generateform45A',
+                                                      'generateform46','generateform47','generateform48','generateform49','generateform50','generateform51','generateform52A',
+                                                      'generateform52B','generateform53','generateform54','generateform55','generateform57','generateform58','generateform59',
+                                                      'generateform60','generateform61','generateform62','generateform63','generateform64','generateform65','generateform66',
+                                                      'generateform67','generateform68','generateform68A','generateform68B','generateform69','generateawardform1','generateawardform2',
+                                                      'generateawardform3','generateawardform4','generateawardform5','generateawardform6','generateawardform7'));
     }
 }
