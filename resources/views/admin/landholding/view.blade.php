@@ -4,7 +4,6 @@
 
 @include('admin.admin_navbar')
   <div class="container">
-    
     <h2 class="title-text">Basic Information</h2>
     <div class="row">
         <div class="col-lg-12 col-md-12">

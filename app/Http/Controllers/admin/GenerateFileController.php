@@ -376,7 +376,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('aspNo', $data->aspNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $fileName = $data->familyname;
         $templateProcessor->saveAs('Form No.8' . '-' . $fileName . '.docx');
         return response()->download('Form No.8' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
