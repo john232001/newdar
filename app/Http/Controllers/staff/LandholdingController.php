@@ -95,6 +95,7 @@ class LandholdingController extends Controller
             ->get();
         
             $generateform1 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_1')->get();
+            $generateform1A = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_1A')->get();
             $generateform2 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_2')->get();
             $generateform3 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_3')->get();
             $generateform4 = DB::table('generate_logs')->where('generate_logs.landholding_id', $id)->where('generate_logs.form_identifier', 'form_4')->get();
@@ -186,7 +187,7 @@ class LandholdingController extends Controller
         
         $categories = DB::table('categories')->get();
         return view('staff.landholding.view', compact('landholdings', 'arb','categories','lots','arbname','asp','awardtitle', 'lotNumber','lotno', 'valuation','approvedform',
-                                                      'generateform1','generateform2','generateform3','generateform4','generateform5','generateform6','generateform7','generateform8',
+                                                      'generateform1','generateform1A','generateform2','generateform3','generateform4','generateform5','generateform6','generateform7','generateform8',
                                                       'generateform9','generateform10','generateform11','generateform12A','generateform13A','generateform14','generateform15',
                                                       'generateform16','generateform17','generateform18','generateform18A','generateform19','generateform20','generateform21',
                                                       'generateform22','generateform23','generateform24','generateform25','generateform26','generateform27','generateform28',

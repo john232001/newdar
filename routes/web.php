@@ -87,6 +87,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     
     // Generate Form Routes
     Route::get('admin/form1/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform1'])->name('form1_generate');
+    Route::get('admin/form1A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform1A'])->name('form1A_generate');
     Route::get('admin/form2/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform2'])->name('form2_generate');
     Route::get('admin/form3/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform3'])->name('form3_generate');
     Route::get('admin/form4/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform4'])->name('form4_generate');
@@ -185,6 +186,7 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
 
     // Generate Form Routes
     Route::get('staff/form1/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform1'])->name('staff_form1_generate');
+    Route::get('staff/form1A/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform1A'])->name('staff_form1A_generate');
     Route::get('staff/form2/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform2'])->name('staff_form2_generate');
     Route::get('staff/form3/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform3'])->name('staff_form3_generate');
     Route::get('staff/form4/generateform/{id}', [App\Http\Controllers\admin\GenerateFileController::class, 'generateform4'])->name('staff_form4_generate');

@@ -70,6 +70,53 @@ class GenerateFileController extends Controller
 
         return response()->download('Form No.1' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
+    public function generateform1A($id)
+    {  
+        $data = DB::table('landholdings')
+            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
+            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->where('landholdings.id', $id)
+            ->first();
+    
+        $maro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+        
+        $paro = DB::table('landholdings')
+            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'officers.officer_name')
+            ->where('landholdings.id', $id)->first();
+
+        $currentdate = date('F j, Y');
+
+        $templateProcessor = new TemplateProcessor('Form-template/FormNo.1A.docx');
+        $templateProcessor->setValue('firstname', $data->firstname);
+        $templateProcessor->setValue('familyname', $data->familyname);
+        $templateProcessor->setValue('middlename', $data->middlename);
+        $templateProcessor->setValue('municipality', $data->muni_name);
+        $templateProcessor->setValue('barangay', $data->brgy_names);
+        $templateProcessor->setValue('octNo', $data->octNo);
+        $templateProcessor->setValue('lotNo', $data->lotNo);
+        $templateProcessor->setValue('surveyNo', $data->surveyNo);
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $templateProcessor->setValue('taxNo', $data->taxNo);
+        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
+        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('date', $currentdate);
+        $fileName = $data->familyname;
+        $templateProcessor->saveAs('Form No.1A' . '-' . $fileName . '.docx');
+
+        $formIdentifier = 'form_1A';
+
+        GenerateLog::updateOrCreate(
+            ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
+            ['generation_date' => now()]
+        );
+
+        return response()->download('Form No.1A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+    }
     public function generateform2($id)
     {
         $data = DB::table('landholdings')
