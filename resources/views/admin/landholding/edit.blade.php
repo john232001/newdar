@@ -11,7 +11,7 @@
           <form action="{{ route('landholding_update', $data->id ) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <h5 class="modal-title mb-4">Personal Information</h5>
+            <h5 class="modal-title mb-4">Landowner Information</h5>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Landholding ID <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="lhid" value="{{ $data->lhid }}" placeholder="Landholding ID">
@@ -166,7 +166,7 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-5">
               <label class="form-label">Register of Deeds <span class="text-danger">*</span></label>
               <select class="form-select" name="rod_id">
                 <option selected>Select option</option>
@@ -175,14 +175,14 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 ">
+            <div class="col-lg-6 col-md-12 col-sm-12">
             </div>
             <h5 class="modal-title mb-4">Scanned Documents</h5>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
               <label class="form-label">Title Documents</label>
               <input type="file" class="form-control" name="title" value="{{ $data->title }}">
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
               <label class="form-label">Tax Declaration Documents</label>
               <input type="file" class="form-control" name="taxDocuments" value="{{ $data->taxDocuments }}">
             </div>

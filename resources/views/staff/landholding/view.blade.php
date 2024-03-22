@@ -8,50 +8,37 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card p-5 rounded-4">
-                <table class="table" style="width:100%">
-                      @foreach($landholdings as $data)
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                            <td>Landholding ID : <span class="text-success">{{ $data->lhid }}</span></td>
-                            <td>Coverable Area : <span class="text-success"> {{ $data->coverableArea }}</td>
-                            <td>Major Crops Area : <span class="text-success"> {{ $data->majorCrops }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Landowner : <span class="text-success"> {{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span></td>
-                            <td>Carpable Area : <span class="text-success"> {{ $data->carpableArea }}</span></td>
-                            <td>Year Added : <span class="text-success"> {{ $data->yearAdded }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>OCT/TCT No. : <span class="text-success"> {{ $data->octNo }}</span></td>
-                            <td>Non-Carpable Area : <span class="text-success"> {{ $data->noncarpableArea }}</span></td>
-                            <td>Pipeline : <span class="text-success"> {{ $data->pipeline }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Survey No. : <span class="text-success"> {{ $data->surveyNo }}</span></td>
-                            <td>Retained Area : <span class="text-success"> {{ $data->retainedArea }}</span></td>
-                            <td>Target Year : <span class="text-success"> {{ $data->targetyear }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Lot No. : <span class="text-success"> {{ $data->lotNo }}</span></td>
-                            <td>Distribute Area : <span class="text-success"> {{ $data->distributeArea }}</span></td>
-                            <td>Projected Delivery : </strong><span class="text-success"> {{ $data->projectedDelivery }}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Title/Survey Area : <span class="text-success"> {{ $data->surveyArea }}</span></td>
-                            <td>Land size: <span class="text-success"> {{ $data->landsize }}</span></td>
-                            <td>Mode of Acquisition : <span class="text-success"> {{ $data->modeOfAcquisition }}</td>
-                        </tr>
-                        <tr>
-                            <td>Tax Declaration No. : <span class="text-success"> {{ $data->taxNo }}</span></td>
-                            <td>Phase : <span class="text-success"> {{ $data->phase }}</span></td>
-                            <td>UPALS : <span class="text-success"> {{ $data->upals }}</span></td>
-                        </tr>
-                      @endforeach
-                </table>
+                <div class="row">
+                  @foreach ($landholdings as $data)
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <strong>Landholding ID : <span class="info text-success">{{ $data->lhid }}</span></strong><br>
+                      <strong>Landowner : <span class="info text-success">{{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span></strong><br>
+                      <strong>OCT/TCT No. : <span class="info text-success">{{ $data->octNo }}</span></strong><br>
+                      <strong>Survey No. : <span class="info text-success">{{ $data->surveyNo }}</span></strong><br>
+                      <strong>Lot No.: <span class="info text-success">{{ $data->lotNo }}</span></strong><br>
+                      <strong>Title/Survey Area : <span class="info text-success">{{ $data->surveyArea }}</span></strong><br>
+                      <strong>Tax Declaration No. : <span class="info text-success">{{ $data->taxNo }}</span></strong><br>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <strong>Coverable Area : <span class="info text-success">{{ $data->coverableArea }}</span></strong><br>
+                      <strong>Carpable Area : <span class="info text-success">{{ $data->carpableArea }}</span></strong><br>
+                      <strong>Non-Carpable Area : <span class="info text-success">{{ $data->noncarpableArea }}</span></strong><br>
+                      <strong>Retained Area : <span class="info text-success">{{ $data->retainedArea }}</span></strong><br>
+                      <strong>Distribute Area : <span class="info text-success">{{ $data->distributeArea }}</span></strong><br>
+                      <strong>Land size : <span class="info text-success">{{ $data->landsize }}</span></strong><br>
+                      <strong>Phase : <span class="info text-success">{{ $data->phase }}</span></strong><br>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <strong>Major Crops Area : <span class="info text-success">{{ $data->majorCrops }}</span></strong><br>
+                      <strong>Year Added : <span class="info text-success">{{ $data->yearAdded }}</span></strong><br>
+                      <strong>Pipeline : <span class="info text-success">{{ $data->pipeline }}</span></strong><br>
+                      <strong>Target Year : <span class="info text-success">{{ $data->targetyear }}</span></strong><br>
+                      <strong>Projected Delivery : <span class="info text-success">{{ $data->projectedDelivery }}</span></strong><br>
+                      <strong>Mode of Acquisition : <span class="info text-success">{{ $data->modeOfAcquisition }}</span></strong><br>
+                      <strong>UPALS : <span class="info text-success">{{ $data->upals }}</span></strong><br>
+                    </div>
+                  @endforeach
+                </div>
             </div>
         </div>
     </div>

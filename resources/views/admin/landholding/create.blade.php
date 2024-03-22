@@ -10,7 +10,7 @@
 
           <form action="{{ route('landholding_store') }}" method="POST" enctype="multipart/form-data" class="row">
             @csrf
-            <h5 class="modal-title mb-4">Personal Information</h5>
+            <h5 class="modal-title mb-4">Landowner Information</h5>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Landholding ID <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="lhid" placeholder="Landholding ID">
@@ -174,7 +174,7 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 mb-">
+            <div class="col-lg-6 col-md-12 col-sm-12">
             </div>
             <h5 class="modal-title mb-4">Scanned Documents</h5>
             <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
