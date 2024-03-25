@@ -25,7 +25,6 @@ class ApprovedFormController extends Controller
             $fileName = $file->getClientOriginalName();
             $file->move(public_path('uploads/ApprovedForm'), $fileName);
 
-            // Insert file path into the database using Query Builder
             $data = DB::table('generated_files')->insert([
                 'landholding_id' => $request->landholding_id,
                 'uploadfile' => $fileName,
@@ -67,7 +66,7 @@ class ApprovedFormController extends Controller
             // Get the original name of the uploaded file
             $newFileName = $request->file('uploadfile')->getClientOriginalName();
 
-            // Move the uploaded file to the `uploads/documents` directory
+            // Move the uploaded file to the `uploads/ApprovedForm` directory
             $request->file('uploadfile')->move('uploads/ApprovedForm', $newFileName);
 
             $generatedFile->update(['uploadfile' => $newFileName]);

@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
                 <label class="form-label">Address <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="address" value="{{ $data->address }}" placeholder="Address">
+                <textarea type="text" class="form-control" name="address">{{ $data->address }}</textarea>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
                 <label class="form-label">Ownership Preference <span class="text-danger">*</span></label>
