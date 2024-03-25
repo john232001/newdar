@@ -34,23 +34,23 @@
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Date Transmitted to LBP/AOC</label>
-                  <input type="text" class="form-control" name="dateTransmitted" value="{{ $data->dateTransmitted }}" placeholder="Date Transmitted to LBP/AOC">
+                  <input type="date" class="form-control" name="dateTransmitted" value="{{ $data->dateTransmitted }}" placeholder="Date Transmitted to LBP/AOC">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Date of MOV</label>
-                  <input type="text" class="form-control" name="dateofMov" value="{{ $data->dateofMov }}" placeholder="Date Transmitted to LBP/AOC">
+                  <input type="date" class="form-control" name="dateofMov" value="{{ $data->dateofMov }}" placeholder="Date Transmitted to LBP/AOC">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Date NVLA Served to LO</label>
-                  <input type="text" class="form-control" name="dateofMov" value="{{ $data->dateServed }}" placeholder="Date NVLA Served to LO">
+                  <input type="date" class="form-control" name="dateofMov" value="{{ $data->dateServed }}" placeholder="Date NVLA Served to LO">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Date of FI</label>
-                  <input type="text" class="form-control" name="dateofFI" value="{{ $data->dateofFI }}" placeholder="Date NVLA Served to LO">
+                  <input type="date" class="form-control" name="dateofFI" value="{{ $data->dateofFI }}" placeholder="Date NVLA Served to LO">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Date of CF Receipt</label>
-                  <input type="text" class="form-control" name="dateofCF" value="{{ $data->dateofCF }}" placeholder="Date NVLA Served to LO">
+                  <input type="date" class="form-control" name="dateofCF" value="{{ $data->dateofCF }}" placeholder="Date NVLA Served to LO">
               </div>
               <div class="col-lg-6 col-md-12 mb-2">
                   <label class="form-label">Transmittal Status</label>
