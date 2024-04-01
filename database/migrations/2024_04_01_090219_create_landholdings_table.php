@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('lhid');
             $table->string('firstname');
-            $table->string('familyname');
+            $table->string('familyname')->nullabe();
             $table->string('middlename')->nullable();
             $table->bigInteger('municipality_id');
             $table->biginteger('barangay_id');

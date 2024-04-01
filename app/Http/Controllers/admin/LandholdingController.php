@@ -37,7 +37,6 @@ class LandholdingController extends Controller
             $request->validate([
                 'lhid' => 'required',
                 'firstname' => 'required',
-                'familyname' => 'required',
                 'municipality_id' => 'required',
                 'barangay_id' => 'required',
                 'octNo' => 'required',

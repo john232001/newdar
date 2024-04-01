@@ -25,7 +25,7 @@
               <input type="text" class="form-control" name="middlename" value="{{ $data->middlename }}" placeholder="Middlename">
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
-              <label class="form-label">Lastname <span class="text-danger">*</span></label>
+              <label class="form-label">Lastname</label>
               <input type="text" class="form-control" name="familyname" value="{{ $data->familyname }}" placeholder="Lastname">
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">

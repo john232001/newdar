@@ -33,16 +33,26 @@ class GenerateFileController extends Controller
         $currentdate = date('F j, Y');
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1.docx');
-        $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
 
-         
+        $templateProcessor->setValue('firstname', $data->firstname);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename',', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        if ($data->familyname !== null) {
+            $templateProcessor->setValue('familyname', $data->familyname . ',');
+        }else {
+            $templateProcessor->setValue('familyname', '');
+        }
+        
+
         $templateProcessor->setValue('fname', $data->firstname);
         $templateProcessor->setValue('lname', $data->familyname);
         if ($data->middlename !== null) {
             $firstLetter = substr($data->middlename, 0, 1);
-            $templateProcessor->setValue('mname', ', ' . $firstLetter . '.');
+            $templateProcessor->setValue('mname', $firstLetter . '.');
         }else {
             $templateProcessor->setValue('mname', '');
         }
@@ -54,7 +64,6 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('phase', $data->phase);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
@@ -141,8 +150,17 @@ class GenerateFileController extends Controller
 
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.2.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename',', ' . $firstLetter . '.');
+        }else {
+            $templateProcessor->setValue('middlename', '');
+        }
+        if ($data->familyname !== null) {
+            $templateProcessor->setValue('familyname', $data->familyname . ',');
+        }else {
+            $templateProcessor->setValue('familyname', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
