@@ -4,11 +4,6 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: #1b5f24;
 }
-.bg-cover{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 /* login */
 .box-area{
     width: 930px;
@@ -156,9 +151,11 @@ table{
 }
 /* background */
 .bg-cover{
+    background-image: url(/assets/img/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 @media only screen and (max-width: 320px){
@@ -192,7 +189,9 @@ table{
   }
   .title-text{
     text-align: center;
-  }  
+  }
+  .bg-cover{
+    background-image: url(/assets/img/sm-background.jpg);
+  }
 }
-
 

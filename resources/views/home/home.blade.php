@@ -4,7 +4,7 @@
 
 @include('layouts.home-navbar')
 <section id="home">
-    <div class="bg-cover min-vh-100 d-flex align-items-center" style="background-image: url('../assets/img/background.jpg')">
+    <div class="bg-cover min-vh-100 d-flex align-items-center">
     </div>
 </section>
 <!-- About Us Sections -->
@@ -533,8 +533,8 @@
     <div class="container">
       <h2 class="text-center mb-5">Services</h2>
       <div class="row text-center g-4">
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card">
               <img src="https://darcaraga.files.wordpress.com/2019/07/lts_banner_final_5b24574e8f9c45_35679073.jpg?w=616" class="card-img-top" alt="landtenureservices" style="width: 100%">
               <div class="card-body">
                 <h3 class=" mb-3">Land Tenure Services</h3>
@@ -542,8 +542,8 @@
               </div>
             </div>
         </div>
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card">
               <img src="https://darcaraga.files.wordpress.com/2019/07/als_5b2458b8206885_06676945.jpg" class="card-img-top" alt="landtenureservices" style="width: 100%">
               <div class="card-body">
                 <h3 class="mb-3">Agrarian Legal Services</h3>
@@ -551,8 +551,8 @@
               </div>
             </div>
         </div>
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card">
               <img src="https://media.dar.gov.ph/source/2018/06/16/APAS_5b245f99dc9e57_40698601.jpg" class="card-img-top" alt="landtenureservices" style="width: 100%">
               <div class="card-body">
                 <h3 class="mb-3">Agrarian Policy Advisory Services</h3>
@@ -560,8 +560,8 @@
               </div>
             </div>
         </div>
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card">
               <img src="https://media.dar.gov.ph/source/2021/05/13/arb-installation.jpg" class="card-img-top" alt="landtenureservices" style="height: 132px; width: 100%;">
               <div class="card-body">
                 <h3 style="margin-bottom: 50px; margin-top: 20px;">ARBDSP</h3>
@@ -575,7 +575,7 @@
 <!-- Footer -->
 <footer class="p-3 text-white text-center position-relative">
   <div class="container">
-    <p class="lead">2024 Department of Agrarian Reform.</p>
+    <p class="lead">{{ \Carbon\Carbon::now()->year }} Department of Agrarian Reform.</p>
   </div>
 </footer>
 @endsection
