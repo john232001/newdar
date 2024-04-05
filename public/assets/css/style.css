@@ -151,7 +151,7 @@ table{
 }
 /* background */
 .bg-cover{
-    background-image: url(/assets/img/background.jpg);
+    background-image: url('/assets/img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -190,8 +190,12 @@ table{
   .title-text{
     text-align: center;
   }
-  .bg-cover{
-    background-image: url(/assets/img/sm-background.jpg);
-  }
+
 }
 
+@media (max-width: 768px)
+{
+    .bg-cover{
+        background-image: url('/assets/img/sm-background.jpg');
+    }
+}
