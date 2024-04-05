@@ -4,7 +4,14 @@
 
 @include('layouts.home-navbar')
 <section id="home">
-    <div class="bg-cover min-vh-100 d-flex align-items-center">
+    <div class="bg-cover min-vh-100 d-flex justify-content-center align-items-center">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Department of Agrarian Reform</h3>
+          </div>
+        </div>
+      </div>
     </div>
 </section>
 <!-- About Us Sections -->
@@ -573,7 +580,7 @@
     </div>
   </section>
 <!-- Footer -->
-<footer class="p-3 text-white text-center position-relative">
+<footer class="p-3 text-center text-white position-relative">
   <div class="container">
     <p class="lead">{{ \Carbon\Carbon::now()->year }} Department of Agrarian Reform.</p>
   </div>

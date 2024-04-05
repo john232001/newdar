@@ -3,7 +3,7 @@
 @section('content')
     @include('layouts.home-navbar')
 
-    <section id="darleaders" class="p-5 bg-white" style="height: 100vh;">
+    <section id="darleaders" class="p-5 bg-white" style="height: 120vh;">
         <div class="container mt-5">
           <h2 class="text-center mb-5">DAR Leaders</h2>
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
