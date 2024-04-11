@@ -15,8 +15,8 @@
                         <tr>
                           <th>LHID</th>
                           <th>Firstname</th>
-                          <th>Lastname</th>
                           <th>Middlename</th>
+                          <th>Lastname</th>
                           <th>Municipality</th>
                           <th>Barangay</th>
                           <th>OCT/TCT No.</th>
@@ -30,8 +30,8 @@
                           <tr>
                               <td><a href="{{ route('landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
                               <td>{{ $data->firstname}}</td>
-                              <td>{{ $data->familyname}}</td>
                               <td>{{ $data->middlename}}</td>
+                              <td>{{ $data->familyname}}</td>
                               <td>{{ $data->muni_name}}</td>
                               <td>{{ $data->brgy_names}}</td>
                               <td>{{ $data->octNo}}</td>

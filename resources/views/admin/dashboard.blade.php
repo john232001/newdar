@@ -28,7 +28,7 @@
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
                   <img src="{{ asset('assets/img/dashboard-lots.png')}}" class="img-fluid rounded-start" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8  ">
                   <div class="card-body">
                     <h5 class="card-title">Total Lots</h5>
                     <p class="card-text">{{ $totalLots }}</p>
