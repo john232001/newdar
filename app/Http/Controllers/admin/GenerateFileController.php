@@ -67,7 +67,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_1';
