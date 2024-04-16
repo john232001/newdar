@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="card p-5 rounded-4">
-                <table id="example" class="table table-responsive table-striped" style="width:100%">
+                <table id="landholdings" class="table table-responsive table-striped" style="width:100%">
                     <thead>
                         <tr>
                           <th>LHID</th>
@@ -42,7 +42,10 @@
                           </tr>
                         @endforeach
                     </tbody>
-                </table>    
+                </table>  
+                <div class="d-flex justify-content-end mt-3">
+                  {{ $landholdings->links('pagination::bootstrap-4')}}
+                </div>  
             </div>
         </div>
     </div>

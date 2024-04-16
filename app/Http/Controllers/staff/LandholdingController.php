@@ -17,8 +17,10 @@ class LandholdingController extends Controller
         $landholdings = DB::table('landholdings')
             ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
-            ->get();
+            ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
+            ->orderBy('landholdings.id')
+            ->paginate(10);
+
         $barangays = DB::table('barangays')->get();
         $municipalities = DB::table('municipalities')->get();
         $maro = DB::table('officers')->where('officers.position_id', 1)->get();
