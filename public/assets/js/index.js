@@ -1,9 +1,13 @@
-
+new DataTable('#landholdings', {
+    responsive: true,
+    autoWidth: true,
+    paging: false,
+    info: false,
+});
 
 new DataTable('#example', {
     responsive: true,
     autoWidth: true,
-    scrollX: true
 });
 new DataTable('#arb', {
     responsive: true,

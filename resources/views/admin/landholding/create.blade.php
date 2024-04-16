@@ -45,20 +45,20 @@
               </select>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
-              <label class="form-label">OCT/TCT No. <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="octNo" placeholder="OCT/TCT No.">
-            </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Survey No. <span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="surveyNo" placeholder="Survey No.">
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
-              <label class="form-label">Lot No. <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="lotNo" placeholder="Lot No.">
-            </div>
-            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Survey Area (in hectares)<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="surveyArea" placeholder="Survey Area (in hectares)">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">OCT/TCT No.</label>
+              <input type="text" class="form-control" name="octNo" placeholder="OCT/TCT No.">
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+              <label class="form-label">Lot No.</label>
+              <input type="text" class="form-control" name="lotNo" placeholder="Lot No.">
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Tax Declaration No.</label>

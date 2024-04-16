@@ -13,14 +13,16 @@ use Illuminate\Http\Request;
 
 class LandholdingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
         $landholdings = DB::table('landholdings')
             ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*', 'municipalities.muni_name','barangays.brgy_names')
-            ->get();
-            
+            ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
+            ->orderBy('landholdings.id')
+            ->paginate(10);
+    
         $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
         $municipalities = DB::table('municipalities')->get();
         $maro = DB::table('officers')->where('officers.position_id', 1)->get();
@@ -29,6 +31,7 @@ class LandholdingController extends Controller
         $ceo = DB::table('officers')->where('officers.position_id', 4)->get();
         $manager = DB::table('officers')->where('officers.position_id', 5)->get();
         $rod = DB::table('officers')->where('officers.position_id', 6)->get();
+        
         return view('admin.landholding.index', compact('landholdings', 'maro', 'paro','carpo','ceo','manager','rod', 'municipalities','barangays'));
     }
     public function store(Request $request)
@@ -39,10 +42,8 @@ class LandholdingController extends Controller
                 'firstname' => 'required',
                 'municipality_id' => 'required',
                 'barangay_id' => 'required',
-                'octNo' => 'required',
                 'surveyArea' => 'required',
                 'surveyNo' => 'required',
-                'lotNo' => 'required',
                 'maro_id' => 'required',
                 'paro_id' => 'required',
                 'carpo_id' =>'required',

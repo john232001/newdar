@@ -19,6 +19,7 @@
 <body>
     @include('layouts.alertmessage')
     @yield('content')
+
 </body>
     <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

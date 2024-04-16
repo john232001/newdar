@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('lhid');
             $table->string('firstname');
-            $table->string('familyname')->nullabe();
+            $table->string('familyname')->nullable();
             $table->string('middlename')->nullable();
             $table->bigInteger('municipality_id');
             $table->biginteger('barangay_id');
-            $table->string('octNo');
-            $table->string('lotNo');
-            $table->string('surveyNo');
+            $table->string('octNo')->nullable();
+            $table->string('lotNo')->nullable();
+            $table->string('surveyNo')->nullable();
             $table->string('surveyArea');
             $table->string('taxNo')->nullable();
             $table->string('modeOfAcquisition')->nullable();
