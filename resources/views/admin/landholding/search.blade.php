@@ -7,16 +7,14 @@
   <div class="container-fluid mx-1">
     <h2 class="title-text">Landholdings</h2>
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-9">
+        <div class="col-lg-12 col-md-12">
             <div class="card p-5 rounded-4">
               <div class="btn">
                 <div class="row">
                   <div class="col-md-10">
-                    <button class="btn btn-success float-start btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodal"><i class="fa-solid fa-add"></i> Add landholding</button>
                   </div>
                   <div class="col-md-2">
                     <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
-                      @csrf
                       <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -39,7 +37,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach ($landholdings as $data)
+                      @forelse ($result as $data)
                         <tr>
                             <td><a href="{{ route('landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
                             <td>{{ $data->firstname}}</td>
@@ -58,20 +56,12 @@
                             @include('admin.landholding.edit')
                             @include('admin.landholding.delete')
                         </tr>
-                      @endforeach
+                        @empty 
+                      @endforelse
                   </tbody>
                 </table>
-                <div class="paginate d-flex justify-content-center mt-3">
-                  <div class="row">
-                    <div class="col-md-12">
-                      {{ $landholdings->links('pagination::bootstrap-4')}}
-                    </div>
-                  </div>
-                </div>
             </div>
         </div>
     </div>
   </div>
-  
-  @include('admin.landholding.create')
 @endsection

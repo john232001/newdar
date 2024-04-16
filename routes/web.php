@@ -41,7 +41,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/download_taxDec/{id}', [App\Http\Controllers\admin\LandholdingController::class, 'downloadtaxDec'])->name('download_taxDec');
     Route::get('admin/landholding/uploadedfile/{id}', [App\Http\Controllers\admin\LandholdingController::class, 'uploadedfile'])->name('uploaded_file');
     Route::get('admin/landholding/view/{id}', [App\Http\Controllers\admin\LandholdingController::class, 'show'])->name('landholding_view');
-    Route::get('admin/landholding/search', [App\Http\Controllers\admin\LandholdingController::class, 'searchLandholding'])->name('search');
+    Route::get('admin/landholding/search', [App\Http\Controllers\admin\LandholdingController::class, 'search'])->name('search');
 
     // Officer Routes
     Route::get('admin/officers', [App\Http\Controllers\admin\OfficerController::class, 'index'])->name('officers');

@@ -1,9 +1,4 @@
-new DataTable('#landholdings', {
-    responsive: true,
-    autoWidth: true,
-    paging: false,
-    info: false,
-});
+
 
 new DataTable('#example', {
     responsive: true,
