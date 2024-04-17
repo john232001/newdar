@@ -11,10 +11,10 @@
             <div class="card p-5 rounded-4">
               <div class="btn">
                 <div class="row">
-                  <div class="col-md-10">
+                  <div class="col-lg-9 col-md-6 col-sm-12">
                     <button class="btn btn-success float-start btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodal"><i class="fa-solid fa-add"></i> Add landholding</button>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-lg-3 col-md-6 col-sm-12">
                     <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                       @csrf
                       <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
@@ -41,16 +41,16 @@
                   <tbody>
                       @foreach ($landholdings as $data)
                         <tr>
-                            <td><a href="{{ route('landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
-                            <td>{{ $data->firstname}}</td>
-                            <td>{{ $data->middlename}}</td>
-                            <td>{{ $data->familyname}}</td>
-                            <td>{{ $data->muni_name}}</td>
-                            <td>{{ $data->brgy_names}}</td>
-                            <td>{{ $data->octNo}}</td>
-                            <td>{{ $data->surveyNo}}</td>
-                            <td>{{ $data->surveyArea}}</td>
-                            <td>
+                            <td data-label="lhid"><a href="{{ route('landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
+                            <td data-label="firstname">{{ $data->firstname}}</td>
+                            <td data-label="middlename">{{ $data->middlename}}</td>
+                            <td data-label="familyname">{{ $data->familyname}}</td>
+                            <td data-label="municipality">{{ $data->muni_name}}</td>
+                            <td data-label="barangay">{{ $data->brgy_names}}</td>
+                            <td data-label="OCT No.">{{ $data->octNo}}</td>
+                            <td data-label="survey No.">{{ $data->surveyNo}}</td>
+                            <td data-label="survey Area">{{ $data->surveyArea}}</td>
+                            <td data-label="action">
                                 <a href="" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#editmodal{{ $data->id }}"> <i class="fa-solid fa-edit"></i> Edit</a>
                                 <a href="" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#deletemodal{{ $data->id }}"><i class="fa-solid fa-trash"></i> Delete</a>
                                 <a href="{{ route('uploaded_file', $data->id ) }}" class="btn btn-secondary btn-sm mb-2"><i class="fa-solid fa-magnifying-glass"></i> View Scanned Documents</a>

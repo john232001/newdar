@@ -20,7 +20,7 @@ class LandholdingController extends Controller
             ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
             ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
             ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
-            ->orderBy('landholdings.lhid')
+            ->orderBy('landholdings.id')
             ->paginate(10);
     
         $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
