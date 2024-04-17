@@ -90,7 +90,6 @@ class LandholdingController extends Controller
                 'municipality_id' => 'required',
                 'barangay_id' => 'required',
                 'surveyArea' => 'required',
-                'surveyNo' => 'required',
                 'maro_id' => 'required',
                 'paro_id' => 'required',
                 'carpo_id' =>'required',

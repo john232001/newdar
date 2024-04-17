@@ -181,6 +181,7 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
      Route::get('staff/download_title/{id}', [App\Http\Controllers\staff\LandholdingController::class, 'downloadtitle'])->name('staff_download_title');
      Route::get('staff/download_taxDec/{id}', [App\Http\Controllers\staff\LandholdingController::class, 'downloadtaxDec'])->name('staff_download_taxDec');
      Route::get('staff/landholding/view/{id}', [App\Http\Controllers\staff\LandholdingController::class, 'show'])->name('staff_landholding_view');
+     Route::get('staff/landholding/search', [App\Http\Controllers\staff\LandholdingController::class, 'search'])->name('staff_search');
 
     //  Download Approved Form Routes
     Route::get('staff/approvedform/download/{id}', [App\Http\Controllers\staff\DownloadApprovedFormController::class, 'filedownload'])->name('staff_approvedform_download');

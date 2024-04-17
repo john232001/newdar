@@ -34,9 +34,13 @@ class HomeController extends Controller
         $totalArbs = DB::table('arbs')->count();
         $totalAwardland = DB::table('awardtitles')->count();
         $totalAsp = DB::table('asps')->count();
-        $totalUser = DB::table('users')->count();
-        $totalValuation = DB::table('valuations')->count();
-        return view('admin.dashboard', compact('landholdings','totalLandholdings','totalLots','totalArbs','totalAwardland','totalAsp','totalValuation','totalUser'));
+        $totalCarp = DB::table('lots')->where('lots.lotType_id', '1')->sum('lotArea');
+        $totalValuation = DB::table('valuations')
+            ->join('lots', 'lots.id', '=', 'valuations.lotNumber_id')
+            ->select('lots.lotArea', 'valuations.*')
+            ->sum('lotArea');
+
+        return view('admin.dashboard', compact('landholdings','totalLandholdings','totalLots','totalArbs','totalAwardland','totalAsp','totalValuation','totalCarp'));
     }
     
     /**
@@ -53,7 +57,13 @@ class HomeController extends Controller
         $totalArbs = DB::table('arbs')->count();
         $totalAwardland = DB::table('awardtitles')->count();
         $totalAsp = DB::table('asps')->count();
-        $totalValuation = DB::table('valuations')->count();
-        return view('staff.dashboard', compact('landholdings','totalLandholdings','totalLots','totalArbs','totalAwardland','totalAsp','totalValuation'));
+        $totalCarp = DB::table('lots')->where('lots.lotType_id', '1')->sum('lotArea');
+        $totalValuation = DB::table('valuations')
+            ->join('lots', 'lots.id', '=', 'valuations.lotNumber_id')
+            ->select('lots.lotArea', 'valuations.*')
+            ->sum('lotArea');
+        
+
+        return view('staff.dashboard', compact('landholdings','totalLandholdings','totalLots','totalArbs','totalAwardland','totalAsp','totalValuation','totalCarp'));
     }
 }

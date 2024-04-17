@@ -27,6 +27,53 @@ class LandholdingController extends Controller
         $paro = DB::table('officers')->where('officers.position_id', 2)->get();
         return view('staff.landholding.index', compact('landholdings', 'maro', 'paro', 'municipalities','barangays'));
     }
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+            if(empty($search)){
+
+                $landholdings = DB::table('landholdings')
+                    ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
+                    ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
+                    ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
+                    ->orderBy('landholdings.id')
+                    ->paginate(10);
+
+                $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
+                $municipalities = DB::table('municipalities')->get();
+                $maro = DB::table('officers')->where('officers.position_id', 1)->get();
+                $paro = DB::table('officers')->where('officers.position_id', 2)->get();
+                $carpo = DB::table('officers')->where('officers.position_id', 3)->get();
+                $ceo = DB::table('officers')->where('officers.position_id', 4)->get();
+                $manager = DB::table('officers')->where('officers.position_id', 5)->get();
+                $rod = DB::table('officers')->where('officers.position_id', 6)->get();
+                
+                return view('staff.landholding.index', compact('landholdings', 'maro', 'paro','carpo','ceo','manager','rod', 'municipalities','barangays'));
+            }
+            else{
+
+                $result = DB::table('landholdings')
+                ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
+                ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
+                ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
+                ->where('firstname', 'LIKE', '%'.$search.'%')
+                ->orwhere('lhid', 'LIKE', '%'.$search.'%')
+                ->get();
+            }
+
+            $barangays = DB::table('barangays')->orderBy('brgy_names', 'asc')->get();
+            $municipalities = DB::table('municipalities')->get();
+            $maro = DB::table('officers')->where('officers.position_id', 1)->get();
+            $paro = DB::table('officers')->where('officers.position_id', 2)->get();
+            $carpo = DB::table('officers')->where('officers.position_id', 3)->get();
+            $ceo = DB::table('officers')->where('officers.position_id', 4)->get();
+            $manager = DB::table('officers')->where('officers.position_id', 5)->get();
+            $rod = DB::table('officers')->where('officers.position_id', 6)->get();
+            
+            return view('staff.landholding.search', compact('result', 'maro', 'paro','carpo','ceo','manager','rod', 'municipalities','barangays'));
+       
+    }
     public function uploadedfile($id){
         $data = DB::table('landholdings')->where('landholdings.id', $id)->get();
         return view('staff.landholding.view_documents', compact('data'));

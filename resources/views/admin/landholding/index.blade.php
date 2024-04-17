@@ -11,10 +11,10 @@
             <div class="card p-5 rounded-4">
               <div class="btn">
                 <div class="row">
-                  <div class="col-lg-9 col-md-6 col-sm-12">
+                  <div class="col-lg-10 col-md-6 col-sm-12">
                     <button class="btn btn-success float-start btn-sm mb-5" style="width: 160px;" data-bs-toggle="modal" data-bs-target="#addmodal"><i class="fa-solid fa-add"></i> Add landholding</button>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="col-lg-2 col-md-6 col-sm-12">
                     <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                       @csrf
                       <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">

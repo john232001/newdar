@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">Total Valuations</h5>
+                    <h5 class="card-title">Total Area Valuation</h5>
                     <p class="card-text">{{ $totalValuation }}</p>
                   </div>
                 </div>
@@ -90,8 +90,8 @@
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">Total Users</h5>
-                    <p class="card-text">{{ $totalUser }}</p>
+                    <h5 class="card-title">Total Carpable Area</h5>
+                    <p class="card-text">{{ $totalCarp }}</p>
                   </div>
                 </div>
               </div>

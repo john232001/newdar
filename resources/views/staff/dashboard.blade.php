@@ -75,12 +75,29 @@
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">Total Valuations</h5>
+                    <h5 class="card-title">Total Area Valuations</h5>
                     <p class="card-text">{{ $totalValuation }}</p>
                   </div>
                 </div>
               </div>
             </div>
       </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/img/dashboard-users.png')}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Total Carpable Area</h5>
+                  <p class="card-text">{{ $totalCarp }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 @endsection
