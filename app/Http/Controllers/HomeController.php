@@ -39,7 +39,7 @@ class HomeController extends Controller
             ->join('lots', 'lots.id', '=', 'valuations.lotNumber_id')
             ->select('lots.lotArea', 'valuations.*')
             ->sum('lotArea');
-
+        
         return view('admin.dashboard', compact('landholdings','totalLandholdings','totalLots','totalArbs','totalAwardland','totalAsp','totalValuation','totalCarp'));
     }
     

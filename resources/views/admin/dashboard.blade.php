@@ -4,7 +4,7 @@
 
 @include('admin.admin_navbar')
 
-<div class="container">
+<div class="container mb-4">
   <h2 class="title-text">Dashboard</h2>
   <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12">
@@ -76,7 +76,7 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">Total Area Valuation</h5>
-                    <p class="card-text">{{ $totalValuation }}</p>
+                    <p class="card-text">{{ $totalValuation }} <span style="font-size: 16px;">Hectares</span></p>
                   </div>
                 </div>
               </div>
@@ -91,12 +91,12 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">Total Carpable Area</h5>
-                    <p class="card-text">{{ $totalCarp }}</p>
+                    <p class="card-text">{{ $totalCarp }} <span style="font-size: 16px;">Hectares</span></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </div>   
+  </div>
 @endsection
