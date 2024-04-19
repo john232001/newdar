@@ -23,19 +23,19 @@
             </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center align-items-center">
-                  <img src="{{ asset('assets/img/dashboard-lots.png')}}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8  ">
-                  <div class="card-body">
-                    <h5 class="card-title">Total Lots</h5>
-                    <p class="card-text">{{ $totalLots }}</p>
-                  </div>
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/img/dashboard-award.png')}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Total Award Land Area</h5>
+                  <p class="card-text">{{ $totalAwardland }} <span style="font-size: 16px;">Hectares</span></p>
                 </div>
               </div>
             </div>
+        </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="card mb-3">
@@ -53,20 +53,20 @@
             </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4 d-flex justify-content-center align-items-center">
-                  <img src="{{ asset('assets/img/dashboard-award.png')}}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Total Award Lands</h5>
-                    <p class="card-text">{{ $totalAwardland }}</p>
-                  </div>
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('assets/img/dashboard-lots.png')}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8  ">
+                <div class="card-body">
+                  <h5 class="card-title">Total Lots</h5>
+                  <p class="card-text">{{ $totalLots }}</p>
                 </div>
               </div>
+            </div>
           </div>
-      </div>
+    </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="card mb-3">
               <div class="row g-0">

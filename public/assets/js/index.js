@@ -1,5 +1,3 @@
-
-
 new DataTable('#example', {
     responsive: true,
     autoWidth: true,
@@ -26,7 +24,7 @@ new DataTable('#awardland', {
 });
 new DataTable('#form', {
     responsive: true,
-    autoWidth: false,
+    autoWidth: true,
     ordering: false,
     
 });

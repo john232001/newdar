@@ -32,7 +32,11 @@ class HomeController extends Controller
         $totalLandholdings = DB::table('landholdings')->count();
         $totalLots = DB::table('lots')->count();
         $totalArbs = DB::table('arbs')->count();
-        $totalAwardland = DB::table('awardtitles')->count();
+        $totalAwardland = DB::table('awardtitles')
+            ->join('lots', 'lots.id', '=', 'awardtitles.lotNumber_id')
+            ->select('lots.lotArea', 'awardtitles.*')
+            ->sum('lotArea');
+
         $totalAsp = DB::table('asps')->count();
         $totalCarp = DB::table('lots')->where('lots.lotType_id', '1')->sum('lotArea');
         $totalValuation = DB::table('valuations')
@@ -55,7 +59,11 @@ class HomeController extends Controller
         $totalLandholdings = DB::table('landholdings')->count();
         $totalLots = DB::table('lots')->count();
         $totalArbs = DB::table('arbs')->count();
-        $totalAwardland = DB::table('awardtitles')->count();
+        $totalAwardland = DB::table('awardtitles')
+            ->join('lots', 'lots.id', '=', 'awardtitles.lotNumber_id')
+            ->select('lots.lotArea', 'awardtitles.*')
+            ->sum('lotArea');
+            
         $totalAsp = DB::table('asps')->count();
         $totalCarp = DB::table('lots')->where('lots.lotType_id', '1')->sum('lotArea');
         $totalValuation = DB::table('valuations')

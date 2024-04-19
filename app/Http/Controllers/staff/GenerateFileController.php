@@ -6,6 +6,7 @@ use App\Models\GenerateLog;
 use App\Models\GeneratedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1.docx');
 
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -67,7 +69,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_1';
@@ -100,6 +102,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -114,7 +117,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.1A' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_1A';
@@ -148,6 +151,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.2.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         if ($data->middlename !== null) {
@@ -169,7 +173,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.2' . '-' . $fileName . '.docx');
         return response()->download('Form No.2' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -196,6 +200,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.3.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -210,7 +215,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('phase', $data->phase);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.3' . '-' . $fileName . '.docx');
         return response()->download('Form No.3' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -233,6 +238,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.4.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -250,7 +256,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.4' . '-' . $fileName . '.docx');
         return response()->download('Form No.4' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -277,6 +283,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.5.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -293,7 +300,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', $paro->officer_name);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.5' . '-' . $fileName . '.docx');
         return response()->download('Form No.5' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -314,6 +321,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.6.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -330,7 +338,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('aspNo', $data->aspNo);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.6' . '-' . $fileName . '.docx');
         return response()->download('Form No.6' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -357,6 +365,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.7.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
@@ -367,7 +376,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.7' . '-' . $fileName . '.docx');
         return response()->download('Form No.7' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -388,6 +397,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.8.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
@@ -395,8 +405,8 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('aspNo', $data->aspNo);
-        $fileName = $data->familyname;
+        $templateProcessor->setValue('surveyArea', $data->surveyArea);
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.8' . '-' . $fileName . '.docx');
         return response()->download('Form No.8' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -424,6 +434,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.9.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -435,7 +446,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setvalue('date', $currentdate);
         $templateProcessor->setvalue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.9' . '-' . $fileName . '.docx');
         return response()->download('Form No.9' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -460,6 +471,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.10.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -480,7 +492,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.10' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_10';
@@ -513,6 +525,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.11.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -527,7 +540,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.11' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_11';
@@ -555,6 +568,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.12A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -573,7 +587,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.12A' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_12A';
@@ -601,6 +615,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.13A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -619,7 +634,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.13A' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_13A';
@@ -648,6 +663,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.14.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -667,7 +683,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.14' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_14';
@@ -695,6 +711,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.15.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -713,7 +730,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.15' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_15';
@@ -734,6 +751,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.16.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -750,7 +768,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.16' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_16';
@@ -771,6 +789,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.17.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -788,7 +807,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.17' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_17';
@@ -814,6 +833,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.18.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
@@ -824,7 +844,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.18' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_18';
@@ -840,8 +860,9 @@ class GenerateFileController extends Controller
     {  
         $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.18A.docx');
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.18A' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_18A';
@@ -857,6 +878,7 @@ class GenerateFileController extends Controller
     {  
         $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.19.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -866,7 +888,7 @@ class GenerateFileController extends Controller
         }else {
             $templateProcessor->setValue('middlename', '');
         }
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.19' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_19';
@@ -898,7 +920,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.20.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -917,7 +939,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.20' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_20';
@@ -944,7 +966,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.21.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -963,7 +985,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.21' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_21';
@@ -985,7 +1007,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.22.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1004,7 +1026,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.22' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_22';
@@ -1027,7 +1049,7 @@ class GenerateFileController extends Controller
             ->first();
         
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.23.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1047,7 +1069,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.23' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_23';
@@ -1073,6 +1095,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.24.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1091,7 +1114,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.24' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_24';
@@ -1119,6 +1142,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.25.docx');
         $templateProcessor->setValue('firstname', strtoupper($data->firstname));
         $templateProcessor->setValue('familyname', strtoupper($data->familyname));
@@ -1138,7 +1162,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.25' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_25';
@@ -1169,6 +1193,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.26.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1183,7 +1208,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.26' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_26';
@@ -1216,6 +1241,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.27.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1233,7 +1259,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.27' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_27';
@@ -1255,6 +1281,7 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.28.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1273,7 +1300,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('maro', $data->officer_name);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.28' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_28';
@@ -1295,6 +1322,8 @@ class GenerateFileController extends Controller
             ->where('landholdings.id', $id)
             ->first();
         $currentdate = date('F j, Y');
+
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.29.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1314,7 +1343,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('maro', $data->officer_name);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.29' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_29';
@@ -1330,9 +1359,9 @@ class GenerateFileController extends Controller
     {  
         $data = DB::table('landholdings')->where('landholdings.id', $id)->first();
 
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.30.docx');
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.30' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_30';
@@ -1357,7 +1386,8 @@ class GenerateFileController extends Controller
             ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
-
+            
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.31.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1376,7 +1406,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.31' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_31';
@@ -1399,6 +1429,7 @@ class GenerateFileController extends Controller
             ->first();
         
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.32.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1418,7 +1449,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.32' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_32';
@@ -1444,6 +1475,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.33.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1462,7 +1494,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.33' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_33';
@@ -1486,6 +1518,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.34.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1504,7 +1537,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.34' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_34';
@@ -1535,6 +1568,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first(); 
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.35.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1553,7 +1587,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.35' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_35';
@@ -1579,6 +1613,7 @@ class GenerateFileController extends Controller
             ->select('landholdings.*', 'officers.officer_name')
             ->where('landholdings.id', $id)->first();
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.36.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1596,7 +1631,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.36' . '-' . $fileName . '.docx');
 
         $formIdentifier = 'form_36';
@@ -1626,6 +1661,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.37.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1644,7 +1680,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.37' . '-' . $fileName . '.docx');
         return response()->download('Form No.37' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1665,6 +1701,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.37A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1682,7 +1719,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.37A' . '-' . $fileName . '.docx');
         return response()->download('Form No.37A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1704,6 +1741,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.38.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1722,7 +1760,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.38' . '-' . $fileName . '.docx');
         return response()->download('Form No.38' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1744,6 +1782,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.39.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1762,7 +1801,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.39' . '-' . $fileName . '.docx');
         return response()->download('Form No.39' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1784,6 +1823,7 @@ class GenerateFileController extends Controller
 
         $currentdate = date('F j, Y');
 
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.40.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1802,7 +1842,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.40' . '-' . $fileName . '.docx');
         return response()->download('Form No.40' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1822,10 +1862,10 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.41.docx');
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.41' . '-' . $fileName . '.docx');
         return response()->download('Form No.41' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1844,7 +1884,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.42.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1862,7 +1902,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.42' . '-' . $fileName . '.docx');
         return response()->download('Form No.42' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1888,7 +1928,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.43.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1903,7 +1943,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($data->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.43' . '-' . $fileName . '.docx');
         return response()->download('Form No.43' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1929,7 +1969,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.44.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1946,7 +1986,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.44' . '-' . $fileName . '.docx');
         return response()->download('Form No.44' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -1972,7 +2012,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.45.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -1991,7 +2031,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.45' . '-' . $fileName . '.docx');
         return response()->download('Form No.45' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2016,7 +2056,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.45A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2032,7 +2072,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.45A' . '-' . $fileName . '.docx');
         return response()->download('Form No.45A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2065,7 +2105,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.46.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2086,7 +2126,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper ($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.46' . '-' . $fileName . '.docx');
         return response()->download('Form No.46' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2117,7 +2157,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.47.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2156,7 +2196,7 @@ class GenerateFileController extends Controller
 
         $templateProcessor->cloneRowAndSetValues('fname', $values);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.47' . '-' . $fileName . '.docx');
         return response()->download('Form No.47' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2185,7 +2225,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.48.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2203,7 +2243,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.48' . '-' . $fileName . '.docx');
         return response()->download('Form No.48' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2242,7 +2282,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.49.docx');
         $templateProcessor->setValue('firstname', strtoupper($data->firstname));
         $templateProcessor->setValue('familyname', strtoupper($data->familyname));
@@ -2262,7 +2302,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
         $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.49' . '-' . $fileName . '.docx');
         return response()->download('Form No.49' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2287,7 +2327,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.50.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2306,7 +2346,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.50' . '-' . $fileName . '.docx');
         return response()->download('Form No.50' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2337,7 +2377,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.51.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2357,7 +2397,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('totalcarpArea', $gettotalArea);
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.51' . '-' . $fileName . '.docx');
         return response()->download('Form No.51' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2388,6 +2428,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2406,7 +2447,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.52A' . '-' . $fileName . '.docx');
         return response()->download('Form No.52A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2437,6 +2478,7 @@ class GenerateFileController extends Controller
             ->sum('lotArea');
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.52B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2456,7 +2498,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('gettotalArea', $gettotalArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.52B' . '-' . $fileName . '.docx');
         return response()->download('Form No.52B' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2480,7 +2522,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.53.docx');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
@@ -2490,7 +2532,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.53' . '-' . $fileName . '.docx');
         return response()->download('Form No.53' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2531,6 +2573,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.54.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2553,7 +2596,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.54' . '-' . $fileName . '.docx');
         return response()->download('Form No.54' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2582,7 +2625,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.55.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2600,7 +2643,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.55' . '-' . $fileName . '.docx');
         return response()->download('Form No.55' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2636,6 +2679,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.57.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2654,7 +2698,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.57' . '-' . $fileName . '.docx');
         return response()->download('Form No.57' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2695,6 +2739,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.58.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2717,7 +2762,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('ceo', strtoupper($ceo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.58' . '-' . $fileName . '.docx');
         return response()->download('Form No.58' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2748,6 +2793,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y ');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.59.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2768,7 +2814,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.59' . '-' . $fileName . '.docx');
         return response()->download('Form No.59' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2804,6 +2850,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.60.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2825,7 +2872,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.60' . '-' . $fileName . '.docx');
         return response()->download('Form No.60' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2851,6 +2898,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.61.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2869,7 +2917,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.61' . '-' . $fileName . '.docx');
         return response()->download('Form No.61' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2904,6 +2952,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.62.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2921,7 +2970,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('carpo', strtoupper($carpo->officer_name));
         $templateProcessor->setValue('date', $currentdate);
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.62' . '-' . $fileName . '.docx');
         return response()->download('Form No.62' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2946,6 +2995,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.63.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -2961,7 +3011,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('taxNo', $data->taxNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.63' . '-' . $fileName . '.docx');
         return response()->download('Form No.63' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -2992,6 +3042,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.64.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3012,7 +3063,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.64' . '-' . $fileName . '.docx');
         return response()->download('Form No.64' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3041,6 +3092,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.65.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3052,7 +3104,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('manager', strtoupper($manager->officer_name));
         $templateProcessor->setValue('rod', strtoupper($rod->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.65' . '-' . $fileName . '.docx');
         return response()->download('Form No.65' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3082,7 +3134,8 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.66.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3097,7 +3150,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('amount', $data->amount);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.66' . '-' . $fileName . '.docx');
         return response()->download('Form No.66' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3124,11 +3177,12 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.67.docx');
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.67' . '-' . $fileName . '.docx');
         return response()->download('Form No.67' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3153,6 +3207,7 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
         $currentdate = date('m-d-Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3167,7 +3222,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.68A' . '-' . $fileName . '.docx');
         return response()->download('Form No.68A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3196,7 +3251,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68B.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3208,7 +3263,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.68B' . '-' . $fileName . '.docx');
         return response()->download('Form No.68B' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3227,12 +3282,12 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.68.docx');
         $templateProcessor->setValue('familyname', $data->familyname);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
 
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.68' . '-' . $fileName . '.docx');
         return response()->download('Form No.68' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3255,7 +3310,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $currentdate = date('F j, Y');
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.69.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
@@ -3270,7 +3325,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.69' . '-' . $fileName . '.docx');
         return response()->download('Form No.69' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3293,7 +3348,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.1.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3310,7 +3365,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.1' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.1' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3335,6 +3390,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.2.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3352,7 +3408,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.2' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.2' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3375,7 +3431,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.3.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3390,7 +3446,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.3' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.3' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3418,7 +3474,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.4.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3437,7 +3493,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.4' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.4' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3467,6 +3523,7 @@ class GenerateFileController extends Controller
         );
 
         $currentdate = date('F j, Y');
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.5.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3484,7 +3541,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('date', $currentdate);
         $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
         $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.5' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.5' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3503,7 +3560,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.6.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3520,7 +3577,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('lotNo', $data->lotNo);
         $templateProcessor->setValue('aspNo', $data->aspNo);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.6' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.6' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
@@ -3540,7 +3597,7 @@ class GenerateFileController extends Controller
             ['landholding_id' => $id, 'form_identifier' => $formIdentifier],
             ['generation_date' => now()]
         );
-
+        Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/AwardNo.7.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
         $templateProcessor->setValue('familyname', $data->familyname);
@@ -3555,7 +3612,7 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
-        $fileName = $data->familyname;
+        $fileName = $data->firstname;
         $templateProcessor->saveAs('Award Form No.7' . '-' . $fileName . '.docx');
         return response()->download('Award Form No.7' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
     }
