@@ -43,6 +43,7 @@ class GenerateFileController extends Controller
         }else {
             $templateProcessor->setValue('middlename', '');
         }
+        
         if ($data->familyname !== null) {
             $templateProcessor->setValue('familyname', $data->familyname . ',');
         }else {
