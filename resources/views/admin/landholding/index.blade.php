@@ -23,7 +23,7 @@
                   </div>
                 </div>
               </div>
-                <table id="landholdings" class="table table-responsive table-striped">
+                <table class="table table-responsive table-striped">
                   <thead>
                       <tr>
                         <th data-label="LHID">LHID</th>
