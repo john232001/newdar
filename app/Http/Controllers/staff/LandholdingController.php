@@ -58,7 +58,7 @@ class LandholdingController extends Controller
                 ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
                 ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
                 ->where('firstname', 'LIKE', '%'.$search.'%')
-                ->orwhere('lhid', 'LIKE', '%'.$search.'%')
+                ->orwhere('familyname', 'LIKE', '%'.$search.'%')
                 ->get();
             }
 
