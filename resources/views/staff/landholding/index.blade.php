@@ -25,7 +25,7 @@
                 <table id="landholdings" class="table table-responsive table-striped" style="width:100%">
                     <thead>
                         <tr>
-                          <th data-label="LHID">LHID</th>
+                          <th data-label="Sequence No.">Sequence No.</th>
                           <th data-label="Name of Landowner">Name of Landowner</th>
                           <th data-label="Municipality">Municipality</th>
                           <th data-label="Barangay">Barangay</th>
@@ -38,7 +38,7 @@
                     <tbody>
                         @foreach ($landholdings as $data)
                           <tr>
-                              <td data-label="LHID"><a href="{{ route('staff_landholding_view', $data->id )}}" class="btn-link ">{{ $data->lhid}}</a></td>
+                              <td data-label="Sequence No."><a href="{{ route('staff_landholding_view', $data->id )}}" class="btn-link ">{{ $data->seqNo}}</a></td>
                               <td data-label="Name of Landowner">{{ $data->firstname}} {{ $data->middlename}} {{ $data->familyname}}</td>
                               <td data-label="Municipality">{{ $data->muni_name}}</td>
                               <td data-label="Barangay">{{ $data->brgy_names}}</td>

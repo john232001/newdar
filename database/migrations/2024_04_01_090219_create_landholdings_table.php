@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('landholdings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('lhid');
+            $table->integer('seqNo');
             $table->string('firstname');
             $table->string('familyname')->nullable();
             $table->string('middlename')->nullable();

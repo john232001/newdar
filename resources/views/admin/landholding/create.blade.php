@@ -11,8 +11,8 @@
             @csrf
             <h5 class="modal-title mb-4">Landowner Information</h5>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
-              <label class="form-label">Landholding ID <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="lhid" placeholder="Landholding ID">
+              <label class="form-label">Sequence No.<span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="seqNo" placeholder="Sequence No.">
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
               <label class="form-label">Firstname <span class="text-danger">*</span></label>

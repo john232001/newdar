@@ -11,7 +11,7 @@ class Landholding extends Model
 
     protected $table = 'landholdings';
     protected $fillable = [
-        'lhid',
+        'seqNo',
         'arbs_id',
         'awardtitle_id',
         'valuation_id',

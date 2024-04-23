@@ -15,51 +15,25 @@ class GenerateFileController extends Controller
     public function generateform1($id)
     {  
         $data = DB::table('landholdings')
-            ->join('municipalities','municipalities.id', '=', 'landholdings.municipality_id')
-            ->join('barangays','barangays.id', '=', 'landholdings.barangay_id')
-            ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
+            ->join('municipalities', 'municipalities.id', '=', 'landholdings.municipality_id')
+            ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
+            ->join('officers AS maro_officer', 'maro_officer.id', '=', 'landholdings.maro_id')
+            ->join('officers AS paro_officer', 'paro_officer.id', '=', 'landholdings.paro_id')
+            ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names', 'maro_officer.officer_name AS maro_name', 'paro_officer.officer_name AS paro_name')
             ->where('landholdings.id', $id)
             ->first();
-    
-        $maro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
-        
-        $paro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
 
         $currentdate = date('F j, Y');
 
         Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1.docx');
-
+        
         $templateProcessor->setValue('firstname', $data->firstname);
-        if ($data->middlename !== null) {
-            $firstLetter = substr($data->middlename, 0, 1);
-            $templateProcessor->setValue('middlename',', ' . $firstLetter . '.');
-        }else {
-            $templateProcessor->setValue('middlename', '');
-        }
-        
-        if ($data->familyname !== null) {
-            $templateProcessor->setValue('familyname', $data->familyname . ',');
-        }else {
-            $templateProcessor->setValue('familyname', '');
-        }
-        
-
+        $templateProcessor->setValue('middlename', $data->middlename ? ', ' . substr($data->middlename, 0, 1) . '.' : '');
+        $templateProcessor->setValue('familyname', $data->familyname ? $data->familyname . ',' : '');
         $templateProcessor->setValue('fname', $data->firstname);
         $templateProcessor->setValue('lname', $data->familyname);
-        if ($data->middlename !== null) {
-            $firstLetter = substr($data->middlename, 0, 1);
-            $templateProcessor->setValue('mname', $firstLetter . '.');
-        }else {
-            $templateProcessor->setValue('mname', '');
-        }
-
+        $templateProcessor->setValue('mname', $data->middlename ? substr($data->middlename, 0, 1) . '.' : '');
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -67,9 +41,10 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('maro', strtoupper($data->maro_name));
+        $templateProcessor->setValue('paro', strtoupper($data->paro_name));
         $templateProcessor->setValue('date', $currentdate);
+
         $fileName = $data->firstname;
         $templateProcessor->saveAs('Form No.1' . '-' . $fileName . '.docx');
 
@@ -90,24 +65,31 @@ class GenerateFileController extends Controller
             ->select('landholdings.*','municipalities.muni_name','barangays.brgy_names')
             ->where('landholdings.id', $id)
             ->first();
-    
-        $maro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.maro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
-        
-        $paro = DB::table('landholdings')
-            ->join('officers', 'officers.id', '=', 'landholdings.paro_id')
-            ->select('landholdings.*', 'officers.officer_name')
-            ->where('landholdings.id', $id)->first();
+
+        $officers = DB::table('landholdings')
+            ->join('officers as maro', 'maro.id', '=', 'landholdings.maro_id')
+            ->join('officers as paro', 'paro.id', '=', 'landholdings.paro_id')
+            ->select('maro.officer_name as maro_name', 'paro.officer_name as paro_name')
+            ->where('landholdings.id', $id)
+            ->first();
 
         $currentdate = date('F j, Y');
 
         Settings::setOutputEscapingEnabled(true);
         $templateProcessor = new TemplateProcessor('Form-template/FormNo.1A.docx');
         $templateProcessor->setValue('firstname', $data->firstname);
-        $templateProcessor->setValue('familyname', $data->familyname);
-        $templateProcessor->setValue('middlename', $data->middlename);
+        if ($data->middlename !== null) {
+            $firstLetter = substr($data->middlename, 0, 1);
+            $templateProcessor->setValue('middlename', ', ' . $firstLetter . '.');
+        } else {
+            $templateProcessor->setValue('middlename', '');
+        }
+
+        if ($data->familyname !== null) {
+            $templateProcessor->setValue('familyname', $data->familyname . ',');
+        } else {
+            $templateProcessor->setValue('familyname', '');
+        }
         $templateProcessor->setValue('municipality', $data->muni_name);
         $templateProcessor->setValue('barangay', $data->brgy_names);
         $templateProcessor->setValue('octNo', $data->octNo);
@@ -115,11 +97,13 @@ class GenerateFileController extends Controller
         $templateProcessor->setValue('surveyNo', $data->surveyNo);
         $templateProcessor->setValue('surveyArea', $data->surveyArea);
         $templateProcessor->setValue('taxNo', $data->taxNo);
-        $templateProcessor->setValue('maro', strtoupper($maro->officer_name));
-        $templateProcessor->setValue('paro', strtoupper($paro->officer_name));
+        $templateProcessor->setValue('maro', strtoupper($officers->maro_name));
+        $templateProcessor->setValue('paro', strtoupper($officers->paro_name));
         $templateProcessor->setValue('date', $currentdate);
-        $fileName = $data->firstname;
-        $templateProcessor->saveAs('Form No.1A' . '-' . $fileName . '.docx');
+
+        $response = response()->streamDownload(function () use ($templateProcessor) {
+            $templateProcessor->saveAs('php://output');
+        }, 'Form No.1A' . '-' . $data->firstname . '.docx');
 
         $formIdentifier = 'form_1A';
 
@@ -128,7 +112,8 @@ class GenerateFileController extends Controller
             ['generation_date' => now()]
         );
 
-        return response()->download('Form No.1A' . '-' . $fileName . '.docx')->deleteFileAfterSend(true);
+        return $response;
+
     }
     public function generateform2($id)
     {

@@ -11,7 +11,7 @@
                 <div class="row">
                   @foreach ($landholdings as $data)
                     <div class="col-lg-4 col-md-12 col-sm-12">
-                      <strong>Landholding ID : <span class="info text-success">{{ $data->lhid }}</span></strong><br>
+                      <strong>Sequence No. : <span class="info text-success">{{ $data->seqNo }}</span></strong><br>
                       <strong>Landowner : <span class="info text-success">{{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span></strong><br>
                       <strong>OCT/TCT No. : <span class="info text-success">{{ $data->octNo }}</span></strong><br>
                       <strong>Survey No. : <span class="info text-success">{{ $data->surveyNo }}</span></strong><br>

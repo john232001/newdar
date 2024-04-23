@@ -65,7 +65,7 @@ class LandholdingController extends Controller
                 ->join('barangays', 'barangays.id', '=', 'landholdings.barangay_id')
                 ->select('landholdings.*', 'municipalities.muni_name', 'barangays.brgy_names')
                 ->where('firstname', 'LIKE', '%'.$search.'%')
-                ->orwhere('lhid', 'LIKE', '%'.$search.'%')
+                ->orwhere('seqNo', 'LIKE', '%'.$search.'%')
                 ->get();
             }
 
@@ -85,7 +85,7 @@ class LandholdingController extends Controller
     {
         try{
             $request->validate([
-                'lhid' => 'required',
+                'seqNo' => 'required',
                 'firstname' => 'required',
                 'municipality_id' => 'required',
                 'barangay_id' => 'required',
@@ -97,6 +97,7 @@ class LandholdingController extends Controller
                 'ceo_id' =>'required',
                 'rod_id' =>'required'
             ], [
+                'seqNo' => 'The Sequence No. field is required',
                 'municipality_id' => 'The municipality field is required',
                 'barangay_id' => 'The barangay field is required',
                 'maro_id.required' => 'The MARO field is required.',
@@ -129,7 +130,7 @@ class LandholdingController extends Controller
 
             // Insert file path into the database using Query Builder
             $data = DB::table('landholdings')->insert([
-                'lhid' => $request->lhid,
+                'seqNo' => $request->seqNo,
                 'firstname' => $request->firstname,
                 'familyname' => $request->familyname,
                 'middlename' => $request->middlename,
@@ -176,7 +177,7 @@ class LandholdingController extends Controller
         $landholding = Landholding::findOrFail($id);
 
         $landholding->update([
-            'lhid' => $request->lhid,
+            'seqNo' => $request->seqNo,
             'firstname' => $request->firstname,
             'familyname' => $request->familyname,
             'middlename' => $request->middlename,
@@ -210,7 +211,6 @@ class LandholdingController extends Controller
             "created_at" =>  date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s'),
         ]);
-
         // Check if a new title file is uploaded
         if ($request->hasFile('title')) {
             // Get the full path to the existing title file

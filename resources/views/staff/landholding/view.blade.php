@@ -11,7 +11,7 @@
                 <div class="row">
                   @foreach ($landholdings as $data)
                     <div class="col-lg-4 col-md-12 col-sm-12">
-                      <strong>Landholding ID : <span class="info text-success">{{ $data->lhid }}</span></strong><br>
+                      <strong>Sequence No. : <span class="info text-success">{{ $data->seqNo }}</span></strong><br>
                       <strong>Landowner : <span class="info text-success">{{ $data->firstname }} {{ $data->middlename }} {{ $data->familyname }}</span></strong><br>
                       <strong>OCT/TCT No. : <span class="info text-success">{{ $data->octNo }}</span></strong><br>
                       <strong>Survey No. : <span class="info text-success">{{ $data->surveyNo }}</span></strong><br>
@@ -365,7 +365,7 @@
                         </tr>
                         <tr>
                           <td>CARPER-LAD AWARD Form No. 8</td>
-                          <td>Landowner's Certification on Duly Attested List of Tenants, Lessees, and-or Regular <br>Farmworkers</td>
+                          <td>Landowner's Certification on Duly Attested List of Tenants, Lessees, and-or Regular Farmworkers</td>
                           @forelse ($generateform8 as $items)
                             <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
@@ -381,7 +381,7 @@
                         </tr>
                         <tr>
                           <td>CARPER-LAD AWARD Form No. 9</td>
-                          <td>Manifestation to Apply Petition for Exemption Exclusion Clearance or file <br> Petition Protest from CARP Cov</td>
+                          <td>Manifestation to Apply Petition for Exemption Exclusion Clearance or file Petition Protest from CARP Cov</td>
                           @forelse ($generateform9 as $items)
                             <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
@@ -429,7 +429,7 @@
                         </tr>
                         <tr>
                           <td>CARPER-LAD AWARD Form No. 12A</td>
-                          <td>Request for Personal Service of the NOC or VOS Acceptance Letter <br>to the LO residing in MM</td>
+                          <td>Request for Personal Service of the NOC or VOS Acceptance Letter to the LO residing in MM</td>
                           @forelse ($generateform12A as $items)
                             <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
@@ -445,7 +445,7 @@
                         </tr>
                         <tr>
                           <td>CARPER-LAD AWARD Form No. 13A</td>
-                          <td>Request for Personal Service of the NOC or VOS Acceptance Letter <br>to the LO residing in MM</td>
+                          <td>Request for Personal Service of the NOC or VOS Acceptance Letter to the LO residing in MM</td>
                           @forelse ($generateform13A as $items)
                             <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
@@ -461,7 +461,7 @@
                         </tr>
                         <tr>
                           <td>CARPER-LAD AWARD Form No. 14</td>
-                          <td>Report on Failure to Serve NOC or VOS Acceptance Letter to the LO and <br> Request for NOC Publication</td>
+                          <td>Report on Failure to Serve NOC or VOS Acceptance Letter to the LO and Request for NOC Publication</td>
                           @forelse ($generateform14 as $items)
                             <td>{{ \Carbon\Carbon::parse($items->generation_date)->format('F j, Y - H:i:s') }}</td>
                           @empty
